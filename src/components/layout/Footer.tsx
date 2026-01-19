@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram } from "lucide-react";
+import logoWhite from "@/assets/logo-white.png";
 
 const quickLinks = [
   { name: "Home", path: "/" },
@@ -21,8 +22,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-4">
-            <Link to="/" className="text-2xl font-bold font-['Clash_Display']">
-              Daveat<span className="text-primary">.</span>
+            <Link to="/" className="flex items-center gap-2">
+              <img src={logoWhite} alt="Daveat Logo" className="h-10 w-auto" />
+              <span className="text-2xl font-bold font-['Clash_Display']">
+                Daveat<span className="text-primary">.</span>
+              </span>
             </Link>
             <p className="text-muted-foreground">
               Transforming ideas into exceptional digital experiences.
