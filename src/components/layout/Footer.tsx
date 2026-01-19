@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram } from "lucide-react";
+import { cn } from "@/lib/utils";
 import logoWhite from "@/assets/logo-white.png";
+import logoGreen from "@/assets/logo-green.png";
 
 const quickLinks = [
   { name: "Home", path: "/" },
@@ -16,15 +19,39 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const [isLogoHovered, setIsLogoHovered] = useState(false);
+
   return (
     <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2">
-              <img src={logoWhite} alt="Daveat Logo" className="h-10 w-auto" />
-              <span className="text-2xl font-bold font-['Clash_Display']">
+            <Link 
+              to="/" 
+              className="flex items-center gap-2 group"
+              onMouseEnter={() => setIsLogoHovered(true)}
+              onMouseLeave={() => setIsLogoHovered(false)}
+            >
+              <div className="relative h-10 w-10">
+                <img 
+                  src={logoWhite} 
+                  alt="Daveat Logo" 
+                  className={cn(
+                    "absolute inset-0 h-10 w-auto transition-opacity duration-300",
+                    isLogoHovered ? "opacity-0" : "opacity-100"
+                  )} 
+                />
+                <img 
+                  src={logoGreen} 
+                  alt="Daveat Logo" 
+                  className={cn(
+                    "absolute inset-0 h-10 w-auto transition-opacity duration-300",
+                    isLogoHovered ? "opacity-100" : "opacity-0"
+                  )} 
+                />
+              </div>
+              <span className="text-2xl font-bold font-['Clash_Display'] transition-colors duration-300 group-hover:text-primary">
                 Daveat<span className="text-primary">.</span>
               </span>
             </Link>
