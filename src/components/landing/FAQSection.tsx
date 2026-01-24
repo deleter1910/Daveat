@@ -7,34 +7,29 @@ import {
 
 const faqs = [
   {
-    question: "Für wen ist Daveat geeignet?",
+    question: "«Ich habe alles versucht. Warum sollte das anders sein?»",
     answer:
-      "Daveat ist ideal für Berufstätige und Eltern zwischen 30-45 Jahren, die wenig Zeit haben, aber nachhaltig mehr Energie und Gesundheit erreichen wollen. Du brauchst keine Vorkenntnisse – nur die Bereitschaft, kleine Änderungen umzusetzen.",
+      "Weil alles, was du versucht hast, externe Regeln aufzwang. Dies schafft innere Eigenverantwortung. Du folgst nicht meinem Plan—du folgst DEINEM Plan, den wir zusammen erstellt haben. Diese psychologische Verschiebung macht den Unterschied.",
   },
   {
-    question: "Wie viel Zeit muss ich investieren?",
+    question: "«Ich habe keine Zeit dafür.»",
     answer:
-      "Minimal. Der Strategie-Workshop dauert 90 Minuten. Danach sind es wenige Minuten pro Tag für Umsetzung. Die WhatsApp-Begleitung passt sich deinem Tempo an – du schreibst, wann es dir passt.",
+      "Du verbringst bereits 30-60 Stunden pro Monat mit Schuldgefühlen, Recherchen und mentaler Last. Wir fügen deinem Zeitplan nichts hinzu—wir gewinnen diese Zeit zurück. Ausserdem untergräbst du deine Fähigkeit, für deine Familie da zu sein, indem du dich vernachlässigst. Kannst du es dir leisten, NICHT 90 Minuten zu investieren?",
   },
   {
-    question: "Funktioniert das auch, wenn meine Familie nicht mitmacht?",
+    question: "«Was, wenn ich wieder scheitere?»",
     answer:
-      "Absolut. Das System ist darauf ausgelegt, in deinen bestehenden Familienalltag zu passen. Du musst nicht separat kochen oder besondere Anforderungen stellen.",
+      "Jede gescheiterte Diät hat dich dich selbst weniger vertrauen lassen. Dieser Ansatz baut dieses Vertrauen wieder auf, indem wir mit kleinen, erreichbaren Veränderungen beginnen, die positive Dynamik schaffen. Wir richten dich nicht auf Perfektion ein—wir richten dich auf nachhaltigen Fortschritt ein.",
   },
   {
-    question: "Was passiert nach den 3 Monaten Begleitung?",
+    question: "«Wie unterscheidet sich das von einem normalen Gesundheitscoach?»",
     answer:
-      "Nach 90 Tagen hast du die neuen Gewohnheiten verinnerlicht. Die meisten Klienten brauchen danach keine weitere Begleitung. Bei Bedarf gibt es aber flexible Verlängerungsoptionen.",
+      "Normale Coaches geben dir IHREN Plan. Ich helfe dir, DEINEN Plan zu erstellen. Normale Coaches fordern Perfektion. Ich plane für 80% Erfolg und 20% Freude. Normale Coaches verschwinden nach der Sitzung. Ich bin verfügbar, wenn du tatsächlich Unterstützung brauchst—um 21 Uhr, wenn die Gelüste kommen.",
   },
   {
-    question: "Muss ich auf alles verzichten?",
+    question: "«Geht es hier nur um Gewichtsverlust?»",
     answer:
-      "Nein! Wir arbeiten mit einem Energie-Budget, nicht mit Verboten. Du entscheidest selbst, wofür du es einsetzt – Geschäftsessen, Familienfeier oder Dessert sind alle möglich.",
-  },
-  {
-    question: "Ist das eine klassische Diät?",
-    answer:
-      "Definitiv nicht. Daveat ist eine Lifestyle-Strategie, keine kurzfristige Diät. Wir optimieren deinen Alltag für mehr Energie – Gewichtsverlust ist oft ein willkommener Nebeneffekt.",
+      "Gewichtsverlust ist ein Nebenprodukt. Es geht um Energie, Selbstvertrauen, Präsenz und darum, zu werden, wer du sein willst. Klienten gewinnen körperliche Kapazität, mentale Klarheit, Selbstvertrauen und eine bessere Beziehung zum Essen. Die Waage ändert sich, weil sich dein Leben ändert.",
   },
 ];
 
@@ -49,7 +44,8 @@ export function FAQSection() {
             <span className="w-8 h-px bg-primary"></span>
           </p>
           <h2 className="heading-lg">
-            Häufige <span className="text-primary">Fragen</span>
+            Häufige <span className="text-primary">Fragen</span>{" "}
+            <span className="text-muted-foreground font-normal">(und ehrliche Antworten)</span>
           </h2>
         </div>
         <div className="max-w-3xl mx-auto">
