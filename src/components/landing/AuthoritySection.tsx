@@ -58,11 +58,8 @@ export function AuthoritySection() {
               </h3>
             </div>
             <p className="text-body mb-8">
-              Ich bin{" "}
-              <span className="text-muted-foreground">
-                kein zertifizierter Ernährungsberater
-              </span>
-              , der Lehrbuchratschläge rezitiert. Ich bin jemand, der durch die
+              Ich bin zwar ein zertifizierter Ernährungsberater, aber ich gebe
+              keine Lehrbuchratschläge. Ich bin jemand, der durch die
               Selbstzweifel, die gescheiterten Diäten, den Jojo-Effekt und den
               eventuellen Durchbruch{" "}
               <span className="font-semibold text-foreground">gelebt hat</span>.
