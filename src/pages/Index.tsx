@@ -19,6 +19,7 @@ import { BenefitCard } from "@/components/landing/BenefitCard";
 import { SocialProofSection } from "@/components/landing/SocialProofSection";
 import { StepCard } from "@/components/landing/StepCard";
 import { OfferBreakdownSection } from "@/components/landing/OfferBreakdownSection";
+import { ValueStackSection } from "@/components/landing/ValueStackSection";
 import { PricingCard } from "@/components/landing/PricingCard";
 import { FAQSection } from "@/components/landing/FAQSection";
 
@@ -315,6 +316,9 @@ export default function Index() {
 
       {/* Section 6b: Offer Breakdown - Was du bekommst */}
       <OfferBreakdownSection />
+
+      {/* Section 6c: Value Stack - Die wahre Transformation */}
+      <ValueStackSection />
 
       {/* Section 7: Pricing */}
       <section className="section-padding">
