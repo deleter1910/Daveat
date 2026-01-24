@@ -51,9 +51,14 @@ export function Footer() {
                 />
               </div>
             </Link>
-            <p className="text-muted-foreground">
-              Gesundheit, die in deinen echten Alltag passt.
-            </p>
+            <div className="space-y-2">
+              <p className="text-sm text-primary font-medium tracking-wide">
+                Lifestyle Strategy Partner | Nachhaltige Gesundheitstransformation
+              </p>
+              <p className="text-muted-foreground">
+                Keine Quick Fixes. Keine externen Regeln. Nur <span className="text-foreground font-medium">DEIN</span> Plan, gemeinsam erstellt, für <span className="text-foreground font-medium">DEIN</span> Leben.
+              </p>
+            </div>
           </div>
 
           {/* Quick Links */}
