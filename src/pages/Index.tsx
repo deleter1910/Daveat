@@ -14,6 +14,7 @@ import {
 import { PainPointCard } from "@/components/landing/PainPointCard";
 import { ProblemDeepeningSection } from "@/components/landing/ProblemDeepeningSection";
 import { AgitateSection } from "@/components/landing/AgitateSection";
+import { USPSection } from "@/components/landing/USPSection";
 import { BenefitCard } from "@/components/landing/BenefitCard";
 import { TestimonialCard } from "@/components/landing/TestimonialCard";
 import { StepCard } from "@/components/landing/StepCard";
@@ -280,6 +281,9 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      {/* Section 3b: USP - Das macht den Unterschied */}
+      <USPSection />
 
       {/* Section 4: Benefits */}
       <section className="section-padding bg-card">
