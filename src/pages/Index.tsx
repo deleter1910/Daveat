@@ -227,14 +227,34 @@ export default function Index() {
                 Die Lösung
               </p>
               <h2 className="heading-lg mb-8">
-                Es gibt einen <span className="text-primary">besseren Weg</span>.
+                Es gibt einen anderen Weg.<br />
+                <span className="text-primary">Und er funktioniert.</span>
               </h2>
-              <p className="text-body mb-8">
-                Die meisten Gesundheitstipps sind für Menschen gemacht, die unendlich Zeit haben. Du brauchst kein neues Rezeptbuch und keinen weiteren strengen Plan, der beim ersten Stress zusammenbricht.
-              </p>
-              <p className="text-body mb-8">
-                Du brauchst eine <span className="text-foreground font-semibold">Strategie, die für deinen Alltag arbeitet</span> – nicht dagegen.
-              </p>
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                  <Target className="text-primary" size={28} />
+                  Der Persönliche Umsetzungsplan
+                </h3>
+                <p className="text-body">
+                  Dies ist <span className="text-muted-foreground line-through">kein weiteres Diätprogramm</span>. Es ist eine{" "}
+                  <span className="text-foreground font-semibold">90-minütige Strategiesitzung</span>, in der wir gemeinsam{" "}
+                  <span className="text-primary font-semibold">DEINEN</span> Plan entwickeln—
+                </p>
+              </div>
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
+                  <p className="text-foreground">einen, der zu <span className="text-primary font-semibold">DEINEM</span> Leben passt</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
+                  <p className="text-foreground"><span className="text-primary font-semibold">DEINE</span> Worte verwendet</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
+                  <p className="text-foreground">und zu <span className="text-primary font-semibold">DEINEN</span> Regeln wird</p>
+                </div>
+              </div>
               <div className="flex items-center gap-4 p-6 rounded-2xl border border-primary/30 bg-primary/5">
                 <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
                   <Sparkles className="text-primary-foreground" size={24} />
@@ -250,9 +270,9 @@ export default function Index() {
                   <div className="w-24 h-24 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-6">
                     <Target className="text-primary" size={48} />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">Dein Ziel</h3>
+                  <h3 className="text-2xl font-bold mb-4">Dein Plan</h3>
                   <p className="text-muted-foreground">
-                    Mehr Energie, weniger Stress, nachhaltiges Wohlbefinden – ohne deinen Alltag umzukrempeln.
+                    90 Minuten. Co-kreiert. Für dein Leben gemacht.
                   </p>
                 </div>
               </div>
