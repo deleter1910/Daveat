@@ -449,6 +449,32 @@ export default function Index() {
                 Aber zuerst: Lass uns einfach reden.
               </p>
             </div>
+
+            {/* P.S. Section - Last Chance Urgency */}
+            <div className="mt-12 pt-8 border-t border-primary-foreground/20">
+              <div className="text-left max-w-2xl mx-auto space-y-6">
+                {/* P.S. - Emotional Urgency */}
+                <p className="text-primary-foreground">
+                  <span className="font-bold">P.S.</span> Jeder Tag, den du wartest, ist ein weiterer Tag im Kreislauf. Ein weiterer Tag, an dem deine Kinder dich kämpfen sehen. Ein weiterer Tag, an dem du dir weniger vertraust. Der beste Zeitpunkt zu starten war gestern. Der zweitbeste Zeitpunkt ist <span className="font-semibold">genau jetzt</span>.
+                </p>
+                
+                {/* P.P.S. - 80/20 Philosophy Reminder */}
+                <p className="text-primary-foreground/90">
+                  <span className="font-bold">P.P.S.</span> Denk dran: Du musst nicht alles perfekt machen. Du musst nur 80% richtig machen. Und 20% sollten pure Freude sein—denn Transformation, die nicht erfüllend ist, wird nicht halten. Lass uns gemeinsam <span className="font-semibold">DEINE</span> Strategie aufbauen.
+                </p>
+              </div>
+              
+              {/* Final CTA Repetition */}
+              <div className="mt-10 text-center">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center px-10 py-5 rounded-full bg-background text-foreground font-bold text-lg uppercase tracking-wide hover:bg-foreground hover:text-background transition-all duration-300"
+                >
+                  Jetzt kostenloses Klarheitsgespräch buchen
+                  <ArrowRight className="ml-3" size={20} />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
