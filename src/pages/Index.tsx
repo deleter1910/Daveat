@@ -6,16 +6,13 @@ import {
   Scale,
   Shield,
   Clock,
-  XCircle,
   Frown,
-  Zap,
   Users,
   Target,
   Sparkles,
-  Calendar,
-  MessageCircle,
 } from "lucide-react";
 import { PainPointCard } from "@/components/landing/PainPointCard";
+import { ProblemDeepeningSection } from "@/components/landing/ProblemDeepeningSection";
 import { BenefitCard } from "@/components/landing/BenefitCard";
 import { TestimonialCard } from "@/components/landing/TestimonialCard";
 import { StepCard } from "@/components/landing/StepCard";
@@ -212,6 +209,9 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      {/* Section 2b: Problem Deepening */}
+      <ProblemDeepeningSection />
 
       {/* Section 3: Solution */}
       <section className="section-padding">
