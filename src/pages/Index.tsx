@@ -17,6 +17,7 @@ import { AgitateSection } from "@/components/landing/AgitateSection";
 import { USPSection } from "@/components/landing/USPSection";
 import { BenefitCard } from "@/components/landing/BenefitCard";
 import { SocialProofSection } from "@/components/landing/SocialProofSection";
+import { AuthoritySection } from "@/components/landing/AuthoritySection";
 import { StepCard } from "@/components/landing/StepCard";
 import { OfferBreakdownSection } from "@/components/landing/OfferBreakdownSection";
 import { ValueStackSection } from "@/components/landing/ValueStackSection";
@@ -290,6 +291,9 @@ export default function Index() {
 
       {/* Section 5: Social Proof */}
       <SocialProofSection />
+
+      {/* Section 5b: Authority - Warum es funktioniert */}
+      <AuthoritySection />
 
       {/* Section 6: How It Works */}
       <section className="section-padding bg-card">
