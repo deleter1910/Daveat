@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { PainPointCard } from "@/components/landing/PainPointCard";
 import { ProblemDeepeningSection } from "@/components/landing/ProblemDeepeningSection";
+import { AgitateSection } from "@/components/landing/AgitateSection";
 import { BenefitCard } from "@/components/landing/BenefitCard";
 import { TestimonialCard } from "@/components/landing/TestimonialCard";
 import { StepCard } from "@/components/landing/StepCard";
@@ -212,6 +213,9 @@ export default function Index() {
 
       {/* Section 2b: Problem Deepening */}
       <ProblemDeepeningSection />
+
+      {/* Section 2c: Agitate - Consequences */}
+      <AgitateSection />
 
       {/* Section 3: Solution */}
       <section className="section-padding">
