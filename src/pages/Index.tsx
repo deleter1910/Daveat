@@ -171,16 +171,13 @@ export default function Index() {
       <section className="section-padding min-h-[90vh] flex items-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
         <div className="container mx-auto relative">
-          <div className="max-w-5xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mb-8 animate-fade-in">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm text-primary">Für vielbeschäftigte Eltern & Berufstätige</span>
-            </div>
-            <h1 className="heading-xl mb-8 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-              Gesundheit, die in deinen<br />echten Alltag <span className="text-primary">passt</span>.
+        <div className="max-w-5xl">
+            <h1 className="heading-xl mb-8 animate-fade-in-up">
+              Jede gescheiterte Diät macht die nächste schwieriger.<br />
+              <span className="text-primary">Brechen wir diesen Kreislauf.</span>
             </h1>
-            <p className="text-body max-w-2xl mb-12 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-              Für Berufstätige und Eltern, die keine Zeit für komplizierte Diäten haben. Gewinne deine Energie zurück – mit einem System, das dich entlastet statt stresst.
+            <p className="text-body max-w-2xl mb-12 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+              Du brauchst keine neue Diät. Du brauchst eine Strategie, die mit deinem Leben funktioniert – nicht dagegen.
             </p>
             <div className="flex flex-wrap gap-4 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
               <Link to="/services" className="btn-primary">
