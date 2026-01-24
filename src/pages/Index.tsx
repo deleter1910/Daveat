@@ -10,6 +10,7 @@ import {
   Users,
   Target,
   Sparkles,
+  CheckCircle,
 } from "lucide-react";
 import { PainPointCard } from "@/components/landing/PainPointCard";
 import { ProblemDeepeningSection } from "@/components/landing/ProblemDeepeningSection";
@@ -361,23 +362,78 @@ export default function Index() {
 
       {/* Section 9: Final CTA */}
       <section className="section-padding bg-primary">
-        <div className="container mx-auto text-center">
-          <h2 className="heading-lg text-primary-foreground mb-6">
-            Bereit für mehr Energie?
-          </h2>
-          <p className="text-xl text-primary-foreground/80 mb-4 max-w-2xl mx-auto">
-            Lass uns gemeinsam herausfinden, wie du deine Gesundheit zurückgewinnst – ohne deinen Alltag auf den Kopf zu stellen.
-          </p>
-          <p className="text-primary-foreground/60 mb-10">
-            15 Minuten · Kostenlos · Unverbindlich
-          </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center px-8 py-4 rounded-full bg-background text-foreground font-medium hover:bg-foreground hover:text-background transition-all duration-300"
-          >
-            Strategie-Gespräch anfragen
-            <ArrowRight className="ml-2" size={18} />
-          </Link>
+        <div className="container mx-auto">
+          <div className="max-w-3xl mx-auto text-center">
+            {/* Headline - Attention */}
+            <h2 className="heading-lg text-primary-foreground mb-6">
+              Bereit, den Kreislauf zu durchbrechen?
+            </h2>
+            
+            {/* Subheadline - Interest */}
+            <p className="text-2xl text-primary-foreground/90 font-medium mb-4">
+              Starte mit einem kostenlosen 15-Minuten-Klarheitsgespräch
+            </p>
+            
+            {/* Risk Reversal */}
+            <p className="text-lg text-primary-foreground/70 mb-10">
+              Bevor du irgendwas bezahlst, lass uns herausfinden, ob das überhaupt für dich passt.
+            </p>
+            
+            {/* Prozess-Transparenz */}
+            <div className="bg-primary-foreground/10 rounded-2xl p-8 mb-10 text-left">
+              <p className="text-primary-foreground/80 mb-6 text-center">
+                In diesem 15-minütigen Gespräch:
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="text-primary-foreground mt-1 flex-shrink-0" size={20} />
+                  <span className="text-primary-foreground/90">
+                    Verstehe ich deine spezifische Situation und was dich bisher blockiert hat
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="text-primary-foreground mt-1 flex-shrink-0" size={20} />
+                  <span className="text-primary-foreground/90">
+                    Zeige ich dir, wie der Persönliche Umsetzungsplan konkret für <span className="font-semibold">DEIN</span> Leben funktionieren würde
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="text-primary-foreground mt-1 flex-shrink-0" size={20} />
+                  <span className="text-primary-foreground/90">
+                    Findest du heraus, ob die 80/20-Philosophie zu dir passt
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="text-primary-foreground mt-1 flex-shrink-0" size={20} />
+                  <span className="text-primary-foreground/90">
+                    Entscheidest <span className="font-semibold">DU</span>, ob du die 90-Minuten-Strategiesitzung buchen willst
+                  </span>
+                </li>
+              </ul>
+            </div>
+            
+            {/* Trust Statement */}
+            <p className="text-xl text-primary-foreground font-semibold mb-4">
+              Kein Druck. Keine Verkaufspräsentation. Keine Verpflichtung.
+            </p>
+            
+            {/* Ehrlichkeits-Statement */}
+            <p className="text-primary-foreground/70 mb-4 max-w-2xl mx-auto">
+              Nur ein ehrliches Gespräch zwischen zwei Menschen darüber, ob ich dir wirklich helfen kann—oder ob eine andere Lösung besser für dich wäre.
+            </p>
+            <p className="text-primary-foreground/70 mb-10 max-w-2xl mx-auto">
+              Wenn es nicht passt, sage ich dir das direkt. Wenn es passt, erstellen wir gemeinsam deinen Plan.
+            </p>
+            
+            {/* CTA Button - Action */}
+            <Link
+              to="/contact"
+              className="inline-flex items-center px-10 py-5 rounded-full bg-background text-foreground font-bold text-lg uppercase tracking-wide hover:bg-foreground hover:text-background transition-all duration-300"
+            >
+              Kontaktiere mich jetzt für ein kostenloses Klärungsgespräch
+              <ArrowRight className="ml-3" size={20} />
+            </Link>
+          </div>
         </div>
       </section>
     </Layout>
