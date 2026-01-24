@@ -24,28 +24,25 @@ import { FAQSection } from "@/components/landing/FAQSection";
 
 const painPoints = [
   {
-    icon: Clock,
-    title: "Keine Zeit für komplizierte Rezepte",
+    icon: Scale,
+    title: "Über CHF 1'000 pro Jahr",
     description:
-      "Zwischen Job und Familie bleibt keine Stunde zum Vorkochen oder Meal-Prep.",
+      "Du gibst über CHF 1'000 pro Jahr aus für Fitnessabos, die du nicht nutzt, Diät-Apps, die du abbrichst, Nahrungsergänzungsmittel, die nicht wirken, und «Quick Fixes», die nach wenigen Wochen scheitern.",
+    highlight: "CHF 1'000",
   },
   {
-    icon: XCircle,
-    title: "Diäten die beim ersten Stress scheitern",
+    icon: Clock,
+    title: "30-60 Stunden pro Monat",
     description:
-      "Jeder strikte Plan bricht zusammen, sobald ein wichtiges Meeting dazwischenkommt.",
+      "Du verlierst 30-60 Stunden jeden Monat durch Schuldgefühle nach dem Essen, Recherchen nach der nächsten Diät und mentale Erschöpfung, die alles länger dauern lässt.",
+    highlight: "30-60 Stunden",
   },
   {
     icon: Frown,
-    title: "Schuldgefühle nach jedem \"Ausrutscher\"",
+    title: "Nichts hält",
     description:
-      "Du fühlst dich schlecht, wenn du \"gesündigt\" hast – und der Kreislauf beginnt von vorn.",
-  },
-  {
-    icon: Zap,
-    title: "Energie-Tiefs am Nachmittag",
-    description:
-      "Die Konzentration lässt nach, du greifst zu Kaffee und Süssem – ein Teufelskreis.",
+      "Du hast alles versucht. Vielleicht sogar Ozempic. Nichts hält.",
+    highlight: "alles",
   },
 ];
 
@@ -199,19 +196,19 @@ export default function Index() {
               <span className="w-8 h-px bg-primary"></span>
               Das Problem
             </p>
-            <h2 className="heading-lg mb-6">
-              Warum du bisher gescheitert bist
-              <br />
-              <span className="text-primary">(Es liegt nicht an dir)</span>
+            <h2 className="heading-lg">
+              Das weisst du <span className="text-primary">bereits</span>:
             </h2>
-            <p className="text-body">
-              Du hast Erfolg im Job und organisierst deinen Alltag. Aber beim Thema Gesundheit fühlst du dich, als würdest du ständig gegen Windmühlen kämpfen.
-            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {painPoints.map((point, i) => (
               <PainPointCard key={i} {...point} />
             ))}
+          </div>
+          <div className="mt-16 text-center">
+            <p className="text-xl md:text-2xl text-muted-foreground italic max-w-3xl mx-auto">
+              "Und mit jedem gescheiterten Versuch vertraust du dir selbst ein bisschen weniger."
+            </p>
           </div>
         </div>
       </section>
