@@ -1,19 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Mail, Linkedin, Instagram } from "lucide-react";
+import { Mail, Instagram } from "lucide-react";
 import { cn } from "@/lib/utils";
 import logoWhite from "@/assets/logo-white.png";
 import logoGreen from "@/assets/logo-green.png";
 
-const quickLinks = [
-  { name: "Startseite", path: "/" },
-  { name: "Angebot", path: "/services" },
-  { name: "Über mich", path: "/about" },
-  { name: "Kontakt", path: "/contact" },
-];
-
 const socialLinks = [
-  { name: "LinkedIn", icon: Linkedin, url: "#" },
   { name: "Instagram", icon: Instagram, url: "#" },
 ];
 
@@ -23,7 +15,7 @@ export function Footer() {
   return (
     <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Brand */}
           <div className="space-y-4">
             <Link
@@ -59,23 +51,6 @@ export function Footer() {
                 Keine Quick Fixes. Keine externen Regeln. Nur <span className="text-foreground font-medium">DEIN</span> Plan, gemeinsam erstellt, für <span className="text-foreground font-medium">DEIN</span> Leben.
               </p>
             </div>
-          </div>
-
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Navigation</h4>
-            <ul className="space-y-2">
-              {quickLinks.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
 
           {/* Contact & Social */}
