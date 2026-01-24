@@ -23,6 +23,8 @@ import { OfferBreakdownSection } from "@/components/landing/OfferBreakdownSectio
 import { ValueStackSection } from "@/components/landing/ValueStackSection";
 import { PricingCard } from "@/components/landing/PricingCard";
 import { FAQSection } from "@/components/landing/FAQSection";
+import { QualificationSection } from "@/components/landing/QualificationSection";
+import { TwoPathSection } from "@/components/landing/TwoPathSection";
 
 const painPoints = [
   {
@@ -350,6 +352,12 @@ export default function Index() {
 
       {/* Section 8: FAQ */}
       <FAQSection />
+
+      {/* Section 8b: Qualification - Für wen das ist */}
+      <QualificationSection />
+
+      {/* Section 8c: Two-Path - Die Wahl liegt bei dir */}
+      <TwoPathSection />
 
       {/* Section 9: Final CTA */}
       <section className="section-padding bg-primary">
