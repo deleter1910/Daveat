@@ -1,100 +1,378 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
-import { ArrowRight, Battery, Scale, Shield } from "lucide-react";
+import {
+  ArrowRight,
+  Battery,
+  Scale,
+  Shield,
+  Clock,
+  XCircle,
+  Frown,
+  Zap,
+  Users,
+  Target,
+  Sparkles,
+  Calendar,
+  MessageCircle,
+} from "lucide-react";
+import { PainPointCard } from "@/components/landing/PainPointCard";
+import { BenefitCard } from "@/components/landing/BenefitCard";
+import { TestimonialCard } from "@/components/landing/TestimonialCard";
+import { StepCard } from "@/components/landing/StepCard";
+import { PricingCard } from "@/components/landing/PricingCard";
+import { FAQSection } from "@/components/landing/FAQSection";
 
-const principles = [
+const painPoints = [
+  {
+    icon: Clock,
+    title: "Keine Zeit für komplizierte Rezepte",
+    description:
+      "Zwischen Job und Familie bleibt keine Stunde zum Vorkochen oder Meal-Prep.",
+  },
+  {
+    icon: XCircle,
+    title: "Diäten die beim ersten Stress scheitern",
+    description:
+      "Jeder strikte Plan bricht zusammen, sobald ein wichtiges Meeting dazwischenkommt.",
+  },
+  {
+    icon: Frown,
+    title: "Schuldgefühle nach jedem \"Ausrutscher\"",
+    description:
+      "Du fühlst dich schlecht, wenn du \"gesündigt\" hast – und der Kreislauf beginnt von vorn.",
+  },
+  {
+    icon: Zap,
+    title: "Energie-Tiefs am Nachmittag",
+    description:
+      "Die Konzentration lässt nach, du greifst zu Kaffee und Süssem – ein Teufelskreis.",
+  },
+];
+
+const benefits = [
   {
     icon: Battery,
-    title: "Kein Extra-Aufwand.",
-    description: "Wir passen die Ernährung an dein Leben an, nicht umgekehrt. Kein separates Kochen, keine stundenlangen Vorbereitungen.",
+    title: "Kein Extra-Aufwand",
+    description:
+      "Wir passen die Ernährung an dein Leben an, nicht umgekehrt. Kein separates Kochen.",
   },
   {
     icon: Scale,
-    title: "Budget statt Verbote.",
-    description: "Wer sich alles verbietet, hält nicht durch. Wir arbeiten mit einem \"Energie-Budget\". Du entscheidest selbst, wofür du es nutzt – ob für das Geschäftsessen oder den Familienabend.",
+    title: "Budget statt Verbote",
+    description:
+      "Mit dem Energie-Budget entscheidest du selbst, wofür du es nutzt – flexibel und ohne Schuldgefühle.",
   },
   {
     icon: Shield,
-    title: "Persönliches Sicherheitsnetz.",
-    description: "Wissen allein reicht nicht. Ich begleite dich als Ansprechpartner im Hintergrund, um Fehlentscheidungen in Stressmomenten zu verhindern.",
+    title: "Persönliches Sicherheitsnetz",
+    description:
+      "Ich begleite dich als Ansprechpartner, um Fehlentscheidungen in Stressmomenten zu verhindern.",
+  },
+  {
+    icon: Users,
+    title: "Familien-kompatibel",
+    description:
+      "Keine Extrawürste. Das System funktioniert mit dem, was deine Familie sowieso isst.",
+  },
+  {
+    icon: Target,
+    title: "Fokus auf 20%",
+    description:
+      "Wir identifizieren die 3 Hebel, die 80% deiner Ergebnisse bringen. Weniger tun, mehr erreichen.",
+  },
+  {
+    icon: Sparkles,
+    title: "Langfristige Ergebnisse",
+    description:
+      "Keine Crash-Diät, sondern nachhaltige Gewohnheiten, die nach 90 Tagen zur Routine werden.",
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      "Endlich ein Ansatz, der in meinen Alltag als Mutter passt. Kein Meal-Prep-Wahnsinn, keine Verbote. Nach 2 Monaten fühle ich mich so energiegeladen wie seit Jahren nicht.",
+    name: "Sarah M.",
+    role: "Marketingmanagerin, 38",
+  },
+  {
+    quote:
+      "Die WhatsApp-Begleitung war Gold wert. Immer wenn ich kurz vor einer schlechten Entscheidung stand, hatte ich einen Ansprechpartner. Das hat den Unterschied gemacht.",
+    name: "Thomas K.",
+    role: "Geschäftsführer, 44",
+  },
+  {
+    quote:
+      "Ich habe in 3 Monaten 8kg verloren – ohne zu hungern und ohne meine Familie zu nerven. Der Blueprint hat mir endlich Klarheit gegeben.",
+    name: "Julia R.",
+    role: "Projektleiterin & Mutter, 35",
+  },
+];
+
+const steps = [
+  {
+    number: 1,
+    title: "Strategie-Gespräch buchen",
+    description:
+      "In 15 Minuten prüfen wir, ob meine Methode zu dir passt. Kostenlos und unverbindlich.",
+  },
+  {
+    number: 2,
+    title: "Deinen Blueprint erhalten",
+    description:
+      "Im 90-Minuten-Workshop analysieren wir deine Situation und erstellen deinen persönlichen Fahrplan.",
+  },
+  {
+    number: 3,
+    title: "Mit Begleitung umsetzen",
+    description:
+      "90 Tage WhatsApp-Support. Ich helfe dir, dranzubleiben – bei jedem Restaurant, jedem Stress-Tag.",
+  },
+];
+
+const pricingOptions = [
+  {
+    title: "Alltags-Blueprint",
+    subtitle: "Der Strategie-Workshop",
+    price: "250 CHF",
+    period: "einmalig",
+    features: [
+      "90 Minuten 1:1 Analyse",
+      "Persönlicher Fahrplan (1 Seite)",
+      "3 konkrete Hebel identifiziert",
+      "Sofort umsetzbare Strategie",
+    ],
+    isPopular: false,
+    ctaText: "Workshop buchen",
+    ctaLink: "/contact",
+  },
+  {
+    title: "Mentor in der Hosentasche",
+    subtitle: "3 Monate Begleitung",
+    price: "150 CHF",
+    period: "/ Monat",
+    features: [
+      "Alltags-Blueprint inklusive",
+      "90 Tage WhatsApp-Support",
+      "Schnelle Antworten bei Fragen",
+      "Motivation in schwachen Momenten",
+      "Nachhaltige Gewohnheitsänderung",
+    ],
+    isPopular: true,
+    ctaText: "Begleitung starten",
+    ctaLink: "/contact",
   },
 ];
 
 export default function Index() {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="section-padding min-h-[90vh] flex items-center">
-        <div className="container mx-auto">
+      {/* Section 1: Hero */}
+      <section className="section-padding min-h-[90vh] flex items-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
+        <div className="container mx-auto relative">
           <div className="max-w-5xl">
-            <p className="text-primary font-medium mb-6 flex items-center gap-2">
-              <span className="w-8 h-px bg-primary"></span>
-              Willkommen bei Daveat
-            </p>
-            <h1 className="heading-xl mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mb-8 animate-fade-in">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              <span className="text-sm text-primary">Für vielbeschäftigte Eltern & Berufstätige</span>
+            </div>
+            <h1 className="heading-xl mb-8 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
               Gesundheit, die in deinen<br />echten Alltag <span className="text-primary">passt</span>.
             </h1>
-            <p className="text-body max-w-2xl mb-12">
+            <p className="text-body max-w-2xl mb-12 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
               Für Berufstätige und Eltern, die keine Zeit für komplizierte Diäten haben. Gewinne deine Energie zurück – mit einem System, das dich entlastet statt stresst.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/services" className="btn-primary">Zum Angebot <ArrowRight className="ml-2" size={18} /></Link>
-              <Link to="/about" className="btn-outline">Über mich</Link>
+            <div className="flex flex-wrap gap-4 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
+              <Link to="/services" className="btn-primary">
+                Zum Angebot <ArrowRight className="ml-2" size={18} />
+              </Link>
+              <Link to="/about" className="btn-outline">
+                Über mich
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Problem Section */}
+      {/* Section 2: Problem (Pain Points) */}
       <section className="section-padding bg-card">
         <div className="container mx-auto">
-          <div className="max-w-4xl">
+          <div className="max-w-2xl mb-16">
             <p className="text-primary font-medium mb-6 flex items-center gap-2">
               <span className="w-8 h-px bg-primary"></span>
-              Verständnis
+              Das Problem
             </p>
-            <h2 className="heading-lg mb-8">
-              Warum du bisher gescheitert bist<br /><span className="text-primary">(Es liegt nicht an deiner Disziplin)</span>.
+            <h2 className="heading-lg mb-6">
+              Warum du bisher gescheitert bist
+              <br />
+              <span className="text-primary">(Es liegt nicht an dir)</span>
             </h2>
             <p className="text-body">
-              Du hast Erfolg im Job und organisierst deinen Alltag. Aber beim Thema Ernährung und Energie fühlt es sich an wie ein ständiger Kampf. Warum? Weil die meisten Gesundheitstipps für Menschen gemacht sind, die unendlich Zeit haben. Du brauchst kein neues Rezeptbuch und keinen weiteren strengen Plan, der beim ersten Stress-Meeting zusammenbricht. Du brauchst eine Strategie, die für deinen Alltag arbeitet, nicht dagegen.
+              Du hast Erfolg im Job und organisierst deinen Alltag. Aber beim Thema Gesundheit fühlst du dich, als würdest du ständig gegen Windmühlen kämpfen.
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* Solution Section - Principles */}
-      <section className="section-padding">
-        <div className="container mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-primary font-medium mb-4">Unsere Prinzipien</p>
-            <h2 className="heading-lg">
-              So funktioniert<br /><span className="text-primary">Daveat</span>.
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {principles.map((principle, i) => (
-              <div key={i} className="p-8 rounded-3xl border border-border bg-card hover:border-primary transition-colors group">
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                  <principle.icon className="text-primary" size={24} />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">{principle.title}</h3>
-                <p className="text-muted-foreground">{principle.description}</p>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {painPoints.map((point, i) => (
+              <PainPointCard key={i} {...point} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Section 3: Solution */}
+      <section className="section-padding">
+        <div className="container mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <p className="text-primary font-medium mb-6 flex items-center gap-2">
+                <span className="w-8 h-px bg-primary"></span>
+                Die Lösung
+              </p>
+              <h2 className="heading-lg mb-8">
+                Es gibt einen <span className="text-primary">besseren Weg</span>.
+              </h2>
+              <p className="text-body mb-8">
+                Die meisten Gesundheitstipps sind für Menschen gemacht, die unendlich Zeit haben. Du brauchst kein neues Rezeptbuch und keinen weiteren strengen Plan, der beim ersten Stress zusammenbricht.
+              </p>
+              <p className="text-body mb-8">
+                Du brauchst eine <span className="text-foreground font-semibold">Strategie, die für deinen Alltag arbeitet</span> – nicht dagegen.
+              </p>
+              <div className="flex items-center gap-4 p-6 rounded-2xl border border-primary/30 bg-primary/5">
+                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                  <Sparkles className="text-primary-foreground" size={24} />
+                </div>
+                <p className="text-foreground">
+                  <strong>Daveat</strong> ist dein persönlicher Lifestyle-Stratege. Keine Diät, sondern ein System für nachhaltige Energie.
+                </p>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary/20 via-primary/5 to-transparent border border-primary/20 flex items-center justify-center">
+                <div className="text-center p-8">
+                  <div className="w-24 h-24 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-6">
+                    <Target className="text-primary" size={48} />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4">Dein Ziel</h3>
+                  <p className="text-muted-foreground">
+                    Mehr Energie, weniger Stress, nachhaltiges Wohlbefinden – ohne deinen Alltag umzukrempeln.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4: Benefits */}
+      <section className="section-padding bg-card">
+        <div className="container mx-auto">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <p className="text-primary font-medium mb-4 flex items-center justify-center gap-2">
+              <span className="w-8 h-px bg-primary"></span>
+              Unsere Prinzipien
+              <span className="w-8 h-px bg-primary"></span>
+            </p>
+            <h2 className="heading-lg">
+              So funktioniert <span className="text-primary">Daveat</span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {benefits.map((benefit, i) => (
+              <BenefitCard key={i} {...benefit} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 5: Social Proof (Testimonials) */}
+      <section className="section-padding">
+        <div className="container mx-auto">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <p className="text-primary font-medium mb-4 flex items-center justify-center gap-2">
+              <span className="w-8 h-px bg-primary"></span>
+              Erfahrungen
+              <span className="w-8 h-px bg-primary"></span>
+            </p>
+            <h2 className="heading-lg">
+              Was meine Klienten <span className="text-primary">sagen</span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, i) => (
+              <TestimonialCard key={i} {...testimonial} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6: How It Works */}
+      <section className="section-padding bg-card">
+        <div className="container mx-auto">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <p className="text-primary font-medium mb-4 flex items-center justify-center gap-2">
+              <span className="w-8 h-px bg-primary"></span>
+              Der Prozess
+              <span className="w-8 h-px bg-primary"></span>
+            </p>
+            <h2 className="heading-lg">
+              So starten wir <span className="text-primary">zusammen</span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+            {/* Connection line - desktop only */}
+            <div className="hidden md:block absolute top-8 left-1/6 right-1/6 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+            {steps.map((step, i) => (
+              <StepCard key={i} {...step} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 7: Pricing */}
+      <section className="section-padding">
+        <div className="container mx-auto">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <p className="text-primary font-medium mb-4 flex items-center justify-center gap-2">
+              <span className="w-8 h-px bg-primary"></span>
+              Investition
+              <span className="w-8 h-px bg-primary"></span>
+            </p>
+            <h2 className="heading-lg mb-6">
+              Struktur statt <span className="text-primary">Diät-Stress</span>
+            </h2>
+            <p className="text-body">
+              Wir beenden das Rätselraten. Wähle den Einstieg, der zu dir passt.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {pricingOptions.map((option, i) => (
+              <PricingCard key={i} {...option} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 8: FAQ */}
+      <FAQSection />
+
+      {/* Section 9: Final CTA */}
       <section className="section-padding bg-primary">
         <div className="container mx-auto text-center">
-          <h2 className="heading-lg text-primary-foreground mb-6">Bereit für mehr Energie?</h2>
-          <p className="text-xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto">
+          <h2 className="heading-lg text-primary-foreground mb-6">
+            Bereit für mehr Energie?
+          </h2>
+          <p className="text-xl text-primary-foreground/80 mb-4 max-w-2xl mx-auto">
             Lass uns gemeinsam herausfinden, wie du deine Gesundheit zurückgewinnst – ohne deinen Alltag auf den Kopf zu stellen.
           </p>
-          <Link to="/services" className="inline-flex items-center px-8 py-4 rounded-full bg-background text-foreground font-medium hover:bg-foreground hover:text-background transition-all">
-            Zum Angebot <ArrowRight className="ml-2" size={18} />
+          <p className="text-primary-foreground/60 mb-10">
+            15 Minuten · Kostenlos · Unverbindlich
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center px-8 py-4 rounded-full bg-background text-foreground font-medium hover:bg-foreground hover:text-background transition-all duration-300"
+          >
+            Strategie-Gespräch anfragen
+            <ArrowRight className="ml-2" size={18} />
           </Link>
         </div>
       </section>
