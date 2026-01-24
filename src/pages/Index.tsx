@@ -18,6 +18,7 @@ import { USPSection } from "@/components/landing/USPSection";
 import { BenefitCard } from "@/components/landing/BenefitCard";
 import { SocialProofSection } from "@/components/landing/SocialProofSection";
 import { StepCard } from "@/components/landing/StepCard";
+import { OfferBreakdownSection } from "@/components/landing/OfferBreakdownSection";
 import { PricingCard } from "@/components/landing/PricingCard";
 import { FAQSection } from "@/components/landing/FAQSection";
 
@@ -311,6 +312,9 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      {/* Section 6b: Offer Breakdown - Was du bekommst */}
+      <OfferBreakdownSection />
 
       {/* Section 7: Pricing */}
       <section className="section-padding">
