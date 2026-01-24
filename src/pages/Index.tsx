@@ -433,6 +433,22 @@ export default function Index() {
               Kontaktiere mich jetzt für ein kostenloses Klärungsgespräch
               <ArrowRight className="ml-3" size={20} />
             </Link>
+
+            {/* Trust Reinforcement - Was passiert danach */}
+            <div className="mt-16 pt-12 border-t border-primary-foreground/20">
+              <h3 className="text-xl text-primary-foreground font-semibold mb-6">
+                Was passiert nach dem Klarheitsgespräch?
+              </h3>
+              <p className="text-primary-foreground/80 mb-4 max-w-2xl mx-auto">
+                Wenn wir beide das Gefühl haben, dass es passt, buchst du die 90-Minuten-Strategiesitzung. Dort erstellen wir gemeinsam deinen Persönlichen Umsetzungsplan—live, in Echtzeit, mit deinen Worten, für dein Leben.
+              </p>
+              <p className="text-primary-foreground/70 mb-6 max-w-2xl mx-auto">
+                Optional kannst du danach WhatsApp-Coaching und 8020 Club Zugang hinzufügen.
+              </p>
+              <p className="text-primary-foreground font-medium">
+                Aber zuerst: Lass uns einfach reden.
+              </p>
+            </div>
           </div>
         </div>
       </section>
