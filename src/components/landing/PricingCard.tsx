@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Check, ArrowRight } from "lucide-react";
+import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 
 interface PricingCardProps {
   title: string;
@@ -22,6 +23,12 @@ export function PricingCard({
   ctaText,
   ctaLink,
 }: PricingCardProps) {
+  const { trackCTAClick } = useAnalyticsContext();
+
+  const handleClick = () => {
+    trackCTAClick(ctaText, `pricing-${title.toLowerCase().replace(/\s+/g, "-")}`);
+  };
+
   return (
     <div
       className={`relative p-8 rounded-3xl border ${
@@ -53,6 +60,7 @@ export function PricingCard({
       </ul>
       <Link
         to={ctaLink}
+        onClick={handleClick}
         className={`w-full flex items-center justify-center gap-2 px-6 py-4 rounded-full font-medium transition-all duration-300 ${
           isPopular
             ? "bg-primary text-primary-foreground hover:bg-primary/90"

@@ -26,6 +26,7 @@ import { PricingCard } from "@/components/landing/PricingCard";
 import { FAQSection } from "@/components/landing/FAQSection";
 import { QualificationSection } from "@/components/landing/QualificationSection";
 import { TwoPathSection } from "@/components/landing/TwoPathSection";
+import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 
 const painPoints = [
   {
@@ -147,10 +148,16 @@ const pricingOptions = [
 ];
 
 export default function Index() {
+  const { trackCTAClick } = useAnalyticsContext();
+
+  const handleCTAClick = (ctaName: string, ctaLocation: string) => {
+    trackCTAClick(ctaName, ctaLocation);
+  };
+
   return (
     <Layout>
       {/* Section 1: Hero */}
-      <section className="section-padding min-h-[90vh] flex items-center relative overflow-hidden">
+      <section id="section-hero" className="section-padding min-h-[90vh] flex items-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
         <div className="container mx-auto relative">
         <div className="max-w-5xl">
@@ -162,10 +169,18 @@ export default function Index() {
               Du brauchst keine neue Diät. Du brauchst eine Strategie, die mit deinem Leben funktioniert – nicht dagegen.
             </p>
             <div className="flex flex-wrap gap-4 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
-              <Link to="/services" className="btn-primary">
+              <Link 
+                to="/services" 
+                className="btn-primary"
+                onClick={() => handleCTAClick("Zum Angebot", "hero")}
+              >
                 Zum Angebot <ArrowRight className="ml-2" size={18} />
               </Link>
-              <Link to="/about" className="btn-outline">
+              <Link 
+                to="/about" 
+                className="btn-outline"
+                onClick={() => handleCTAClick("Über mich", "hero")}
+              >
                 Über mich
               </Link>
             </div>
@@ -174,7 +189,7 @@ export default function Index() {
       </section>
 
       {/* Section 2: Problem (Pain Points) */}
-      <section className="section-padding bg-card">
+      <section id="section-problem" className="section-padding bg-card">
         <div className="container mx-auto">
           <div className="max-w-2xl mb-16">
             <p className="text-primary font-medium mb-6 flex items-center gap-2">
@@ -205,7 +220,7 @@ export default function Index() {
       <AgitateSection />
 
       {/* Section 3: Solution */}
-      <section className="section-padding">
+      <section id="section-solution" className="section-padding">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -272,7 +287,7 @@ export default function Index() {
       <USPSection />
 
       {/* Section 4: Benefits */}
-      <section className="section-padding bg-card">
+      <section id="section-benefits" className="section-padding bg-card">
         <div className="container mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <p className="text-primary font-medium mb-4 flex items-center justify-center gap-2">
@@ -328,7 +343,7 @@ export default function Index() {
       <ValueStackSection />
 
       {/* Section 7: Pricing */}
-      <section className="section-padding">
+      <section id="section-pricing" className="section-padding">
         <div className="container mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <p className="text-primary font-medium mb-4 flex items-center justify-center gap-2">
@@ -361,7 +376,7 @@ export default function Index() {
       <TwoPathSection />
 
       {/* Section 9: Final CTA */}
-      <section className="section-padding bg-card">
+      <section id="section-final-cta" className="section-padding bg-card">
         <div className="container mx-auto">
           <div className="max-w-3xl mx-auto text-center">
             {/* Headline - Attention */}
@@ -429,6 +444,7 @@ export default function Index() {
             <Link
               to="/contact"
               className="inline-flex items-center px-10 py-5 rounded-full bg-primary text-primary-foreground font-bold text-lg uppercase tracking-wide hover:bg-primary/90 transition-all duration-300"
+              onClick={() => handleCTAClick("Kontakt jetzt", "final-cta")}
             >
               Kontaktiere mich jetzt für ein kostenloses Klärungsgespräch
               <ArrowRight className="ml-3" size={20} />
@@ -469,6 +485,7 @@ export default function Index() {
                 <Link
                   to="/contact"
                   className="inline-flex items-center px-10 py-5 rounded-full bg-primary text-primary-foreground font-bold text-lg uppercase tracking-wide hover:bg-primary/90 transition-all duration-300"
+                  onClick={() => handleCTAClick("Klarheitsgespräch buchen", "final-cta-ps")}
                 >
                   Jetzt kostenloses Klarheitsgespräch buchen
                   <ArrowRight className="ml-3" size={20} />
