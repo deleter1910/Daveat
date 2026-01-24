@@ -1,7 +1,7 @@
 import { CheckCircle, XCircle } from "lucide-react";
 
 const idealFor = [
-  "Ein vielbeschäftigtes Elternteil zwischen 30 und 45 Jahren bist",
+  "Ein vielbeschäftigtes Elternteil bist",
   "Mehrere Diäten und Programme ohne dauerhaften Erfolg versucht hast",
   "Glaubst, du hättest keine Zeit für deine Gesundheit",
   "Müde bist von Quick-Fix-Versprechen und externen Regeln",
