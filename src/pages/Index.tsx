@@ -16,7 +16,7 @@ import { ProblemDeepeningSection } from "@/components/landing/ProblemDeepeningSe
 import { AgitateSection } from "@/components/landing/AgitateSection";
 import { USPSection } from "@/components/landing/USPSection";
 import { BenefitCard } from "@/components/landing/BenefitCard";
-import { TestimonialCard } from "@/components/landing/TestimonialCard";
+import { SocialProofSection } from "@/components/landing/SocialProofSection";
 import { StepCard } from "@/components/landing/StepCard";
 import { PricingCard } from "@/components/landing/PricingCard";
 import { FAQSection } from "@/components/landing/FAQSection";
@@ -84,26 +84,6 @@ const benefits = [
   },
 ];
 
-const testimonials = [
-  {
-    quote:
-      "Endlich ein Ansatz, der in meinen Alltag als Mutter passt. Kein Meal-Prep-Wahnsinn, keine Verbote. Nach 2 Monaten fühle ich mich so energiegeladen wie seit Jahren nicht.",
-    name: "Sarah M.",
-    role: "Marketingmanagerin, 38",
-  },
-  {
-    quote:
-      "Die WhatsApp-Begleitung war Gold wert. Immer wenn ich kurz vor einer schlechten Entscheidung stand, hatte ich einen Ansprechpartner. Das hat den Unterschied gemacht.",
-    name: "Thomas K.",
-    role: "Geschäftsführer, 44",
-  },
-  {
-    quote:
-      "Ich habe in 3 Monaten 8kg verloren – ohne zu hungern und ohne meine Familie zu nerven. Der Blueprint hat mir endlich Klarheit gegeben.",
-    name: "Julia R.",
-    role: "Projektleiterin & Mutter, 35",
-  },
-];
 
 const steps = [
   {
@@ -306,26 +286,8 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Section 5: Social Proof (Testimonials) */}
-      <section className="section-padding">
-        <div className="container mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-primary font-medium mb-4 flex items-center justify-center gap-2">
-              <span className="w-8 h-px bg-primary"></span>
-              Erfahrungen
-              <span className="w-8 h-px bg-primary"></span>
-            </p>
-            <h2 className="heading-lg">
-              Was meine Klienten <span className="text-primary">sagen</span>
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, i) => (
-              <TestimonialCard key={i} {...testimonial} />
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Section 5: Social Proof */}
+      <SocialProofSection />
 
       {/* Section 6: How It Works */}
       <section className="section-padding bg-card">
