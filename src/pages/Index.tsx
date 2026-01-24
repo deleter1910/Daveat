@@ -370,42 +370,42 @@ export default function Index() {
             </h2>
             
             {/* Subheadline - Interest */}
-            <p className="text-2xl text-primary-foreground/90 font-medium mb-4">
+            <p className="text-2xl text-primary-foreground font-medium mb-4">
               Starte mit einem kostenlosen 15-Minuten-Klarheitsgespräch
             </p>
             
             {/* Risk Reversal */}
-            <p className="text-lg text-primary-foreground/70 mb-10">
+            <p className="text-lg text-primary-foreground/90 mb-10">
               Bevor du irgendwas bezahlst, lass uns herausfinden, ob das überhaupt für dich passt.
             </p>
             
             {/* Prozess-Transparenz */}
-            <div className="bg-primary-foreground/10 rounded-2xl p-8 mb-10 text-left">
-              <p className="text-primary-foreground/80 mb-6 text-center">
+            <div className="bg-primary-foreground/15 rounded-2xl p-8 mb-10 text-left">
+              <p className="text-primary-foreground mb-6 text-center">
                 In diesem 15-minütigen Gespräch:
               </p>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="text-primary-foreground mt-1 flex-shrink-0" size={20} />
-                  <span className="text-primary-foreground/90">
+                  <span className="text-primary-foreground">
                     Verstehe ich deine spezifische Situation und was dich bisher blockiert hat
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="text-primary-foreground mt-1 flex-shrink-0" size={20} />
-                  <span className="text-primary-foreground/90">
+                  <span className="text-primary-foreground">
                     Zeige ich dir, wie der Persönliche Umsetzungsplan konkret für <span className="font-semibold">DEIN</span> Leben funktionieren würde
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="text-primary-foreground mt-1 flex-shrink-0" size={20} />
-                  <span className="text-primary-foreground/90">
+                  <span className="text-primary-foreground">
                     Findest du heraus, ob die 80/20-Philosophie zu dir passt
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="text-primary-foreground mt-1 flex-shrink-0" size={20} />
-                  <span className="text-primary-foreground/90">
+                  <span className="text-primary-foreground">
                     Entscheidest <span className="font-semibold">DU</span>, ob du die 90-Minuten-Strategiesitzung buchen willst
                   </span>
                 </li>
@@ -418,10 +418,10 @@ export default function Index() {
             </p>
             
             {/* Ehrlichkeits-Statement */}
-            <p className="text-primary-foreground/70 mb-4 max-w-2xl mx-auto">
+            <p className="text-primary-foreground/90 mb-4 max-w-2xl mx-auto">
               Nur ein ehrliches Gespräch zwischen zwei Menschen darüber, ob ich dir wirklich helfen kann—oder ob eine andere Lösung besser für dich wäre.
             </p>
-            <p className="text-primary-foreground/70 mb-10 max-w-2xl mx-auto">
+            <p className="text-primary-foreground/90 mb-10 max-w-2xl mx-auto">
               Wenn es nicht passt, sage ich dir das direkt. Wenn es passt, erstellen wir gemeinsam deinen Plan.
             </p>
             
@@ -439,10 +439,10 @@ export default function Index() {
               <h3 className="text-xl text-primary-foreground font-semibold mb-6">
                 Was passiert nach dem Klarheitsgespräch?
               </h3>
-              <p className="text-primary-foreground/80 mb-4 max-w-2xl mx-auto">
+              <p className="text-primary-foreground mb-4 max-w-2xl mx-auto">
                 Wenn wir beide das Gefühl haben, dass es passt, buchst du die 90-Minuten-Strategiesitzung. Dort erstellen wir gemeinsam deinen Persönlichen Umsetzungsplan—live, in Echtzeit, mit deinen Worten, für dein Leben.
               </p>
-              <p className="text-primary-foreground/70 mb-6 max-w-2xl mx-auto">
+              <p className="text-primary-foreground/90 mb-6 max-w-2xl mx-auto">
                 Optional kannst du danach WhatsApp-Coaching und 8020 Club Zugang hinzufügen.
               </p>
               <p className="text-primary-foreground font-medium">
