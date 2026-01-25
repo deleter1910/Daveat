@@ -47,30 +47,30 @@ export function USPSection() {
   return (
     <section className="section-padding">
       <div className="container mx-auto">
-        <div className="max-w-2xl mb-16">
-          <p className="text-primary font-medium mb-6 flex items-center gap-2">
-            <span className="w-8 h-px bg-primary"></span>
+        <div className="max-w-2xl mb-10 sm:mb-16">
+          <p className="text-primary font-medium mb-4 sm:mb-6 flex items-center gap-2 text-sm sm:text-base">
+            <span className="w-6 sm:w-8 h-px bg-primary"></span>
             Der Unterschied
           </p>
           <h2 className="heading-lg">
             Das macht den <span className="text-primary">Unterschied</span>.
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
           {uspItems.map((item, index) => {
             const Icon = item.icon;
             return (
               <div
                 key={index}
-                className="group p-8 rounded-2xl border border-border bg-card/50 hover:border-primary/30 hover:bg-card transition-all duration-300"
+                className="group p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border border-border bg-card/50 hover:border-primary/30 hover:bg-card transition-all duration-300"
               >
-                <div className="flex items-start gap-5">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                    <Icon className="text-primary" size={24} />
+                <div className="flex items-start gap-3 sm:gap-4 md:gap-5">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                    <Icon className="text-primary" size={20} />
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                  <div className="min-w-0">
+                    <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">{item.title}</h3>
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                       {item.description}
                     </p>
                   </div>

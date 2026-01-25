@@ -14,22 +14,22 @@ export function Footer() {
 
   return (
     <footer className="bg-card border-t border-border">
-      <div className="container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div className="container mx-auto px-4 sm:px-6 py-10 sm:py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
           {/* Brand */}
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4 text-center md:text-left">
             <Link
               to="/"
-              className="flex items-center gap-2 group"
+              className="inline-flex items-center gap-2 group"
               onMouseEnter={() => setIsLogoHovered(true)}
               onMouseLeave={() => setIsLogoHovered(false)}
             >
-              <div className="relative h-10 w-10">
+              <div className="relative h-8 w-8 sm:h-10 sm:w-10">
                 <img
                   src={logoWhite}
                   alt="Daveat Logo"
                   className={cn(
-                    "absolute inset-0 h-10 w-auto transition-opacity duration-300",
+                    "absolute inset-0 h-8 sm:h-10 w-auto transition-opacity duration-300",
                     isLogoHovered ? "opacity-0" : "opacity-100"
                   )}
                 />
@@ -37,40 +37,40 @@ export function Footer() {
                   src={logoGreen}
                   alt="Daveat Logo"
                   className={cn(
-                    "absolute inset-0 h-10 w-auto transition-opacity duration-300",
+                    "absolute inset-0 h-8 sm:h-10 w-auto transition-opacity duration-300",
                     isLogoHovered ? "opacity-100" : "opacity-0"
                   )}
                 />
               </div>
             </Link>
-            <div className="space-y-2">
-              <p className="text-sm text-primary font-medium tracking-wide">
+            <div className="space-y-1 sm:space-y-2">
+              <p className="text-xs sm:text-sm text-primary font-medium tracking-wide">
                 Lifestyle Strategy Partner | Nachhaltige Gesundheitstransformation
               </p>
-              <p className="text-muted-foreground">
+              <p className="text-sm sm:text-base text-muted-foreground">
                 Keine Quick Fixes. Keine externen Regeln. Nur <span className="text-foreground font-medium">DEIN</span> Plan, gemeinsam erstellt, für <span className="text-foreground font-medium">DEIN</span> Leben.
               </p>
             </div>
           </div>
 
           {/* Contact & Social */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Kontakt</h4>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-3 text-muted-foreground">
-                <Mail size={18} className="text-primary" />
+          <div className="space-y-3 sm:space-y-4 text-center md:text-right">
+            <h4 className="text-base sm:text-lg font-semibold">Kontakt</h4>
+            <ul className="space-y-2 sm:space-y-3">
+              <li className="flex items-center justify-center md:justify-end gap-2 sm:gap-3 text-sm sm:text-base text-muted-foreground">
+                <Mail size={16} className="text-primary" />
                 <span>hello@daveat.com</span>
               </li>
             </ul>
-            <div className="flex gap-4 pt-4">
+            <div className="flex gap-3 sm:gap-4 pt-3 sm:pt-4 justify-center md:justify-end">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
                   href={social.url}
-                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-all duration-300"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-all duration-300"
                   aria-label={social.name}
                 >
-                  <social.icon size={18} />
+                  <social.icon size={16} />
                 </a>
               ))}
             </div>
@@ -78,11 +78,11 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
+        <div className="mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+          <p className="text-xs sm:text-sm text-muted-foreground order-2 sm:order-1">
             © {new Date().getFullYear()} Daveat. Alle Rechte vorbehalten.
           </p>
-          <div className="flex gap-6 text-sm text-muted-foreground">
+          <div className="flex gap-4 sm:gap-6 text-xs sm:text-sm text-muted-foreground order-1 sm:order-2">
             <a href="#" className="hover:text-primary transition-colors">
               Datenschutz
             </a>
