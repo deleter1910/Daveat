@@ -39,12 +39,12 @@ export function AgitateSection() {
     <section className="section-padding bg-card">
       <div className="container mx-auto">
         {/* Headline */}
-        <div className="max-w-3xl mb-16">
-          <p className="text-destructive font-medium mb-6 flex items-center gap-2">
-            <span className="w-8 h-px bg-destructive"></span>
+        <div className="max-w-3xl mb-10 sm:mb-16">
+          <p className="text-destructive font-medium mb-4 sm:mb-6 flex items-center gap-2 text-sm sm:text-base">
+            <span className="w-6 sm:w-8 h-px bg-destructive"></span>
             Die Konsequenzen
           </p>
-          <h2 className="heading-lg mb-6">
+          <h2 className="heading-lg mb-4 sm:mb-6">
             Was passiert, wenn sich{" "}
             <span className="text-destructive">nichts ändert</span>?
           </h2>
@@ -54,30 +54,30 @@ export function AgitateSection() {
         </div>
 
         {/* Consequences Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-10 sm:mb-16">
           {consequences.map((item, i) => (
             <div
               key={i}
-              className="p-8 rounded-2xl border border-border/50 bg-background/50 hover:border-destructive/30 transition-colors duration-300"
+              className="p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border border-border/50 bg-background/50 hover:border-destructive/30 transition-colors duration-300"
             >
-              <div className="w-14 h-14 rounded-xl bg-destructive/10 flex items-center justify-center mb-6">
-                <item.icon className="text-destructive" size={28} />
+              <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-destructive/10 flex items-center justify-center mb-4 sm:mb-6">
+                <item.icon className="text-destructive" size={22} />
               </div>
-              <h3 className="text-xl font-bold mb-4">{item.title}</h3>
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">{item.title}</h3>
               {item.description && (
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                   {item.description}
                 </p>
               )}
               {item.spirals && (
-                <ul className="space-y-3">
+                <ul className="space-y-2 sm:space-y-3">
                   {item.spirals.map((spiral, j) => (
-                    <li key={j} className="flex items-start gap-3">
+                    <li key={j} className="flex items-start gap-2 sm:gap-3">
                       <ChevronRight
-                        className="text-destructive flex-shrink-0 mt-1"
-                        size={16}
+                        className="text-destructive flex-shrink-0 mt-0.5 sm:mt-1"
+                        size={14}
                       />
-                      <span className="text-muted-foreground text-sm leading-relaxed">
+                      <span className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
                         {spiral}
                       </span>
                     </li>
@@ -89,9 +89,9 @@ export function AgitateSection() {
         </div>
 
         {/* Cruel Irony Block */}
-        <div className="max-w-3xl mx-auto mb-16">
-          <div className="p-8 rounded-2xl border-2 border-destructive/30 bg-destructive/5">
-            <p className="text-lg md:text-xl leading-relaxed">
+        <div className="max-w-3xl mx-auto mb-10 sm:mb-16">
+          <div className="p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border-2 border-destructive/30 bg-destructive/5">
+            <p className="text-base sm:text-lg md:text-xl leading-relaxed">
               <span className="text-destructive font-bold">Die grausame Ironie:</span>{" "}
               Du vernachlässigst deine Gesundheit, um dich um alle anderen zu kümmern—aber dadurch untergräbst du deine Fähigkeit, tatsächlich für sie da zu sein.
             </p>
@@ -100,7 +100,7 @@ export function AgitateSection() {
 
         {/* Emotional Closing */}
         <div className="text-center max-w-2xl mx-auto">
-          <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed">
             Am schmerzhaftesten? Jeden Morgen schaust du in den Spiegel und siehst jemanden, der du nicht sein willst.{" "}
             <span className="text-foreground font-medium">Jemand, der feststeckt. Jemand, der sich selbst aufgegeben hat.</span>
           </p>

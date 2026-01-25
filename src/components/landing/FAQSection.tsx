@@ -37,11 +37,11 @@ export function FAQSection() {
   return (
     <section className="section-padding">
       <div className="container mx-auto">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="text-primary font-medium mb-4 flex items-center justify-center gap-2">
-            <span className="w-8 h-px bg-primary"></span>
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
+          <p className="text-primary font-medium mb-3 sm:mb-4 flex items-center justify-center gap-2 text-sm sm:text-base">
+            <span className="w-6 sm:w-8 h-px bg-primary"></span>
             FAQ
-            <span className="w-8 h-px bg-primary"></span>
+            <span className="w-6 sm:w-8 h-px bg-primary"></span>
           </p>
           <h2 className="heading-lg">
             Häufige <span className="text-primary">Fragen</span>{" "}
@@ -49,17 +49,17 @@ export function FAQSection() {
           </h2>
         </div>
         <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="space-y-4">
+          <Accordion type="single" collapsible className="space-y-3 sm:space-y-4">
             {faqs.map((faq, i) => (
               <AccordionItem
                 key={i}
                 value={`item-${i}`}
-                className="border border-border rounded-2xl px-6 bg-card data-[state=open]:border-primary transition-colors"
+                className="border border-border rounded-xl sm:rounded-2xl px-4 sm:px-6 bg-card data-[state=open]:border-primary transition-colors"
               >
-                <AccordionTrigger className="text-left text-lg font-medium hover:no-underline py-6">
+                <AccordionTrigger className="text-left text-base sm:text-lg font-medium hover:no-underline py-4 sm:py-6">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-6">
+                <AccordionContent className="text-sm sm:text-base text-muted-foreground pb-4 sm:pb-6">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

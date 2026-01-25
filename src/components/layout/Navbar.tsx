@@ -9,7 +9,7 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <nav className="container mx-auto px-6 py-4 flex items-center justify-center">
+      <nav className="container mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-center">
         {/* Logo */}
         <Link
           to="/"
@@ -17,12 +17,12 @@ export function Navbar() {
           onMouseEnter={() => setIsLogoHovered(true)}
           onMouseLeave={() => setIsLogoHovered(false)}
         >
-          <div className="relative h-10 w-10">
+          <div className="relative h-8 w-8 sm:h-10 sm:w-10">
             <img
               src={logoWhite}
               alt="Daveat Logo"
               className={cn(
-                "absolute inset-0 h-10 w-auto transition-opacity duration-300",
+                "absolute inset-0 h-8 sm:h-10 w-auto transition-opacity duration-300",
                 isLogoHovered ? "opacity-0" : "opacity-100"
               )}
             />
@@ -30,7 +30,7 @@ export function Navbar() {
               src={logoGreen}
               alt="Daveat Logo"
               className={cn(
-                "absolute inset-0 h-10 w-auto transition-opacity duration-300",
+                "absolute inset-0 h-8 sm:h-10 w-auto transition-opacity duration-300",
                 isLogoHovered ? "opacity-100" : "opacity-0"
               )}
             />
