@@ -202,13 +202,13 @@ Brechen wir diesen Kreislauf.</span>
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary/20 via-primary/5 to-transparent border border-primary/20 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-24 h-24 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-6">
-                    <Target className="text-primary" size={48} />
+              <div className="rounded-2xl bg-gradient-to-br from-primary/20 via-primary/5 to-transparent border border-primary/20 flex items-center justify-center py-8 px-6">
+                <div className="text-center">
+                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+                    <Target className="text-primary" size={32} />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">Dein Plan</h3>
-                  <p className="text-muted-foreground">
+                  <h3 className="text-xl font-bold mb-2">Dein Plan</h3>
+                  <p className="text-sm text-muted-foreground">
                     90 Minuten. Co-kreiert. Für dein Leben gemacht.
                   </p>
                 </div>
