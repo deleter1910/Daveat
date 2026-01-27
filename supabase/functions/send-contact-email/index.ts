@@ -4,6 +4,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+const TURNSTILE_SECRET_KEY = Deno.env.get("TURNSTILE_SECRET_KEY");
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -23,6 +24,33 @@ interface ContactEmailRequest {
   email: string;
   subject?: string;
   message: string;
+  turnstileToken: string;
+}
+
+// Verify Turnstile token with Cloudflare
+async function verifyTurnstileToken(token: string, ip: string): Promise<boolean> {
+  if (!TURNSTILE_SECRET_KEY) {
+    console.error("TURNSTILE_SECRET_KEY not configured");
+    return false;
+  }
+
+  try {
+    const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        secret: TURNSTILE_SECRET_KEY,
+        response: token,
+        remoteip: ip,
+      }),
+    });
+
+    const result = await response.json();
+    return result.success === true;
+  } catch (error) {
+    console.error("Turnstile verification error:", error);
+    return false;
+  }
 }
 
 interface ValidationResult {
@@ -36,7 +64,12 @@ function validateInput(body: unknown): ValidationResult {
     return { valid: false, error: "Invalid request body" };
   }
 
-  const { name, email, subject, message } = body as Record<string, unknown>;
+  const { name, email, subject, message, turnstileToken } = body as Record<string, unknown>;
+
+  // Validate turnstile token
+  if (typeof turnstileToken !== 'string' || turnstileToken.trim().length === 0) {
+    return { valid: false, error: "CAPTCHA verification required" };
+  }
 
   // Validate name
   if (typeof name !== 'string' || name.trim().length === 0) {
@@ -84,6 +117,7 @@ function validateInput(body: unknown): ValidationResult {
       email: sanitizedEmail,
       subject: sanitizedSubject,
       message: sanitizedMessage,
+      turnstileToken: (turnstileToken as string).trim(),
     }
   };
 }
@@ -153,7 +187,16 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    const { name, email, subject, message } = validation.data;
+    const { name, email, subject, message, turnstileToken } = validation.data;
+
+    // Verify Turnstile CAPTCHA
+    const isTurnstileValid = await verifyTurnstileToken(turnstileToken, clientIp);
+    if (!isTurnstileValid) {
+      return new Response(
+        JSON.stringify({ error: "CAPTCHA verification failed. Please try again." }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
 
     // Record this request for rate limiting (if table exists)
     try {
