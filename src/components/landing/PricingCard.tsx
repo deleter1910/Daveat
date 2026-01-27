@@ -36,8 +36,8 @@ export function PricingCard({
       } hover:border-primary transition-colors`}
     >
       {isPopular && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-          <span className="px-3 sm:px-4 py-1 rounded-full bg-primary text-primary-foreground text-xs sm:text-sm font-medium">
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+          <span className="px-4 sm:px-5 py-1.5 rounded-full bg-primary text-primary-foreground text-sm sm:text-base font-semibold shadow-lg">
             Empfohlen
           </span>
         </div>
