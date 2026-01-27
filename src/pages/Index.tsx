@@ -52,17 +52,9 @@ const benefits = [{
   description: "Keine Crash-Diät, sondern nachhaltige Gewohnheiten, die nach 90 Tagen zur Routine werden."
 }];
 const testimonials = [{
-  quote: "Endlich ein Ansatz, der in meinen Alltag als Mutter passt. Kein Meal-Prep-Wahnsinn, keine Verbote. Nach 2 Monaten fühle ich mich so energiegeladen wie seit Jahren nicht.",
-  name: "Sarah M.",
-  role: "Marketingmanagerin, 38"
-}, {
-  quote: "Die WhatsApp-Begleitung war Gold wert. Immer wenn ich kurz vor einer schlechten Entscheidung stand, hatte ich einen Ansprechpartner. Das hat den Unterschied gemacht.",
-  name: "Thomas K.",
-  role: "Geschäftsführer, 44"
-}, {
-  quote: "Ich habe in 3 Monaten 8kg verloren – ohne zu hungern und ohne meine Familie zu nerven. Der Blueprint hat mir endlich Klarheit gegeben.",
-  name: "Julia R.",
-  role: "Projektleiterin & Mutter, 35"
+  quote: "Nachdem ich den Kampf gegen mein Gewicht aufgegeben hatte, habe ich dank Daveat neue Motivation gefunden, mir selbst etwas Gutes zu tun. Mit seiner Unterstützung habe ich 17 Kilo verloren und fühle mich heute deutlich wohler in meinem Körper.",
+  name: "Francesca",
+  role: "35"
 }];
 const steps = [{
   number: 1,
@@ -253,8 +245,10 @@ Brechen wir diesen Kreislauf.</span>
               Was meine Klienten <span className="text-primary">sagen</span>
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, i) => <TestimonialCard key={i} {...testimonial} />)}
+          <div className="flex justify-center">
+            <div className="max-w-2xl w-full">
+              <TestimonialCard {...testimonials[0]} />
+            </div>
           </div>
         </div>
       </section>
