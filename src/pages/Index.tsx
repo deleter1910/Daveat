@@ -105,7 +105,8 @@ export default function Index() {
         <div className="max-w-5xl">
             <h1 className="heading-xl mb-8 animate-fade-in-up break-words hyphens-auto max-w-full">
               Jede gescheiterte Diät macht die nächste schwieriger.
-              <span className="text-primary block sm:inline">Brechen wir diesen Kreislauf.</span>
+              <span className="text-primary block sm:inline">
+Brechen wir diesen Kreislauf.</span>
             </h1>
             <p className="text-body max-w-2xl mb-12 animate-fade-in-up" style={{
             animationDelay: "0.1s"
