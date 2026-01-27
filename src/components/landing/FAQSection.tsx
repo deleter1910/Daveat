@@ -35,15 +35,15 @@ const faqs = [
 
 export function FAQSection() {
   return (
-    <section className="section-padding">
-      <div className="container mx-auto">
+    <section className="section-padding overflow-hidden">
+      <div className="container mx-auto max-w-full overflow-hidden">
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <p className="text-primary font-medium mb-3 sm:mb-4 flex items-center justify-center gap-2 text-sm sm:text-base">
             <span className="w-6 sm:w-8 h-px bg-primary"></span>
             FAQ
             <span className="w-6 sm:w-8 h-px bg-primary"></span>
           </p>
-          <h2 className="heading-lg">
+          <h2 className="heading-lg break-words">
             Häufige <span className="text-primary">Fragen</span>{" "}
             <span className="text-muted-foreground font-normal">(und ehrliche Antworten)</span>
           </h2>

@@ -13,8 +13,8 @@ export function Footer() {
   const [isLogoHovered, setIsLogoHovered] = useState(false);
 
   return (
-    <footer className="bg-card border-t border-border">
-      <div className="container mx-auto px-4 sm:px-6 py-10 sm:py-12 md:py-16">
+    <footer className="bg-card border-t border-border overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 py-10 sm:py-12 md:py-16 max-w-full overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
           {/* Brand */}
           <div className="space-y-3 sm:space-y-4 text-center md:text-left">
@@ -44,10 +44,10 @@ export function Footer() {
               </div>
             </Link>
             <div className="space-y-1 sm:space-y-2">
-              <p className="text-xs sm:text-sm text-primary font-medium tracking-wide">
+              <p className="text-xs sm:text-sm text-primary font-medium tracking-wide break-words">
                 Lifestyle Strategy Partner | Nachhaltige Gesundheitstransformation
               </p>
-              <p className="text-sm sm:text-base text-muted-foreground">
+              <p className="text-sm sm:text-base text-muted-foreground break-words">
                 Keine Quick Fixes. Keine externen Regeln. Nur <span className="text-foreground font-medium">DEIN</span> Plan, gemeinsam erstellt, für <span className="text-foreground font-medium">DEIN</span> Leben.
               </p>
             </div>

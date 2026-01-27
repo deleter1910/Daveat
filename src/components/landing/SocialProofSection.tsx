@@ -10,8 +10,8 @@ const benefits = [
 
 export function SocialProofSection() {
   return (
-    <section className="section-padding">
-      <div className="container mx-auto">
+    <section className="section-padding overflow-hidden">
+      <div className="container mx-auto max-w-full overflow-hidden">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <p className="text-primary font-medium mb-3 sm:mb-4 flex items-center justify-center gap-2 text-sm sm:text-base">
@@ -19,7 +19,7 @@ export function SocialProofSection() {
             Ergebnisse
             <span className="w-6 sm:w-8 h-px bg-primary"></span>
           </p>
-          <h2 className="heading-lg">
+          <h2 className="heading-lg break-words">
             Echte Resultate. Echte Menschen.{" "}
             <span className="text-primary">Echte Transformation.</span>
           </h2>
@@ -29,15 +29,15 @@ export function SocialProofSection() {
         <div className="max-w-4xl mx-auto">
           {/* Hero Quote */}
           <div className="relative mb-8 sm:mb-12">
-            <Quote className="absolute -top-2 sm:-top-4 -left-2 sm:-left-4 text-primary/20" size={40} />
-            <blockquote className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight pl-6 sm:pl-8">
+            <Quote className="absolute -top-2 sm:-top-4 -left-2 sm:-left-4 text-primary/20 flex-shrink-0" size={40} />
+            <blockquote className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight pl-6 sm:pl-8 break-words">
               „Ich habe <span className="text-primary">50kg</span> in{" "}
               <span className="text-primary">16 Monaten</span> verloren—nachdem alles andere gescheitert ist"
             </blockquote>
           </div>
 
           {/* Story Context */}
-          <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-12 max-w-3xl">
+          <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-12 max-w-3xl break-words">
             Ein Klient kam zu mir, nachdem er diverse Diäten und Eigenversuche probiert hatte. 
             Nichts funktionierte. Innerhalb von 16 Monaten nach dem Erstellen seines Persönlichen 
             Umsetzungsplans und Disziplin verlor er 50kg.

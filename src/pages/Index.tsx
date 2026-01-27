@@ -101,11 +101,11 @@ export default function Index() {
       {/* Section 1: Hero */}
       <section className="section-padding min-h-[90vh] flex items-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
-        <div className="container mx-auto relative">
+        <div className="container mx-auto relative max-w-full overflow-hidden">
         <div className="max-w-5xl">
-            <h1 className="heading-xl mb-8 animate-fade-in-up">
+            <h1 className="heading-xl mb-8 animate-fade-in-up break-words hyphens-auto max-w-full">
               Jede gescheiterte Diät macht die nächste schwieriger.
-              <span className="text-primary">Brechen wir diesen Kreislauf.</span>
+              <span className="text-primary block sm:inline">Brechen wir diesen Kreislauf.</span>
             </h1>
             <p className="text-body max-w-2xl mb-12 animate-fade-in-up" style={{
             animationDelay: "0.1s"
@@ -125,14 +125,14 @@ export default function Index() {
       </section>
 
       {/* Section 2: Problem (Pain Points) */}
-      <section className="section-padding bg-card">
-        <div className="container mx-auto">
+      <section className="section-padding bg-card overflow-hidden">
+        <div className="container mx-auto max-w-full overflow-hidden">
           <div className="max-w-2xl mb-16">
             <p className="text-primary font-medium mb-6 flex items-center gap-2">
               <span className="w-8 h-px bg-primary"></span>
               Das Problem
             </p>
-            <h2 className="heading-lg">
+            <h2 className="heading-lg break-words">
               Das weisst du <span className="text-primary">bereits</span>:
             </h2>
           </div>
@@ -154,15 +154,15 @@ export default function Index() {
       <AgitateSection />
 
       {/* Section 3: Solution */}
-      <section className="section-padding">
-        <div className="container mx-auto">
+      <section className="section-padding overflow-hidden">
+        <div className="container mx-auto max-w-full overflow-hidden">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <p className="text-primary font-medium mb-6 flex items-center gap-2">
                 <span className="w-8 h-px bg-primary"></span>
                 Die Lösung
               </p>
-              <h2 className="heading-lg mb-8">
+              <h2 className="heading-lg mb-8 break-words">
                 Es gibt einen anderen Weg.<br />
                 <span className="text-primary">Und er funktioniert.</span>
               </h2>
@@ -221,15 +221,15 @@ export default function Index() {
       <USPSection />
 
       {/* Section 4: Benefits */}
-      <section className="section-padding bg-card">
-        <div className="container mx-auto">
+      <section className="section-padding bg-card overflow-hidden">
+        <div className="container mx-auto max-w-full overflow-hidden">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <p className="text-primary font-medium mb-4 flex items-center justify-center gap-2">
               <span className="w-8 h-px bg-primary"></span>
               Unsere Prinzipien
               <span className="w-8 h-px bg-primary"></span>
             </p>
-            <h2 className="heading-lg">
+            <h2 className="heading-lg break-words">
               So funktioniert <span className="text-primary">Daveat</span>
             </h2>
           </div>
@@ -240,15 +240,15 @@ export default function Index() {
       </section>
 
       {/* Section 5: Social Proof (Testimonials) */}
-      <section className="section-padding">
-        <div className="container mx-auto">
+      <section className="section-padding overflow-hidden">
+        <div className="container mx-auto max-w-full overflow-hidden">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <p className="text-primary font-medium mb-4 flex items-center justify-center gap-2">
               <span className="w-8 h-px bg-primary"></span>
               Erfahrungen
               <span className="w-8 h-px bg-primary"></span>
             </p>
-            <h2 className="heading-lg">
+            <h2 className="heading-lg break-words">
               Was meine Klienten <span className="text-primary">sagen</span>
             </h2>
           </div>
@@ -259,15 +259,15 @@ export default function Index() {
       </section>
 
       {/* Section 6: How It Works */}
-      <section className="section-padding bg-card">
-        <div className="container mx-auto">
+      <section className="section-padding bg-card overflow-hidden">
+        <div className="container mx-auto max-w-full overflow-hidden">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <p className="text-primary font-medium mb-4 flex items-center justify-center gap-2">
               <span className="w-8 h-px bg-primary"></span>
               Der Prozess
               <span className="w-8 h-px bg-primary"></span>
             </p>
-            <h2 className="heading-lg">
+            <h2 className="heading-lg break-words">
               So starten wir <span className="text-primary">zusammen</span>
             </h2>
           </div>
@@ -280,18 +280,18 @@ export default function Index() {
       </section>
 
       {/* Section 7: Pricing */}
-      <section className="section-padding">
-        <div className="container mx-auto">
+      <section className="section-padding overflow-hidden">
+        <div className="container mx-auto max-w-full overflow-hidden">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <p className="text-primary font-medium mb-4 flex items-center justify-center gap-2">
               <span className="w-8 h-px bg-primary"></span>
               Investition
               <span className="w-8 h-px bg-primary"></span>
             </p>
-            <h2 className="heading-lg mb-6">
+            <h2 className="heading-lg mb-6 break-words">
               Struktur statt <span className="text-primary">Diät-Stress</span>
             </h2>
-            <p className="text-body">
+            <p className="text-body break-words">
               Wir beenden das Rätselraten. Wähle den Einstieg, der zu dir passt.
             </p>
           </div>
@@ -305,15 +305,15 @@ export default function Index() {
       <FAQSection />
 
       {/* Section 9: Final CTA */}
-      <section className="section-padding bg-primary">
-        <div className="container mx-auto text-center">
-          <h2 className="heading-lg text-primary-foreground mb-6">
+      <section className="section-padding bg-primary overflow-hidden">
+        <div className="container mx-auto text-center max-w-full overflow-hidden">
+          <h2 className="heading-lg text-primary-foreground mb-6 break-words">
             Bereit für mehr Energie?
           </h2>
-          <p className="text-xl text-primary-foreground/80 mb-4 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-primary-foreground/80 mb-4 max-w-2xl mx-auto break-words">
             Lass uns gemeinsam herausfinden, wie du deine Gesundheit zurückgewinnst – ohne deinen Alltag auf den Kopf zu stellen.
           </p>
-          <p className="text-primary-foreground/60 mb-10">
+          <p className="text-primary-foreground/60 mb-10 break-words">
             15 Minuten · Kostenlos · Unverbindlich
           </p>
           <Link to="/contact" className="inline-flex items-center px-8 py-4 rounded-full bg-background text-foreground font-medium hover:bg-foreground hover:text-background transition-all duration-300">

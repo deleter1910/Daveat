@@ -105,6 +105,16 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Clash Display', sans-serif;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
+@layer utilities {
+  .word-break-safe {
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 }
 

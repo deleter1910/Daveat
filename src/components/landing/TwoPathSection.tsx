@@ -18,15 +18,15 @@ const path2Points = [
 
 export function TwoPathSection() {
   return (
-    <section className="section-padding">
-      <div className="container mx-auto">
+    <section className="section-padding overflow-hidden">
+      <div className="container mx-auto max-w-full overflow-hidden">
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <p className="text-primary font-medium mb-3 sm:mb-4 flex items-center justify-center gap-2 text-sm sm:text-base">
             <span className="w-6 sm:w-8 h-px bg-primary"></span>
             Deine Entscheidung
             <span className="w-6 sm:w-8 h-px bg-primary"></span>
           </p>
-          <h2 className="heading-lg">
+          <h2 className="heading-lg break-words">
             Die Wahl liegt <span className="text-primary">bei dir</span>
           </h2>
         </div>
@@ -47,7 +47,7 @@ export function TwoPathSection() {
               {path1Points.map((point, i) => (
                 <li key={i} className="flex items-start gap-2 sm:gap-3">
                   <ChevronRight className="text-destructive/60 flex-shrink-0 mt-0.5" size={16} />
-                  <span className="text-sm sm:text-base text-muted-foreground">{point}</span>
+                  <span className="text-sm sm:text-base text-muted-foreground break-words">{point}</span>
                 </li>
               ))}
             </ul>
@@ -71,7 +71,7 @@ export function TwoPathSection() {
               {path2Points.map((point, i) => (
                 <li key={i} className="flex items-start gap-2 sm:gap-3">
                   <ChevronRight className="text-primary flex-shrink-0 mt-0.5" size={16} />
-                  <span className="text-sm sm:text-base text-foreground">{point}</span>
+                  <span className="text-sm sm:text-base text-foreground break-words">{point}</span>
                 </li>
               ))}
             </ul>

@@ -35,8 +35,8 @@ const rippleEffects = [
 
 export function ValueStackSection() {
   return (
-    <section className="section-padding bg-card">
-      <div className="container mx-auto">
+    <section className="section-padding bg-card overflow-hidden">
+      <div className="container mx-auto max-w-full overflow-hidden">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
           <p className="text-primary font-medium mb-3 sm:mb-4 flex items-center justify-center gap-2 text-sm sm:text-base">
@@ -44,10 +44,10 @@ export function ValueStackSection() {
             Der wahre Wert
             <span className="w-6 sm:w-8 h-px bg-primary"></span>
           </p>
-          <h2 className="heading-lg mb-4 sm:mb-6">
+          <h2 className="heading-lg mb-4 sm:mb-6 break-words">
             Die Transformation, die du <span className="text-primary">wirklich</span> kaufst
           </h2>
-          <p className="text-body">
+          <p className="text-body break-words">
             Es geht nicht um Gewichtsverlust. Gewichtsverlust ist das Nebenprodukt.{" "}
             <span className="text-foreground font-semibold">Das bekommst du wirklich:</span>
           </p>
@@ -149,7 +149,7 @@ export function ValueStackSection() {
         {/* Closing Statement */}
         <div className="text-center">
           <div className="inline-block px-5 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 rounded-xl sm:rounded-2xl border border-primary/30 bg-primary/5">
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-foreground">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-foreground break-words">
               Es gibt kein Preisschild für ein Leben,<br />
               <span className="text-primary">das sich besser anfühlt.</span>
             </p>

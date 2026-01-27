@@ -25,15 +25,15 @@ const sessionFeatures = [
 
 export function OfferBreakdownSection() {
   return (
-    <section className="section-padding">
-      <div className="container mx-auto">
+    <section className="section-padding overflow-hidden">
+      <div className="container mx-auto max-w-full overflow-hidden">
         {/* Header */}
         <div className="max-w-2xl mb-10 sm:mb-16">
           <p className="text-primary font-medium mb-4 sm:mb-6 flex items-center gap-2 text-sm sm:text-base">
             <span className="w-6 sm:w-8 h-px bg-primary"></span>
             Das Angebot
           </p>
-          <h2 className="heading-lg">
+          <h2 className="heading-lg break-words">
             Was du <span className="text-primary">tatsächlich</span> bekommst
           </h2>
         </div>
@@ -62,9 +62,9 @@ export function OfferBreakdownSection() {
               {sessionFeatures.map((feature, i) => (
                 <div key={i} className="flex gap-3 sm:gap-4">
                   <CheckCircle className="text-primary flex-shrink-0 mt-0.5 sm:mt-1" size={20} />
-                  <div>
-                    <h4 className="font-semibold text-sm sm:text-base text-foreground mb-1">{feature.title}</h4>
-                    <p className="text-muted-foreground text-xs sm:text-sm md:text-base">{feature.description}</p>
+                  <div className="min-w-0">
+                    <h4 className="font-semibold text-sm sm:text-base text-foreground mb-1 break-words">{feature.title}</h4>
+                    <p className="text-muted-foreground text-xs sm:text-sm md:text-base break-words">{feature.description}</p>
                   </div>
                 </div>
               ))}

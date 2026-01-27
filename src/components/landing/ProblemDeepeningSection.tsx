@@ -17,12 +17,12 @@ const failureReasons = [
 
 export function ProblemDeepeningSection() {
   return (
-    <section className="section-padding">
-      <div className="container mx-auto">
+    <section className="section-padding overflow-hidden">
+      <div className="container mx-auto max-w-full overflow-hidden">
         <div className="max-w-4xl mx-auto">
           {/* Main Statement */}
           <div className="text-center mb-10 sm:mb-16">
-            <h2 className="heading-lg mb-6 sm:mb-8">
+            <h2 className="heading-lg mb-6 sm:mb-8 break-words">
               Das eigentliche Problem?{" "}
               <span className="text-primary">Man hat dir eine Lüge verkauft.</span>
             </h2>
@@ -38,7 +38,7 @@ export function ProblemDeepeningSection() {
 
           {/* Authority Stat */}
           <div className="py-8 sm:py-12 mb-8 sm:mb-12 border-y border-border">
-            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center">
+            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center break-words">
               Deshalb scheitern <span className="text-destructive">95%</span> aller Diäten.
             </p>
           </div>
@@ -77,10 +77,10 @@ export function ProblemDeepeningSection() {
 
           {/* Closing Question */}
           <div className="text-center">
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-3 sm:mb-4">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-3 sm:mb-4 break-words">
               Jede Diät, die du versucht hast, hat dir fremde Regeln aufgezwungen.
             </p>
-            <p className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">
+            <p className="text-xl sm:text-2xl md:text-3xl font-bold text-primary break-words">
               Was wäre, wenn du deine eigenen Regeln erschaffst?
             </p>
           </div>
