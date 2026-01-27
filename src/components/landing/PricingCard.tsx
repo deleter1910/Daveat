@@ -31,7 +31,7 @@ export function PricingCard({
 
   return (
     <div
-      className={`relative p-6 sm:p-8 rounded-2xl sm:rounded-3xl border ${
+      className={`relative p-6 sm:p-8 rounded-2xl sm:rounded-3xl border overflow-hidden ${
         isPopular ? "border-primary bg-card" : "border-border bg-card/50"
       } hover:border-primary transition-colors`}
     >
@@ -43,8 +43,8 @@ export function PricingCard({
         </div>
       )}
       <div className="mb-4 sm:mb-6">
-        <h3 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">{title}</h3>
-        <p className="text-sm sm:text-base text-muted-foreground">{subtitle}</p>
+        <h3 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 break-words">{title}</h3>
+        <p className="text-sm sm:text-base text-muted-foreground break-words">{subtitle}</p>
       </div>
       <div className="mb-4 sm:mb-6">
         <span className="text-3xl sm:text-4xl font-bold">{price}</span>
@@ -54,7 +54,7 @@ export function PricingCard({
         {features.map((feature, i) => (
           <li key={i} className="flex items-start gap-2 sm:gap-3">
             <Check className="text-primary mt-0.5 flex-shrink-0" size={18} />
-            <span className="text-sm sm:text-base text-muted-foreground">{feature}</span>
+            <span className="text-sm sm:text-base text-muted-foreground break-words">{feature}</span>
           </li>
         ))}
       </ul>

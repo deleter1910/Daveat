@@ -31,15 +31,15 @@ const emotionalStatements = [
 
 export function AuthoritySection() {
   return (
-    <section className="section-padding">
-      <div className="container mx-auto">
+    <section className="section-padding overflow-hidden">
+      <div className="container mx-auto max-w-full overflow-hidden">
         {/* Header */}
         <div className="max-w-2xl mb-10 sm:mb-16">
           <p className="text-primary font-medium mb-4 sm:mb-6 flex items-center gap-2 text-sm sm:text-base">
             <span className="w-6 sm:w-8 h-px bg-primary"></span>
             Warum es funktioniert
           </p>
-          <h2 className="heading-lg">
+          <h2 className="heading-lg break-words">
             Warum das funktioniert, wenn{" "}
             <span className="text-primary">alles andere gescheitert</span> ist
           </h2>
@@ -86,7 +86,7 @@ export function AuthoritySection() {
 
         {/* Empathy Highlight Box */}
         <div className="p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl bg-primary/5 border border-primary/30 mb-12 sm:mb-20">
-          <p className="text-base sm:text-lg md:text-xl text-center max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-center max-w-3xl mx-auto break-words">
             Diese gelebte Erfahrung schafft Empathie, die nicht gelehrt oder
             zertifiziert werden kann. Wenn du mit mir sprichst, verstehe ich
             deinen Kampf nicht nur theoretisch —{" "}
@@ -149,7 +149,7 @@ export function AuthoritySection() {
                 Am wichtigsten
               </span>
             </div>
-            <p className="text-lg sm:text-xl md:text-2xl text-center font-medium max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl text-center font-medium max-w-2xl mx-auto break-words">
               Wir optimieren nicht für kurzfristigen Gewichtsverlust. Wir
               optimieren für{" "}
               <span className="text-primary font-semibold">

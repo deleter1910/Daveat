@@ -19,15 +19,15 @@ const notFor = [
 
 export function QualificationSection() {
   return (
-    <section className="section-padding bg-card">
-      <div className="container mx-auto">
+    <section className="section-padding bg-card overflow-hidden">
+      <div className="container mx-auto max-w-full overflow-hidden">
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <p className="text-primary font-medium mb-3 sm:mb-4 flex items-center justify-center gap-2 text-sm sm:text-base">
             <span className="w-6 sm:w-8 h-px bg-primary"></span>
             Passt es zu dir?
             <span className="w-6 sm:w-8 h-px bg-primary"></span>
           </p>
-          <h2 className="heading-lg">
+          <h2 className="heading-lg break-words">
             Für wen das ist{" "}
             <span className="text-muted-foreground font-normal">(und für wen nicht)</span>
           </h2>
@@ -44,7 +44,7 @@ export function QualificationSection() {
               {idealFor.map((point, i) => (
                 <li key={i} className="flex items-start gap-2 sm:gap-3">
                   <CheckCircle className="text-primary flex-shrink-0 mt-0.5" size={16} />
-                  <span className="text-sm sm:text-base text-foreground">{point}</span>
+                  <span className="text-sm sm:text-base text-foreground break-words">{point}</span>
                 </li>
               ))}
             </ul>
@@ -60,7 +60,7 @@ export function QualificationSection() {
               {notFor.map((point, i) => (
                 <li key={i} className="flex items-start gap-2 sm:gap-3">
                   <XCircle className="text-muted-foreground flex-shrink-0 mt-0.5" size={16} />
-                  <span className="text-sm sm:text-base text-muted-foreground">{point}</span>
+                  <span className="text-sm sm:text-base text-muted-foreground break-words">{point}</span>
                 </li>
               ))}
             </ul>

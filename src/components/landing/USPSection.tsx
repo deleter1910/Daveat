@@ -45,14 +45,14 @@ const uspItems = [
 
 export function USPSection() {
   return (
-    <section className="section-padding">
-      <div className="container mx-auto">
+    <section className="section-padding overflow-hidden">
+      <div className="container mx-auto max-w-full overflow-hidden">
         <div className="max-w-2xl mb-10 sm:mb-16">
           <p className="text-primary font-medium mb-4 sm:mb-6 flex items-center gap-2 text-sm sm:text-base">
             <span className="w-6 sm:w-8 h-px bg-primary"></span>
             Der Unterschied
           </p>
-          <h2 className="heading-lg">
+          <h2 className="heading-lg break-words">
             Das macht den <span className="text-primary">Unterschied</span>.
           </h2>
         </div>
