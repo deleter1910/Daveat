@@ -31,13 +31,13 @@ export function PricingCard({
 
   return (
     <div
-      className={`relative p-6 sm:p-8 rounded-2xl sm:rounded-3xl border overflow-hidden ${
-        isPopular ? "border-primary bg-card" : "border-border bg-card/50"
+      className={`relative rounded-2xl sm:rounded-3xl border overflow-hidden ${
+        isPopular ? "border-primary bg-card pt-10 sm:pt-12 pb-6 sm:pb-8 px-6 sm:px-8" : "p-6 sm:p-8 border-border bg-card/50"
       } hover:border-primary transition-colors`}
     >
       {isPopular && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-          <span className="px-4 sm:px-5 py-1.5 rounded-full bg-primary text-primary-foreground text-sm sm:text-base font-semibold shadow-lg">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10">
+          <span className="px-5 sm:px-6 py-2 rounded-b-xl bg-primary text-primary-foreground text-sm sm:text-base font-bold shadow-lg">
             Empfohlen
           </span>
         </div>
