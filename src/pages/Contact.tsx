@@ -1,17 +1,38 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Mail, Send, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { TurnstileWidget } from "@/components/TurnstileWidget";
+
+const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY || "";
 
 export default function Contact() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+
+  const handleTurnstileVerify = useCallback((token: string) => {
+    setTurnstileToken(token);
+  }, []);
+
+  const handleTurnstileError = useCallback(() => {
+    setTurnstileToken(null);
+    toast({
+      title: "CAPTCHA Fehler",
+      description: "Bitte lade die Seite neu und versuche es erneut.",
+      variant: "destructive",
+    });
+  }, [toast]);
+
+  const handleTurnstileExpire = useCallback(() => {
+    setTurnstileToken(null);
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -24,11 +45,21 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!turnstileToken) {
+      toast({
+        title: "CAPTCHA erforderlich",
+        description: "Bitte bestätige, dass du kein Roboter bist.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
       const { error } = await supabase.functions.invoke("send-contact-email", {
-        body: formData,
+        body: { ...formData, turnstileToken },
       });
 
       if (error) throw error;
@@ -43,6 +74,7 @@ export default function Contact() {
         email: "",
         message: "",
       });
+      setTurnstileToken(null);
     } catch (error: any) {
       toast({
         title: "Fehler",
@@ -133,9 +165,19 @@ export default function Contact() {
                     placeholder="Was ist deine größte Herausforderung?"
                   />
                 </div>
+                {/* Turnstile CAPTCHA Widget */}
+                <div className="py-2">
+                  <TurnstileWidget
+                    siteKey={TURNSTILE_SITE_KEY}
+                    onVerify={handleTurnstileVerify}
+                    onError={handleTurnstileError}
+                    onExpire={handleTurnstileExpire}
+                  />
+                </div>
+
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !turnstileToken}
                   className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
