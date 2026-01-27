@@ -80,7 +80,7 @@ export function AnalyticsProvider({ children }: AnalyticsProviderProps) {
   useEffect(() => {
     const handleBeforeUnload = () => {
       const timeSpent = Math.round((Date.now() - startTime.current) / 1000);
-      // Use sendBeacon for reliable tracking on page unload
+      // Use fetch with keepalive for reliable tracking on page unload
       const data = {
         session_id: sessionStorage.getItem("daveat_session_id") || "",
         event_type: "time_on_page",
@@ -89,10 +89,18 @@ export function AnalyticsProvider({ children }: AnalyticsProviderProps) {
         user_agent: navigator.userAgent,
       };
       
-      navigator.sendBeacon(
-        `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/analytics_events`,
-        new Blob([JSON.stringify(data)], { type: "application/json" })
-      );
+      // Use fetch with keepalive instead of sendBeacon to include required headers
+      fetch(`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/analytics_events`, {
+        method: 'POST',
+        headers: {
+          'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify(data),
+        keepalive: true // Ensures request completes even if page unloads
+      });
     };
 
     window.addEventListener("beforeunload", handleBeforeUnload);
