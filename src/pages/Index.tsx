@@ -55,6 +55,10 @@ const testimonials = [{
   quote: "Nachdem ich den Kampf gegen mein Gewicht aufgegeben hatte, habe ich dank Daveat neue Motivation gefunden, mir selbst etwas Gutes zu tun. Mit seiner Unterstützung habe ich 17 Kilo verloren und fühle mich heute deutlich wohler in meinem Körper.",
   name: "Francesca",
   role: "35"
+}, {
+  quote: "Mit kleinen aber wichtigen Tipps konnte ich in 16 Monate 50kg verlieren. Die motivierende Beratung und Begleitung half und hilft mir sehr. Fühle mich so fit wie nie zuvor und werde dafür immer dankbar sein!",
+  name: "Alessandro D.",
+  role: "47"
 }];
 const steps = [{
   number: 1,
@@ -245,10 +249,10 @@ Brechen wir diesen Kreislauf.</span>
               Was meine Klienten <span className="text-primary">sagen</span>
             </h2>
           </div>
-          <div className="flex justify-center">
-            <div className="max-w-2xl w-full">
-              <TestimonialCard {...testimonials[0]} />
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {testimonials.map((testimonial, i) => (
+              <TestimonialCard key={i} {...testimonial} />
+            ))}
           </div>
         </div>
       </section>
