@@ -1,37 +1,25 @@
 
-## Doppelten Text im Hero-Header entfernen
 
-**Aufgabe**: Den doppelten "Brechen wir diesen Kreislauf." Text entfernen und nur die grüne Version behalten.
+## Browser-Tab Titel ändern
+
+**Aufgabe**: Den Browser-Tab Titel von "Daveat - Digital Agency" zu "Daveat" ändern.
 
 ### Aktuelle Situation
 
-In der Hero-Sektion (Zeilen 102-104) steht:
-```jsx
-<h1 className="heading-xl ...">
-  Jede gescheiterte Diät macht die nächste schwieriger.
-  Brechen wir diesen Kreislauf.<span className="text-primary block sm:inline">
-  Brechen wir diesen Kreislauf.</span>
-</h1>
+In der `index.html` Datei (Zeile 7) steht:
+```html
+<title>Daveat - Digital Agency</title>
 ```
-
-Der Text "Brechen wir diesen Kreislauf." erscheint zweimal:
-1. Einmal in Weiss (Standard-Textfarbe)
-2. Einmal in Grün (mit `text-primary`)
 
 ### Änderung
 
-**Datei: `src/pages/Index.tsx`** (Zeilen 102-105)
+**Datei: `index.html`** (Zeile 7)
 
-Entferne die erste weisse Version und behalte nur den grünen Text:
-```jsx
-<h1 className="heading-xl mb-8 animate-fade-in-up break-words hyphens-auto max-w-full">
-  Jede gescheiterte Diät macht die nächste schwieriger.
-  <span className="text-primary block sm:inline">
-    Brechen wir diesen Kreislauf.
-  </span>
-</h1>
+```html
+<title>Daveat</title>
 ```
 
 ### Ergebnis
-- Der Header zeigt nur noch eine Zeile mit "Brechen wir diesen Kreislauf." in Grün
-- Die Struktur der Überschrift bleibt korrekt (erste Zeile weiss, zweite Zeile grün)
+- Der Browser-Tab zeigt nur noch "Daveat" an
+- Passend zur Markenidentität ohne den veralteten "Digital Agency" Zusatz
+
