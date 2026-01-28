@@ -1,33 +1,37 @@
 
-## Neues Testimonial hinzufügen
+## Doppelten Text im Hero-Header entfernen
 
-**Aufgabe**: Ein neues Testimonial von Alessandro D. zur Erfahrungen-Sektion auf der Startseite hinzufügen.
+**Aufgabe**: Den doppelten "Brechen wir diesen Kreislauf." Text entfernen und nur die grüne Version behalten.
 
-### Änderungen
+### Aktuelle Situation
 
-**Datei: `src/pages/Index.tsx`**
-
-1. **Testimonials-Array erweitern** (Zeile ~68):
-```typescript
-const testimonials = [
-  {
-    quote: "Nachdem ich den Kampf gegen mein Gewicht aufgegeben hatte, habe ich dank Daveat neue Motivation gefunden, mir selbst etwas Gutes zu tun. Mit seiner Unterstützung habe ich 17 Kilo verloren und fühle mich heute deutlich wohler in meinem Körper.",
-    name: "Francesca",
-    role: "35"
-  },
-  {
-    quote: "Mit kleinen aber wichtigen Tipps konnte ich in 16 Monate 50kg verlieren. Die motivierende Beratung und Begleitung half und hilft mir sehr. Fühle mich so fit wie nie zuvor und werde dafür immer dankbar sein!",
-    name: "Alessandro D.",
-    role: "47"
-  }
-];
+In der Hero-Sektion (Zeilen 102-104) steht:
+```jsx
+<h1 className="heading-xl ...">
+  Jede gescheiterte Diät macht die nächste schwieriger.
+  Brechen wir diesen Kreislauf.<span className="text-primary block sm:inline">
+  Brechen wir diesen Kreislauf.</span>
+</h1>
 ```
 
-2. **Layout anpassen** um beide Testimonials anzuzeigen:
-   - Grid-Layout von 1 Spalte auf 2 Spalten (Desktop) ändern
-   - Alle Testimonials mit `.map()` rendern statt nur das erste
+Der Text "Brechen wir diesen Kreislauf." erscheint zweimal:
+1. Einmal in Weiss (Standard-Textfarbe)
+2. Einmal in Grün (mit `text-primary`)
+
+### Änderung
+
+**Datei: `src/pages/Index.tsx`** (Zeilen 102-105)
+
+Entferne die erste weisse Version und behalte nur den grünen Text:
+```jsx
+<h1 className="heading-xl mb-8 animate-fade-in-up break-words hyphens-auto max-w-full">
+  Jede gescheiterte Diät macht die nächste schwieriger.
+  <span className="text-primary block sm:inline">
+    Brechen wir diesen Kreislauf.
+  </span>
+</h1>
+```
 
 ### Ergebnis
-- Beide authentischen Testimonials werden nebeneinander angezeigt (Desktop)
-- Auf Mobile werden sie untereinander gestapelt
-- Konsistentes Design mit dem bestehenden `TestimonialCard`-Komponenten
+- Der Header zeigt nur noch eine Zeile mit "Brechen wir diesen Kreislauf." in Grün
+- Die Struktur der Überschrift bleibt korrekt (erste Zeile weiss, zweite Zeile grün)
