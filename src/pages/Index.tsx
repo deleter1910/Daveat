@@ -153,52 +153,47 @@ Brechen wir diesen Kreislauf.</span>
       {/* Section 3: Solution */}
       <section className="section-padding overflow-hidden">
         <div className="container mx-auto max-w-full overflow-hidden">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <p className="text-primary font-medium mb-6 flex items-center gap-2">
-                <span className="w-8 h-px bg-primary"></span>
-                Die Lösung
+        <div className="max-w-3xl">
+            <p className="text-primary font-medium mb-6 flex items-center gap-2">
+              <span className="w-8 h-px bg-primary"></span>
+              Die Lösung
+            </p>
+            <h2 className="heading-lg mb-8 break-words">
+              Es gibt einen anderen Weg.<br />
+              <span className="text-primary">Und er funktioniert.</span>
+            </h2>
+            <div className="mb-8">
+              <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                <Target className="text-primary" size={28} />
+                Der Persönliche Umsetzungsplan
+              </h3>
+              <p className="text-body">
+                Dies ist <span className="text-muted-foreground line-through">kein weiteres Diätprogramm</span>. Es ist eine{" "}
+                <span className="text-foreground font-semibold">90-minütige Strategiesitzung</span>, in der wir gemeinsam{" "}
+                <span className="text-primary font-semibold">DEINEN</span> Plan entwickeln—
               </p>
-              <h2 className="heading-lg mb-8 break-words">
-                Es gibt einen anderen Weg.<br />
-                <span className="text-primary">Und er funktioniert.</span>
-              </h2>
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                  <Target className="text-primary" size={28} />
-                  Der Persönliche Umsetzungsplan
-                </h3>
-                <p className="text-body">
-                  Dies ist <span className="text-muted-foreground line-through">kein weiteres Diätprogramm</span>. Es ist eine{" "}
-                  <span className="text-foreground font-semibold">90-minütige Strategiesitzung</span>, in der wir gemeinsam{" "}
-                  <span className="text-primary font-semibold">DEINEN</span> Plan entwickeln—
-                </p>
+            </div>
+            <div className="space-y-4 mb-8">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
+                <p className="text-foreground">einen, der zu <span className="text-primary font-semibold">DEINEM</span> Leben passt</p>
               </div>
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
-                  <p className="text-foreground">einen, der zu <span className="text-primary font-semibold">DEINEM</span> Leben passt</p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
-                  <p className="text-foreground"><span className="text-primary font-semibold">DEINE</span> Worte verwendet</p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
-                  <p className="text-foreground">und zu <span className="text-primary font-semibold">DEINEN</span> Regeln wird</p>
-                </div>
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
+                <p className="text-foreground"><span className="text-primary font-semibold">DEINE</span> Worte verwendet</p>
               </div>
-              <div className="flex items-center gap-4 p-6 rounded-2xl border border-primary/30 bg-primary/5">
-                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
-                  <Sparkles className="text-primary-foreground" size={24} />
-                </div>
-                <p className="text-foreground">
-                  <strong>Daveat</strong> ist dein persönlicher Lifestyle-Stratege. Keine Diät, sondern ein System für nachhaltige Energie.
-                </p>
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
+                <p className="text-foreground">und zu <span className="text-primary font-semibold">DEINEN</span> Regeln wird</p>
               </div>
             </div>
-            <div className="relative">
-              
+            <div className="flex items-center gap-4 p-6 rounded-2xl border border-primary/30 bg-primary/5">
+              <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                <Sparkles className="text-primary-foreground" size={24} />
+              </div>
+              <p className="text-foreground">
+                <strong>Daveat</strong> ist dein persönlicher Lifestyle-Stratege. Keine Diät, sondern ein System für nachhaltige Energie.
+              </p>
             </div>
           </div>
         </div>
