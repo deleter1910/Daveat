@@ -250,7 +250,8 @@ Brechen wir diesen Kreislauf.</span>
               <span className="w-8 h-px bg-primary"></span>
             </p>
             <h2 className="heading-lg break-words">
-              So starten wir <span className="text-primary">zusammen</span>
+              So starten wir <span className="text-primary">
+zusammen</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
