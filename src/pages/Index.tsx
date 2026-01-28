@@ -99,9 +99,8 @@ export default function Index() {
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
         <div className="container mx-auto relative max-w-full overflow-hidden">
         <div className="max-w-5xl">
-            <h1 className="heading-xl mb-8 animate-fade-in-up break-words hyphens-auto max-w-full">
-              Jede gescheiterte Diät macht die nächste schwieriger.
-              <span className="text-primary block sm:inline">
+            <h1 className="heading-xl mb-8 animate-fade-in-up break-words hyphens-auto max-w-full">Jede gescheiterte Diät macht die nächste schwieriger.
+Brechen wir diesen Kreislauf.<span className="text-primary block sm:inline">
 Brechen wir diesen Kreislauf.</span>
             </h1>
             <p className="text-body max-w-2xl mb-12 animate-fade-in-up" style={{
@@ -271,8 +270,8 @@ zusammen</span>
               Investition
               <span className="w-8 h-px bg-primary"></span>
             </p>
-            <h2 className="heading-lg mb-6 break-words">
-              Struktur statt <span className="text-primary">Diät-Stress</span>
+            <h2 className="heading-lg mb-6 break-words">Struktur statt 
+Diät-Stress<span className="text-primary">Diät-Stress</span>
             </h2>
             <p className="text-body break-words">
               Wir beenden das Rätselraten. Wähle den Einstieg, der zu dir passt.
