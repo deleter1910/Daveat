@@ -198,17 +198,7 @@ Brechen wir diesen Kreislauf.</span>
               </div>
             </div>
             <div className="relative">
-              <div className="rounded-2xl bg-gradient-to-br from-primary/20 via-primary/5 to-transparent border border-primary/20 flex items-center justify-center py-8 px-6">
-                <div className="text-center">
-                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                    <Target className="text-primary" size={32} />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">Dein Plan</h3>
-                  <p className="text-sm text-muted-foreground">
-                    90 Minuten. Co-kreiert. Für dein Leben gemacht.
-                  </p>
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -250,9 +240,7 @@ Brechen wir diesen Kreislauf.</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {testimonials.map((testimonial, i) => (
-              <TestimonialCard key={i} {...testimonial} />
-            ))}
+            {testimonials.map((testimonial, i) => <TestimonialCard key={i} {...testimonial} />)}
           </div>
         </div>
       </section>
