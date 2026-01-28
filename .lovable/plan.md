@@ -1,62 +1,22 @@
 
 
-## Testimonials auf echte Klientenaussagen reduzieren
+## Add Turnstile Site Key to Environment
 
-### Aktuelle Situation
+**Task**: Add the Cloudflare Turnstile Site Key to the frontend environment configuration.
 
-- **SocialProofSection**: Enthält die Geschichte vom 50kg-Klienten (16 Monate)
-- **Testimonials-Sektion**: 3 fiktive Testimonials (Sarah M., Thomas K., Julia R.)
-- **Echte Aussagen**: Nur 1 echte Aussage von Francesca vorhanden
+### Changes Required
 
-### Geplante Änderungen
+**File: `.env`**
+- Add the following line:
+  ```
+  VITE_TURNSTILE_SITE_KEY="0x4AAAAAACU-89Dfyr_Rhtrl"
+  ```
 
-#### Option A: Nur Francescas Testimonial zeigen
+### Result
+Once added, the Turnstile CAPTCHA widget will display on the contact form, requiring users to complete the challenge before submitting.
 
-**Datei: `src/pages/Index.tsx`**
-
-Die Testimonials-Array auf eine einzige echte Aussage reduzieren:
-
-```typescript
-const testimonials = [{
-  quote: "Nachdem ich den Kampf gegen mein Gewicht aufgegeben hatte, habe ich dank Daveat neue Motivation gefunden, mir selbst etwas Gutes zu tun. Mit seiner Unterstützung habe ich 17 Kilo verloren und fühle mich heute deutlich wohler in meinem Körper.",
-  name: "Francesca",
-  role: "35"
-}];
-```
-
-**Layout-Anpassung:**
-- Grid von 3 Spalten auf zentrierte Einzelkarte ändern
-- Karte grösser und prominenter gestalten
-- Max-Breite auf `max-w-2xl` setzen für bessere Lesbarkeit
-
-#### Alternative Option B: Testimonials-Sektion entfernen
-
-Falls du nur eine Aussage hast und die SocialProofSection (50kg-Geschichte) bereits echte Ergebnisse zeigt, könnte die Testimonials-Sektion komplett entfernt werden um Redundanz zu vermeiden.
-
----
-
-### Technische Umsetzung (Option A)
-
-| Datei | Änderung |
-|-------|----------|
-| `src/pages/Index.tsx` | Testimonials-Array auf 1 Eintrag reduzieren, Grid-Layout anpassen |
-
-**Vorher:**
-```text
-<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-```
-
-**Nachher:**
-```text
-<div className="flex justify-center">
-  <div className="max-w-2xl">
-```
-
----
-
-### Frage zur Klärung
-
-Möchtest du:
-- **Option A**: Nur Francescas Testimonial anzeigen (empfohlen)
-- **Option B**: Die Testimonials-Sektion komplett entfernen (da SocialProofSection bereits existiert)
+### Technical Notes
+- The site key is a public value (safe to include in frontend code)
+- The corresponding secret key is already configured in the backend secrets
+- The edge function `send-contact-email` will verify tokens server-side
 
