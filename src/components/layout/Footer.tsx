@@ -86,9 +86,9 @@ export function Footer() {
             <a href="#" className="hover:text-primary transition-colors">
               Datenschutz
             </a>
-            <a href="#" className="hover:text-primary transition-colors">
+            <Link to="/impressum" className="hover:text-primary transition-colors">
               Impressum
-            </a>
+            </Link>
           </div>
         </div>
       </div>
