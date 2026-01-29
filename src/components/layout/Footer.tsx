@@ -83,9 +83,9 @@ export function Footer() {
             © {new Date().getFullYear()} Daveat. Alle Rechte vorbehalten.
           </p>
           <div className="flex gap-4 sm:gap-6 text-xs sm:text-sm text-muted-foreground order-1 sm:order-2">
-            <a href="#" className="hover:text-primary transition-colors">
+            <Link to="/datenschutz" className="hover:text-primary transition-colors">
               Datenschutz
-            </a>
+            </Link>
             <Link to="/impressum" className="hover:text-primary transition-colors">
               Impressum
             </Link>
