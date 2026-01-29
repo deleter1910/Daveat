@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Mail, Instagram } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -12,10 +12,21 @@ const socialLinks = [
 export function Footer() {
   const [isLogoHovered, setIsLogoHovered] = useState(false);
 
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://subscribe-forms.beehiiv.com/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+    
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <footer className="bg-card border-t border-border overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 py-10 sm:py-12 md:py-16 max-w-full overflow-hidden">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
           {/* Brand */}
           <div className="space-y-3 sm:space-y-4 text-center md:text-left">
             <Link
@@ -50,6 +61,32 @@ export function Footer() {
               <p className="text-sm sm:text-base text-muted-foreground break-words">
                 Keine Quick Fixes. Keine externen Regeln. Nur <span className="text-foreground font-medium">DEIN</span> Plan, gemeinsam erstellt, für <span className="text-foreground font-medium">DEIN</span> Leben.
               </p>
+            </div>
+          </div>
+
+          {/* Newsletter */}
+          <div className="space-y-3 sm:space-y-4 text-center">
+            <h4 className="text-base sm:text-lg font-semibold">80/20 Newsletter</h4>
+            <p className="text-sm text-muted-foreground">
+              Praktische Tipps für nachhaltige Gesundheit.
+            </p>
+            <div className="flex justify-center">
+              <iframe
+                src="https://subscribe-forms.beehiiv.com/cf754d78-cdfe-42b5-8bd0-2c612adde1f2"
+                className="beehiiv-embed"
+                data-test-id="beehiiv-embed"
+                frameBorder="0"
+                scrolling="no"
+                style={{
+                  width: "100%",
+                  maxWidth: "400px",
+                  height: "280px",
+                  margin: 0,
+                  borderRadius: "8px",
+                  backgroundColor: "transparent",
+                  boxShadow: "none"
+                }}
+              />
             </div>
           </div>
 
