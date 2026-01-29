@@ -1,72 +1,98 @@
 
 
-## Datenschutz-Seite hinzufügen
+## 80/20 Newsletter im Footer integrieren
 
-**Aufgabe**: Eine neue Datenschutz-Seite mit grundlegenden Datenschutzinformationen erstellen und den Footer-Link aktualisieren.
+**Aufgabe**: Eine Newsletter-Anmeldung mit dem Beehiiv-Formular im Footer hinzufügen.
 
-### Übersicht der Änderungen
+### Übersicht
 
-1. **Neue Seite erstellen**: `src/pages/Datenschutz.tsx`
-2. **Route hinzufügen**: In `src/App.tsx` die neue Route `/datenschutz` registrieren
-3. **Footer aktualisieren**: Den Datenschutz-Link von `#` zu `/datenschutz` ändern
+Der Footer wird von einem 2-Spalten-Layout auf ein 3-Spalten-Layout erweitert, um die Newsletter-Anmeldung prominent zu platzieren.
 
----
+### Änderung
 
-### Schritt 1: Neue Datenschutz-Seite
+**Datei: `src/components/layout/Footer.tsx`**
 
-**Datei: `src/pages/Datenschutz.tsx`** (neu erstellen)
+**1. useEffect Hook hinzufügen** (für das Beehiiv-Script)
 
-Die Seite folgt dem gleichen Design wie die Impressum-Seite und enthält grundlegende Datenschutzinformationen:
+```typescript
+import { useState, useEffect } from "react";
+```
 
-**Inhalt:**
-- Verantwortlicher (Daveat Cundò, Wetzikon, Schweiz)
-- Erhobene Daten (Kontaktformular: Name, E-Mail, Nachricht)
-- Verwendungszweck
-- Datenweitergabe
-- Deine Rechte (Auskunft, Berichtigung, Löschung)
-- Kontakt für Datenschutzanfragen
+**2. Script laden mit useEffect**
 
----
+```typescript
+useEffect(() => {
+  const script = document.createElement("script");
+  script.src = "https://subscribe-forms.beehiiv.com/embed.js";
+  script.async = true;
+  document.body.appendChild(script);
+  
+  return () => {
+    document.body.removeChild(script);
+  };
+}, []);
+```
 
-### Schritt 2: Route registrieren
-
-**Datei: `src/App.tsx`**
-
-- Import der neuen Datenschutz-Komponente hinzufügen
-- Route `/datenschutz` vor der Catch-All-Route einfügen
-
----
-
-### Schritt 3: Footer-Link aktualisieren
-
-**Datei: `src/components/layout/Footer.tsx`** (Zeile 86-88)
+**3. Grid auf 3 Spalten erweitern**
 
 Von:
 ```jsx
-<a href="#" className="hover:text-primary transition-colors">
-  Datenschutz
-</a>
+<div className="grid grid-cols-1 md:grid-cols-2 gap-8 ...">
 ```
 
 Zu:
 ```jsx
-<Link to="/datenschutz" className="hover:text-primary transition-colors">
-  Datenschutz
-</Link>
+<div className="grid grid-cols-1 md:grid-cols-3 gap-8 ...">
+```
+
+**4. Newsletter-Sektion hinzufügen** (zwischen Brand und Kontakt)
+
+```jsx
+{/* Newsletter */}
+<div className="space-y-3 sm:space-y-4 text-center">
+  <h4 className="text-base sm:text-lg font-semibold">80/20 Newsletter</h4>
+  <p className="text-sm text-muted-foreground">
+    Praktische Tipps für nachhaltige Gesundheit.
+  </p>
+  <div className="flex justify-center">
+    <iframe
+      src="https://subscribe-forms.beehiiv.com/cf754d78-cdfe-42b5-8bd0-2c612adde1f2"
+      className="beehiiv-embed"
+      data-test-id="beehiiv-embed"
+      frameBorder="0"
+      scrolling="no"
+      style={{
+        width: "100%",
+        maxWidth: "400px",
+        height: "280px",
+        margin: 0,
+        borderRadius: "8px",
+        backgroundColor: "transparent",
+        boxShadow: "none"
+      }}
+    />
+  </div>
+</div>
 ```
 
 ---
 
+### Layout-Änderung
+
+| Vorher | Nachher |
+|--------|---------|
+| 2 Spalten: Brand + Kontakt | 3 Spalten: Brand + Newsletter + Kontakt |
+| `md:grid-cols-2` | `md:grid-cols-3` |
+
 ### Technische Details
 
-| Datei | Aktion |
-|-------|--------|
-| `src/pages/Datenschutz.tsx` | Neu erstellen |
-| `src/App.tsx` | Import + Route hinzufügen |
-| `src/components/layout/Footer.tsx` | Link zu `/datenschutz` ändern |
+- **Beehiiv Script**: Wird dynamisch via `useEffect` geladen und beim Unmount entfernt
+- **iframe-Styling**: Responsive angepasst (100% Breite, max 400px) für Mobile-Kompatibilität
+- **Höhe reduziert**: Von 339px auf 280px für bessere Proportionen im Footer
 
 ### Ergebnis
-- Klick auf "Datenschutz" im Footer führt zur neuen Datenschutz-Seite
-- Die Seite zeigt grundlegende Datenschutzinformationen auf Deutsch
-- Design passt zum Rest der Website (gleiche Struktur wie Impressum)
+- Newsletter-Anmeldung erscheint prominent im Footer
+- Beehiiv-Formular funktioniert vollständig (E-Mail-Eingabe, Bestätigung)
+- Responsive Design: Auf Mobile stapeln sich alle 3 Sektionen untereinander
+- Passt zum minimalistischen Daveat-Design
 
