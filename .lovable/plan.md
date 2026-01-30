@@ -1,98 +1,62 @@
 
 
-## 80/20 Newsletter im Footer integrieren
+## Newsletter-Formular im Daveat-Design
 
-**Aufgabe**: Eine Newsletter-Anmeldung mit dem Beehiiv-Formular im Footer hinzufügen.
+**Aufgabe**: Das Beehiiv iframe durch ein eigenes, vollständig anpassbares Newsletter-Formular ersetzen, das zum dunklen Daveat-Design passt.
 
-### Übersicht
+### Lösung
 
-Der Footer wird von einem 2-Spalten-Layout auf ein 3-Spalten-Layout erweitert, um die Newsletter-Anmeldung prominent zu platzieren.
+Wir ersetzen das iframe mit einem eigenen Formular, das:
+- Ein E-Mail-Eingabefeld im Daveat-Design hat (dunkler Hintergrund, weisse Schrift, grüner Akzent)
+- Die Anmeldung über eine Backend-Funktion an Beehiiv sendet
+- Erfolgsmeldungen und Fehlerbehandlung enthält
 
-### Änderung
+### Änderungen
 
-**Datei: `src/components/layout/Footer.tsx`**
+**1. Backend-Funktion erstellen: `supabase/functions/newsletter-subscribe/index.ts`**
 
-**1. useEffect Hook hinzufügen** (für das Beehiiv-Script)
+Eine Edge-Funktion, die die E-Mail-Adresse an die Beehiiv API sendet.
 
-```typescript
-import { useState, useEffect } from "react";
+**2. Footer aktualisieren: `src/components/layout/Footer.tsx`**
+
+Das iframe durch ein eigenes Formular ersetzen:
+- E-Mail-Eingabefeld mit schwarzem Hintergrund und weissem Border
+- Button mit grünem Hover-Effekt (wie andere Buttons auf der Seite)
+- Erfolgsmeldung nach Anmeldung
+- Loading-State während der Anmeldung
+
+### Design des neuen Formulars
+
 ```
-
-**2. Script laden mit useEffect**
-
-```typescript
-useEffect(() => {
-  const script = document.createElement("script");
-  script.src = "https://subscribe-forms.beehiiv.com/embed.js";
-  script.async = true;
-  document.body.appendChild(script);
-  
-  return () => {
-    document.body.removeChild(script);
-  };
-}, []);
+┌─────────────────────────────────────┐
+│  80/20 Newsletter                   │
+│  Praktische Tipps für nachhaltige   │
+│  Gesundheit.                        │
+│                                     │
+│  ┌─────────────────────────────┐    │
+│  │ deine@email.ch              │    │
+│  └─────────────────────────────┘    │
+│  ┌─────────────────────────────┐    │
+│  │      Anmelden →             │    │
+│  └─────────────────────────────┘    │
+└─────────────────────────────────────┘
 ```
-
-**3. Grid auf 3 Spalten erweitern**
-
-Von:
-```jsx
-<div className="grid grid-cols-1 md:grid-cols-2 gap-8 ...">
-```
-
-Zu:
-```jsx
-<div className="grid grid-cols-1 md:grid-cols-3 gap-8 ...">
-```
-
-**4. Newsletter-Sektion hinzufügen** (zwischen Brand und Kontakt)
-
-```jsx
-{/* Newsletter */}
-<div className="space-y-3 sm:space-y-4 text-center">
-  <h4 className="text-base sm:text-lg font-semibold">80/20 Newsletter</h4>
-  <p className="text-sm text-muted-foreground">
-    Praktische Tipps für nachhaltige Gesundheit.
-  </p>
-  <div className="flex justify-center">
-    <iframe
-      src="https://subscribe-forms.beehiiv.com/cf754d78-cdfe-42b5-8bd0-2c612adde1f2"
-      className="beehiiv-embed"
-      data-test-id="beehiiv-embed"
-      frameBorder="0"
-      scrolling="no"
-      style={{
-        width: "100%",
-        maxWidth: "400px",
-        height: "280px",
-        margin: 0,
-        borderRadius: "8px",
-        backgroundColor: "transparent",
-        boxShadow: "none"
-      }}
-    />
-  </div>
-</div>
-```
-
----
-
-### Layout-Änderung
-
-| Vorher | Nachher |
-|--------|---------|
-| 2 Spalten: Brand + Kontakt | 3 Spalten: Brand + Newsletter + Kontakt |
-| `md:grid-cols-2` | `md:grid-cols-3` |
 
 ### Technische Details
 
-- **Beehiiv Script**: Wird dynamisch via `useEffect` geladen und beim Unmount entfernt
-- **iframe-Styling**: Responsive angepasst (100% Breite, max 400px) für Mobile-Kompatibilität
-- **Höhe reduziert**: Von 339px auf 280px für bessere Proportionen im Footer
+| Datei | Aktion |
+|-------|--------|
+| `supabase/functions/newsletter-subscribe/index.ts` | Neu erstellen |
+| `src/components/layout/Footer.tsx` | iframe durch eigenes Formular ersetzen |
+
+### Voraussetzung
+
+Du benötigst einen **Beehiiv API-Key** und deine **Publication ID**, um die Anmeldung über die API zu ermöglichen. Diese findest du in deinem Beehiiv-Dashboard unter Settings → Integrations → API.
 
 ### Ergebnis
-- Newsletter-Anmeldung erscheint prominent im Footer
-- Beehiiv-Formular funktioniert vollständig (E-Mail-Eingabe, Bestätigung)
-- Responsive Design: Auf Mobile stapeln sich alle 3 Sektionen untereinander
-- Passt zum minimalistischen Daveat-Design
+
+- Newsletter-Formular passt perfekt zum Daveat-Design
+- Schwarzer Hintergrund, weisse Schrift, grüne Akzente
+- Nutzer bleiben auf deiner Seite (kein iframe, keine Weiterleitung)
+- Vollständige Kontrolle über Aussehen und Verhalten
 
