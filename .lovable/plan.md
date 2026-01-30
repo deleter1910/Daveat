@@ -2,32 +2,34 @@
 
 ## Newsletter-Formular im Daveat-Design
 
-**Aufgabe**: Das Beehiiv iframe durch ein eigenes, vollständig anpassbares Newsletter-Formular ersetzen, das zum dunklen Daveat-Design passt.
+**Aufgabe**: Das Beehiiv iframe durch ein eigenes, vollständig anpassbares Newsletter-Formular ersetzen.
 
-### Lösung
-
-Wir ersetzen das iframe mit einem eigenen Formular, das:
-- Ein E-Mail-Eingabefeld im Daveat-Design hat (dunkler Hintergrund, weisse Schrift, grüner Akzent)
-- Die Anmeldung über eine Backend-Funktion an Beehiiv sendet
-- Erfolgsmeldungen und Fehlerbehandlung enthält
-
-### Änderungen
+### Umsetzung
 
 **1. Backend-Funktion erstellen: `supabase/functions/newsletter-subscribe/index.ts`**
 
-Eine Edge-Funktion, die die E-Mail-Adresse an die Beehiiv API sendet.
+Die Funktion:
+- Nimmt eine E-Mail-Adresse entgegen
+- Sendet sie an die Beehiiv API
+- Gibt Erfolg oder Fehler zurück
+- Prüft, ob die API-Keys konfiguriert sind
 
 **2. Footer aktualisieren: `src/components/layout/Footer.tsx`**
 
-Das iframe durch ein eigenes Formular ersetzen:
-- E-Mail-Eingabefeld mit schwarzem Hintergrund und weissem Border
-- Button mit grünem Hover-Effekt (wie andere Buttons auf der Seite)
-- Erfolgsmeldung nach Anmeldung
+Das iframe wird ersetzt durch:
+- E-Mail-Eingabefeld (schwarzer Hintergrund, weisser Border)
+- "Anmelden" Button mit grünem Hover-Effekt
 - Loading-State während der Anmeldung
+- Erfolgsmeldung nach erfolgreicher Anmeldung
+- Fehlermeldung bei Problemen
 
-### Design des neuen Formulars
+**3. Supabase-Konfiguration: `supabase/config.toml`**
 
-```
+Die neue Funktion registrieren mit `verify_jwt = false` (öffentlich zugänglich).
+
+### Design
+
+```text
 ┌─────────────────────────────────────┐
 │  80/20 Newsletter                   │
 │  Praktische Tipps für nachhaltige   │
@@ -48,15 +50,19 @@ Das iframe durch ein eigenes Formular ersetzen:
 |-------|--------|
 | `supabase/functions/newsletter-subscribe/index.ts` | Neu erstellen |
 | `src/components/layout/Footer.tsx` | iframe durch eigenes Formular ersetzen |
+| `supabase/config.toml` | Funktion registrieren |
 
-### Voraussetzung
+### API-Keys später hinzufügen
 
-Du benötigst einen **Beehiiv API-Key** und deine **Publication ID**, um die Anmeldung über die API zu ermöglichen. Diese findest du in deinem Beehiiv-Dashboard unter Settings → Integrations → API.
+Wenn du die Beehiiv-Zugangsdaten hast:
+1. Öffne Lovable Cloud (Backend-Einstellungen)
+2. Füge hinzu: `BEEHIIV_API_KEY` und `BEEHIIV_PUBLICATION_ID`
+3. Das Formular funktioniert dann automatisch
 
 ### Ergebnis
 
 - Newsletter-Formular passt perfekt zum Daveat-Design
 - Schwarzer Hintergrund, weisse Schrift, grüne Akzente
-- Nutzer bleiben auf deiner Seite (kein iframe, keine Weiterleitung)
+- Nutzer bleiben auf deiner Seite
 - Vollständige Kontrolle über Aussehen und Verhalten
 
