@@ -1,102 +1,50 @@
 
 
-## Scroll-to-Top Button und Foto-Platzhalter
+## Foto für die "Über mich"-Seite einfügen
 
-### Übersicht
+**Aufgabe**: Dein Foto im Platzhalter auf der "Über mich"-Seite einfügen.
 
-Zwei Verbesserungen werden implementiert:
-1. Ein "Scroll-to-Top"-Button, der erscheint, wenn man nach unten scrollt
-2. Ein Foto-Platzhalter auf der "Über mich"-Seite
+### Umsetzung
 
----
+**1. Bild in das Projekt kopieren**
 
-### 1. Scroll-to-Top Button
+Das hochgeladene Bild wird in den `src/assets`-Ordner kopiert:
+- `user-uploads://IMG_5858-2.jpeg` → `src/assets/dave-photo.jpeg`
 
-**Neue Komponente: `src/components/layout/ScrollToTop.tsx`**
+**2. About-Seite aktualisieren: `src/pages/About.tsx`**
 
-Ein Button, der:
-- Erst erscheint, wenn man mindestens 400px nach unten gescrollt hat
-- Unten rechts fixiert ist
-- Beim Klick sanft nach oben scrollt
-- Im Daveat-Design gestaltet ist (runder Button mit grünem Hover-Effekt)
-- Eine sanfte Ein-/Ausblendanimation hat
-
-```text
-Design:
-┌──────────────────────────────────┐
-│                                  │
-│                                  │
-│                                  │
-│                                  │
-│                          ┌───┐   │
-│                          │ ↑ │   │  <-- Runder Button,
-│                          └───┘   │      unten rechts fixiert
-└──────────────────────────────────┘
-```
-
-**Integration in Layout.tsx**
-
-Der Button wird global im Layout eingebunden, sodass er auf allen Seiten verfügbar ist.
-
----
-
-### 2. Foto-Platzhalter auf "Über mich"
-
-**Datei: `src/pages/About.tsx`**
-
-Zwischen der Hero-Section und der Story-Section wird ein Foto-Bereich eingefügt:
-- Rundes Bild (passend zum modernen Daveat-Design)
-- Grüner Akzent-Rahmen
-- Platzhalter-Icon, bis das echte Foto hochgeladen wird
-
-```text
-Layout:
-┌──────────────────────────────────┐
-│  Kein Fitness-Guru.              │
-│  Sondern dein Stratege...        │
-│                                  │
-│         ┌─────────┐              │
-│         │         │              │
-│         │  FOTO   │  <-- Runder Platzhalter
-│         │         │              │
-│         └─────────┘              │
-│                                  │
-│  "Ich habe Daveat gegründet..."  │
-└──────────────────────────────────┘
-```
-
----
+Der User-Icon-Platzhalter wird durch dein Foto ersetzt:
+- Das Bild wird als ES6-Modul importiert
+- Der runde Rahmen mit grünem Akzent bleibt erhalten
+- `object-cover` sorgt für optimale Bilddarstellung im runden Format
+- Der `User`-Icon-Import kann entfernt werden
 
 ### Technische Details
 
 | Datei | Aktion |
 |-------|--------|
-| `src/components/layout/ScrollToTop.tsx` | Neu erstellen |
-| `src/components/layout/Layout.tsx` | ScrollToTop-Komponente einbinden |
-| `src/pages/About.tsx` | Foto-Platzhalter hinzufügen |
+| `src/assets/dave-photo.jpeg` | Bild speichern |
+| `src/pages/About.tsx` | Platzhalter durch echtes Foto ersetzen |
 
-### Scroll-to-Top Logik
+### Code-Änderung
 
-```typescript
-// Pseudo-Code
-const [isVisible, setIsVisible] = useState(false);
+```tsx
+// Import hinzufügen
+import davePhoto from "@/assets/dave-photo.jpeg";
 
-useEffect(() => {
-  const toggleVisibility = () => {
-    setIsVisible(window.scrollY > 400);
-  };
-  window.addEventListener("scroll", toggleVisibility);
-  return () => window.removeEventListener("scroll", toggleVisibility);
-}, []);
-
-const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
+// Im JSX: Icon durch Bild ersetzen
+<div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full border-2 border-primary/30 bg-card overflow-hidden">
+  <img 
+    src={davePhoto} 
+    alt="Dave - Daveat Gründer"
+    className="w-full h-full object-cover"
+  />
+</div>
 ```
 
 ### Ergebnis
 
-- Scroll-to-Top Button erscheint auf allen Seiten beim Scrollen
-- Foto-Platzhalter auf der About-Seite bereit für dein Bild
-- Beide Elemente im Daveat-Design (dunkel, grüne Akzente, runde Formen)
+- Dein Foto erscheint im runden Rahmen mit grünem Akzent-Glow
+- Professionelle Darstellung passend zum Daveat-Design
+- Optimale Bildqualität durch Vite-Bundling
 
