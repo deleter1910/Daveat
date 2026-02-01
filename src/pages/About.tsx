@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
-import { ArrowRight, Heart, Leaf, HandHeart } from "lucide-react";
+import { ArrowRight, Heart, Leaf, HandHeart, User } from "lucide-react";
 
 const values = [
   {
@@ -38,8 +38,25 @@ export default function About() {
         </div>
       </section>
 
+      {/* Photo Section */}
+      <section className="section-padding pt-0 pb-8">
+        <div className="container mx-auto">
+          <div className="flex justify-center">
+            <div className="relative">
+              {/* Green accent ring */}
+              <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary/40 to-primary/10 blur-sm" />
+              {/* Photo placeholder */}
+              <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full border-2 border-primary/30 bg-card flex items-center justify-center overflow-hidden">
+                {/* Replace this div with an img tag when you have the photo */}
+                <User className="w-20 h-20 md:w-28 md:h-28 text-muted-foreground" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Story Section */}
-      <section className="section-padding pt-0">
+      <section className="section-padding pt-8">
         <div className="container mx-auto">
           <div className="max-w-4xl">
             <div className="space-y-8">
