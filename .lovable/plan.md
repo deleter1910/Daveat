@@ -1,68 +1,102 @@
 
 
-## Newsletter-Formular im Daveat-Design
+## Scroll-to-Top Button und Foto-Platzhalter
 
-**Aufgabe**: Das Beehiiv iframe durch ein eigenes, vollständig anpassbares Newsletter-Formular ersetzen.
+### Übersicht
 
-### Umsetzung
+Zwei Verbesserungen werden implementiert:
+1. Ein "Scroll-to-Top"-Button, der erscheint, wenn man nach unten scrollt
+2. Ein Foto-Platzhalter auf der "Über mich"-Seite
 
-**1. Backend-Funktion erstellen: `supabase/functions/newsletter-subscribe/index.ts`**
+---
 
-Die Funktion:
-- Nimmt eine E-Mail-Adresse entgegen
-- Sendet sie an die Beehiiv API
-- Gibt Erfolg oder Fehler zurück
-- Prüft, ob die API-Keys konfiguriert sind
+### 1. Scroll-to-Top Button
 
-**2. Footer aktualisieren: `src/components/layout/Footer.tsx`**
+**Neue Komponente: `src/components/layout/ScrollToTop.tsx`**
 
-Das iframe wird ersetzt durch:
-- E-Mail-Eingabefeld (schwarzer Hintergrund, weisser Border)
-- "Anmelden" Button mit grünem Hover-Effekt
-- Loading-State während der Anmeldung
-- Erfolgsmeldung nach erfolgreicher Anmeldung
-- Fehlermeldung bei Problemen
-
-**3. Supabase-Konfiguration: `supabase/config.toml`**
-
-Die neue Funktion registrieren mit `verify_jwt = false` (öffentlich zugänglich).
-
-### Design
+Ein Button, der:
+- Erst erscheint, wenn man mindestens 400px nach unten gescrollt hat
+- Unten rechts fixiert ist
+- Beim Klick sanft nach oben scrollt
+- Im Daveat-Design gestaltet ist (runder Button mit grünem Hover-Effekt)
+- Eine sanfte Ein-/Ausblendanimation hat
 
 ```text
-┌─────────────────────────────────────┐
-│  80/20 Newsletter                   │
-│  Praktische Tipps für nachhaltige   │
-│  Gesundheit.                        │
-│                                     │
-│  ┌─────────────────────────────┐    │
-│  │ deine@email.ch              │    │
-│  └─────────────────────────────┘    │
-│  ┌─────────────────────────────┐    │
-│  │      Anmelden →             │    │
-│  └─────────────────────────────┘    │
-└─────────────────────────────────────┘
+Design:
+┌──────────────────────────────────┐
+│                                  │
+│                                  │
+│                                  │
+│                                  │
+│                          ┌───┐   │
+│                          │ ↑ │   │  <-- Runder Button,
+│                          └───┘   │      unten rechts fixiert
+└──────────────────────────────────┘
 ```
+
+**Integration in Layout.tsx**
+
+Der Button wird global im Layout eingebunden, sodass er auf allen Seiten verfügbar ist.
+
+---
+
+### 2. Foto-Platzhalter auf "Über mich"
+
+**Datei: `src/pages/About.tsx`**
+
+Zwischen der Hero-Section und der Story-Section wird ein Foto-Bereich eingefügt:
+- Rundes Bild (passend zum modernen Daveat-Design)
+- Grüner Akzent-Rahmen
+- Platzhalter-Icon, bis das echte Foto hochgeladen wird
+
+```text
+Layout:
+┌──────────────────────────────────┐
+│  Kein Fitness-Guru.              │
+│  Sondern dein Stratege...        │
+│                                  │
+│         ┌─────────┐              │
+│         │         │              │
+│         │  FOTO   │  <-- Runder Platzhalter
+│         │         │              │
+│         └─────────┘              │
+│                                  │
+│  "Ich habe Daveat gegründet..."  │
+└──────────────────────────────────┘
+```
+
+---
 
 ### Technische Details
 
 | Datei | Aktion |
 |-------|--------|
-| `supabase/functions/newsletter-subscribe/index.ts` | Neu erstellen |
-| `src/components/layout/Footer.tsx` | iframe durch eigenes Formular ersetzen |
-| `supabase/config.toml` | Funktion registrieren |
+| `src/components/layout/ScrollToTop.tsx` | Neu erstellen |
+| `src/components/layout/Layout.tsx` | ScrollToTop-Komponente einbinden |
+| `src/pages/About.tsx` | Foto-Platzhalter hinzufügen |
 
-### API-Keys später hinzufügen
+### Scroll-to-Top Logik
 
-Wenn du die Beehiiv-Zugangsdaten hast:
-1. Öffne Lovable Cloud (Backend-Einstellungen)
-2. Füge hinzu: `BEEHIIV_API_KEY` und `BEEHIIV_PUBLICATION_ID`
-3. Das Formular funktioniert dann automatisch
+```typescript
+// Pseudo-Code
+const [isVisible, setIsVisible] = useState(false);
+
+useEffect(() => {
+  const toggleVisibility = () => {
+    setIsVisible(window.scrollY > 400);
+  };
+  window.addEventListener("scroll", toggleVisibility);
+  return () => window.removeEventListener("scroll", toggleVisibility);
+}, []);
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+```
 
 ### Ergebnis
 
-- Newsletter-Formular passt perfekt zum Daveat-Design
-- Schwarzer Hintergrund, weisse Schrift, grüne Akzente
-- Nutzer bleiben auf deiner Seite
-- Vollständige Kontrolle über Aussehen und Verhalten
+- Scroll-to-Top Button erscheint auf allen Seiten beim Scrollen
+- Foto-Platzhalter auf der About-Seite bereit für dein Bild
+- Beide Elemente im Daveat-Design (dunkel, grüne Akzente, runde Formen)
 
