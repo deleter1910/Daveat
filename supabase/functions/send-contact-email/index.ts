@@ -9,7 +9,7 @@ const TURNSTILE_SECRET_KEY = Deno.env.get("TURNSTILE_SECRET_KEY");
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
+    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
 // Rate limiting configuration
@@ -207,8 +207,35 @@ const handler = async (req: Request): Promise<Response> => {
       // Silently ignore if table doesn't exist
     }
 
-    // Send email via Resend API with HTML-escaped content
-    const res = await fetch("https://api.resend.com/emails", {
+    // Send notification email to hello@daveat.ch
+    const notificationRes = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: "Daveat Kontaktformular <onboarding@resend.dev>",
+        to: ["hello@daveat.ch"],
+        subject: `Neue Kontaktanfrage von ${name}`,
+        html: `
+          <h2>Neue Kontaktanfrage</h2>
+          <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+          <p><strong>E-Mail:</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
+          <p><strong>Nachricht:</strong></p>
+          <p style="white-space: pre-wrap;">${escapeHtml(message)}</p>
+        `,
+      }),
+    });
+
+    if (!notificationRes.ok) {
+      const errorText = await notificationRes.text();
+      console.error("Resend API error (notification):", notificationRes.status, errorText);
+      throw new Error("Failed to send notification email");
+    }
+
+    // Send confirmation email to the sender
+    const confirmationRes = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -217,15 +244,20 @@ const handler = async (req: Request): Promise<Response> => {
       body: JSON.stringify({
         from: "Daveat <onboarding@resend.dev>",
         to: [email],
-        subject: "We received your message!",
-        html: `<h1>Thank you, ${escapeHtml(name)}!</h1><p>We received your message about "${escapeHtml(subject || 'Contact Form Submission')}" and will respond soon.</p>`,
+        subject: "Danke für deine Nachricht!",
+        html: `
+          <h1>Hallo ${escapeHtml(name)}!</h1>
+          <p>Danke für deine Nachricht. Ich melde mich so schnell wie möglich bei dir.</p>
+          <p>Beste Grüsse,<br>Dave</p>
+        `,
       }),
     });
 
-    if (!res.ok) {
-      const errorText = await res.text();
-      console.error("Resend API error:", res.status, errorText);
-      throw new Error("Failed to send email");
+    if (!confirmationRes.ok) {
+      const errorText = await confirmationRes.text();
+      console.error("Resend API error (confirmation):", confirmationRes.status, errorText);
+      // Don't throw here - notification already sent successfully
+      console.log("Notification sent but confirmation failed");
     }
 
     return new Response(JSON.stringify({ success: true }), {
