@@ -98,23 +98,38 @@ export default function Index() {
       <section className="section-padding min-h-[90vh] flex items-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
         <div className="container mx-auto relative max-w-full overflow-hidden">
-        <div className="max-w-5xl">
-            <h1 className="heading-xl mb-8 animate-fade-in-up break-words hyphens-auto max-w-full">
-              Jede gescheiterte Diät macht die nächste schwieriger.
-              <span className="text-primary block sm:inline"> Brechen wir diesen Kreislauf.</span>
-            </h1>
-            <p className="text-body max-w-2xl mb-12 animate-fade-in-up" style={{
-            animationDelay: "0.1s"
-          }}>
-              Du brauchst keine neue Diät. Du brauchst eine Strategie, die mit deinem Leben funktioniert – nicht dagegen.
-            </p>
-            <div className="flex flex-wrap gap-4 animate-fade-in-up" style={{
-            animationDelay: "0.3s"
-          }}>
-              
-              <Link to="/about" className="btn-outline">
-                Über mich
-              </Link>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-5xl">
+              <h1 className="heading-xl mb-8 animate-fade-in-up break-words hyphens-auto max-w-full">
+                Jede gescheiterte Diät macht die nächste schwieriger.
+                <span className="text-primary block sm:inline"> Brechen wir diesen Kreislauf.</span>
+              </h1>
+              <p className="text-body max-w-2xl mb-12 animate-fade-in-up" style={{
+              animationDelay: "0.1s"
+            }}>
+                Du brauchst keine neue Diät. Du brauchst eine Strategie, die mit deinem Leben funktioniert – nicht dagegen.
+              </p>
+              <div className="flex flex-wrap gap-4 animate-fade-in-up" style={{
+              animationDelay: "0.3s"
+            }}>
+
+                <Link to="/about" className="btn-outline">
+                  Über mich
+                </Link>
+              </div>
+            </div>
+            <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+              <div className="rounded-2xl overflow-hidden shadow-2xl">
+                <video
+                  className="w-full aspect-video"
+                  controls
+                  preload="metadata"
+                  playsInline
+                >
+                  <source src="/daveat-service-video-v5.mp4" type="video/mp4" />
+                  Dein Browser unterstützt kein Video.
+                </video>
+              </div>
             </div>
           </div>
         </div>
