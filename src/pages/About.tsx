@@ -1,6 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
-import { ArrowRight, Heart, Leaf, HandHeart, User } from "lucide-react";
+import { ArrowRight, Heart, Leaf, HandHeart } from "lucide-react";
+import davePhoto from "@/assets/dave-photo.jpeg";
 
 const values = [
   {
@@ -46,9 +47,12 @@ export default function About() {
               {/* Green accent ring */}
               <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary/40 to-primary/10 blur-sm" />
               {/* Photo placeholder */}
-              <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full border-2 border-primary/30 bg-card flex items-center justify-center overflow-hidden">
-                {/* Replace this div with an img tag when you have the photo */}
-                <User className="w-20 h-20 md:w-28 md:h-28 text-muted-foreground" />
+              <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full border-2 border-primary/30 bg-card overflow-hidden">
+                <img 
+                  src={davePhoto} 
+                  alt="Dave - Daveat Gründer"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
