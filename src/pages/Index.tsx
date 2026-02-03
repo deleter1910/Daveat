@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { ArrowRight, Battery, Scale, Shield, Clock, Frown, Users, Target, Sparkles } from "lucide-react";
@@ -93,6 +94,27 @@ const pricingOptions = [{
   ctaLink: "/contact"
 }];
 export default function Index() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.muted = false;
+        } else {
+          video.muted = true;
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   return <Layout>
       {/* Section 1: Hero */}
       <section className="section-padding min-h-[90vh] flex items-center relative overflow-hidden">
@@ -121,9 +143,11 @@ export default function Index() {
             <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <video
+                  ref={videoRef}
                   className="w-full aspect-video"
-                  controls
-                  preload="metadata"
+                  autoPlay
+                  muted
+                  loop
                   playsInline
                 >
                   <source src="/daveat-service-video-v5.mp4" type="video/mp4" />
