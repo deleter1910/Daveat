@@ -100,15 +100,20 @@ export default function Index() {
     const video = videoRef.current;
     if (!video) return;
 
+    // Autoplay-Fallback: manche Browser blockieren autoplay
+    video.play().catch(() => {
+      // Autoplay blockiert — wird beim Scrollen in den Viewport erneut versucht
+    });
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          video.muted = false;
+          video.play().catch(() => {});
         } else {
-          video.muted = true;
+          video.pause();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
     observer.observe(video);
