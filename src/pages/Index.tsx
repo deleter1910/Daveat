@@ -125,41 +125,43 @@ export default function Index() {
       <section className="section-padding min-h-[90vh] flex items-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
         <div className="container mx-auto relative max-w-full overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-6 lg:mb-8 animate-fade-in-up break-words hyphens-auto">
-                Jede gescheiterte Diät macht die nächste schwieriger.
-                <span className="text-primary block mt-2"> Brechen wir diesen Kreislauf.</span>
-              </h1>
-              <p className="text-body max-w-2xl mb-8 lg:mb-12 animate-fade-in-up" style={{
+          <div className="max-w-4xl">
+            <h1 className="heading-xl mb-6 lg:mb-8 animate-fade-in-up break-words hyphens-auto">
+              Jede gescheiterte Diät macht die nächste schwieriger.
+              <span className="text-primary block mt-2"> Brechen wir diesen Kreislauf.</span>
+            </h1>
+            <p className="text-body max-w-2xl mb-8 lg:mb-12 animate-fade-in-up" style={{
               animationDelay: "0.1s"
             }}>
-                Du brauchst keine neue Diät. Du brauchst eine Strategie, die mit deinem Leben funktioniert – nicht dagegen.
-              </p>
-              <div className="flex flex-wrap gap-4 animate-fade-in-up" style={{
+              Du brauchst keine neue Diät. Du brauchst eine Strategie, die mit deinem Leben funktioniert – nicht dagegen.
+            </p>
+            <div className="flex flex-wrap gap-4 animate-fade-in-up" style={{
               animationDelay: "0.3s"
             }}>
-                <Link to="/about" className="btn-outline">
-                  Über mich
-                </Link>
-              </div>
+              <Link to="/about" className="btn-outline">
+                Über mich
+              </Link>
             </div>
-            <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-              <div className="rounded-2xl overflow-hidden shadow-2xl bg-card">
-                <video
-                  ref={videoRef}
-                  className="w-full aspect-video object-cover"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="auto"
-                >
-                  <source src="/daveat-service-video-v5.mp4" type="video/mp4" />
-                  Dein Browser unterstützt kein Video.
-                </video>
-              </div>
-            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Hero Video */}
+      <section className="px-4 sm:px-6 md:px-12 lg:px-24 pb-16 sm:pb-20 md:pb-24">
+        <div className="container mx-auto max-w-full">
+          <div className="rounded-2xl overflow-hidden shadow-2xl bg-card animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+            <video
+              ref={videoRef}
+              className="w-full aspect-video object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+            >
+              <source src="/daveat-service-video-v5.mp4" type="video/mp4" />
+              Dein Browser unterstützt kein Video.
+            </video>
           </div>
         </div>
       </section>
