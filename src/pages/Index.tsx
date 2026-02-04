@@ -1,7 +1,7 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
-import { ArrowRight, Battery, Scale, Shield, Clock, Frown, Users, Target, Sparkles } from "lucide-react";
+import { ArrowRight, Battery, Scale, Shield, Clock, Frown, Users, Target, Sparkles, Volume2, VolumeX } from "lucide-react";
 import { PainPointCard } from "@/components/landing/PainPointCard";
 import { ProblemDeepeningSection } from "@/components/landing/ProblemDeepeningSection";
 import { AgitateSection } from "@/components/landing/AgitateSection";
@@ -95,6 +95,14 @@ const pricingOptions = [{
 }];
 export default function Index() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const toggleMute = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = !video.muted;
+    setIsMuted(video.muted);
+  };
 
   useEffect(() => {
     const video = videoRef.current;
@@ -149,7 +157,7 @@ export default function Index() {
       {/* Hero Video */}
       <section className="px-4 sm:px-6 md:px-12 lg:px-24 pb-16 sm:pb-20 md:pb-24">
         <div className="container mx-auto max-w-full">
-          <div className="rounded-2xl overflow-hidden shadow-2xl bg-card animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-card animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
             <video
               ref={videoRef}
               className="w-full aspect-video object-cover"
@@ -162,6 +170,13 @@ export default function Index() {
               <source src="/daveat-service-video-v5.mp4" type="video/mp4" />
               Dein Browser unterstützt kein Video.
             </video>
+            <button
+              onClick={toggleMute}
+              className="absolute bottom-4 right-4 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-colors"
+              aria-label={isMuted ? "Ton einschalten" : "Ton ausschalten"}
+            >
+              {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+            </button>
           </div>
         </div>
       </section>
