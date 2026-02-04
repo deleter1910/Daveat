@@ -181,6 +181,24 @@ export default function Index() {
         </div>
       </section>
 
+      {/* CTA after Video */}
+      <section className="px-4 sm:px-6 md:px-12 lg:px-24 pb-16 sm:pb-20 md:pb-24">
+        <div className="container mx-auto max-w-full">
+          <div className="text-center max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-muted-foreground mb-6">
+              Bereit für den ersten Schritt?
+            </p>
+            <Link
+              to="/contact"
+              className="inline-flex items-center px-8 py-4 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all duration-300"
+            >
+              Kostenloses Erstgespräch buchen
+              <ArrowRight className="ml-2" size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Section 2: Problem (Pain Points) */}
       <section className="section-padding bg-card overflow-hidden">
         <div className="container mx-auto max-w-full overflow-hidden">
