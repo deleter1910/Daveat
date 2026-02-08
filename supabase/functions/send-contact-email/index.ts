@@ -28,24 +28,26 @@ interface ContactEmailRequest {
 }
 
 // Verify Turnstile token with Cloudflare
-async function verifyTurnstileToken(token: string, ip: string): Promise<boolean> {
+async function verifyTurnstileToken(token: string): Promise<boolean> {
   if (!TURNSTILE_SECRET_KEY) {
     console.error("TURNSTILE_SECRET_KEY not configured");
     return false;
   }
 
   try {
+    const params: Record<string, string> = {
+      secret: TURNSTILE_SECRET_KEY,
+      response: token,
+    };
+
     const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        secret: TURNSTILE_SECRET_KEY,
-        response: token,
-        remoteip: ip,
-      }),
+      body: new URLSearchParams(params),
     });
 
     const result = await response.json();
+    console.log("Turnstile verification result:", JSON.stringify(result));
     return result.success === true;
   } catch (error) {
     console.error("Turnstile verification error:", error);
@@ -190,7 +192,7 @@ const handler = async (req: Request): Promise<Response> => {
     const { name, email, subject, message, turnstileToken } = validation.data;
 
     // Verify Turnstile CAPTCHA
-    const isTurnstileValid = await verifyTurnstileToken(turnstileToken, clientIp);
+    const isTurnstileValid = await verifyTurnstileToken(turnstileToken);
     if (!isTurnstileValid) {
       return new Response(
         JSON.stringify({ error: "CAPTCHA verification failed. Please try again." }),
@@ -215,7 +217,7 @@ const handler = async (req: Request): Promise<Response> => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "Daveat Kontaktformular <onboarding@resend.dev>",
+        from: "Daveat Kontaktformular <hello@daveat.ch>",
         to: ["hello@daveat.ch"],
         subject: `Neue Kontaktanfrage von ${name}`,
         html: `
@@ -242,7 +244,7 @@ const handler = async (req: Request): Promise<Response> => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "Daveat <onboarding@resend.dev>",
+        from: "Daveat <hello@daveat.ch>",
         to: [email],
         subject: "Danke für deine Nachricht!",
         html: `

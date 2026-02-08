@@ -11,6 +11,7 @@ export default function Contact() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [turnstileKey, setTurnstileKey] = useState(0);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -62,7 +63,14 @@ export default function Contact() {
         body: { ...formData, turnstileToken },
       });
 
-      if (error) throw error;
+      if (error) {
+        let errorMessage = "Etwas ist schiefgelaufen. Bitte versuche es erneut.";
+        try {
+          const errorData = JSON.parse(error.context);
+          errorMessage = errorData.error || errorMessage;
+        } catch {}
+        throw new Error(errorMessage);
+      }
 
       toast({
         title: "Nachricht gesendet!",
@@ -75,12 +83,15 @@ export default function Contact() {
         message: "",
       });
       setTurnstileToken(null);
+      setTurnstileKey((k) => k + 1);
     } catch (error: any) {
       toast({
         title: "Fehler",
         description: error.message || "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
         variant: "destructive",
       });
+      setTurnstileToken(null);
+      setTurnstileKey((k) => k + 1);
     } finally {
       setIsSubmitting(false);
     }
@@ -168,6 +179,7 @@ export default function Contact() {
                 {/* Turnstile CAPTCHA Widget */}
                 <div className="py-2">
                   <TurnstileWidget
+                    key={turnstileKey}
                     siteKey={TURNSTILE_SITE_KEY}
                     onVerify={handleTurnstileVerify}
                     onError={handleTurnstileError}
@@ -199,7 +211,7 @@ export default function Contact() {
             <div className="mt-8 text-center">
               <div className="inline-flex items-center gap-3 text-muted-foreground">
                 <Mail className="text-primary" size={18} />
-                <span>hello@daveat.com</span>
+                <span>hello@daveat.ch</span>
               </div>
             </div>
           </div>
