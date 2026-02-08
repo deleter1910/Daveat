@@ -1,7 +1,10 @@
-import { useRef, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useCallback } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
-import { ArrowRight, Battery, Scale, Shield, Clock, Frown, Users, Target, Sparkles, Volume2, VolumeX } from "lucide-react";
+import { ArrowRight, Battery, Scale, Shield, Clock, Frown, Users, Target, Sparkles, Check, Loader2 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { TurnstileWidget } from "@/components/TurnstileWidget";
 import { PainPointCard } from "@/components/landing/PainPointCard";
 import { ProblemDeepeningSection } from "@/components/landing/ProblemDeepeningSection";
 import { AgitateSection } from "@/components/landing/AgitateSection";
@@ -11,6 +14,8 @@ import { TestimonialCard } from "@/components/landing/TestimonialCard";
 import { StepCard } from "@/components/landing/StepCard";
 import { PricingCard } from "@/components/landing/PricingCard";
 import { FAQSection } from "@/components/landing/FAQSection";
+
+const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY || "";
 const painPoints = [{
   icon: Scale,
   title: "Über CHF 1'000 pro Jahr",
@@ -94,107 +99,171 @@ const pricingOptions = [{
   ctaLink: "/contact"
 }];
 export default function Index() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isMuted, setIsMuted] = useState(true);
+  const { toast } = useToast();
+  const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    email: "",
+  });
 
-  const toggleMute = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.muted = !video.muted;
-    setIsMuted(video.muted);
-  };
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Autoplay-Fallback: manche Browser blockieren autoplay
-    video.play().catch(() => {
-      // Autoplay blockiert — wird beim Scrollen in den Viewport erneut versucht
-    });
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(video);
-    return () => observer.disconnect();
+  const handleTurnstileVerify = useCallback((token: string) => {
+    setTurnstileToken(token);
   }, []);
 
+  const handleTurnstileError = useCallback(() => {
+    setTurnstileToken(null);
+    toast({
+      title: "CAPTCHA Fehler",
+      description: "Bitte lade die Seite neu und versuche es erneut.",
+      variant: "destructive",
+    });
+  }, [toast]);
+
+  const handleTurnstileExpire = useCallback(() => {
+    setTurnstileToken(null);
+  }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!turnstileToken) {
+      toast({
+        title: "CAPTCHA erforderlich",
+        description: "Bitte bestätige, dass du kein Roboter bist.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase.functions.invoke("lead-magnet-subscribe", {
+        body: { ...formData, turnstileToken },
+      });
+
+      if (error) throw error;
+
+      // Redirect to thank you page
+      navigate("/guide-danke");
+    } catch (error: any) {
+      toast({
+        title: "Fehler",
+        description: error.message || "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return <Layout>
-      {/* Section 1: Hero */}
+      {/* Section 1: Hero with Lead Magnet Opt-in */}
       <section className="section-padding min-h-[90vh] flex items-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
         <div className="container mx-auto relative max-w-full overflow-hidden">
-          <div className="max-w-4xl">
-            <h1 className="heading-xl mb-6 lg:mb-8 animate-fade-in-up break-words hyphens-auto">
-              Jede gescheiterte Diät macht die nächste schwieriger.
-              <span className="text-primary block mt-2"> Brechen wir diesen Kreislauf.</span>
-            </h1>
-            <p className="text-body max-w-2xl mb-8 lg:mb-12 animate-fade-in-up" style={{
-              animationDelay: "0.1s"
-            }}>
-              Du brauchst keine neue Diät. Du brauchst eine Strategie, die mit deinem Leben funktioniert – nicht dagegen.
-            </p>
-            <div className="flex flex-wrap gap-4 animate-fade-in-up" style={{
-              animationDelay: "0.3s"
-            }}>
-              <Link to="/about" className="btn-outline">
-                Über mich
-              </Link>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left: Headline & Subheadline */}
+            <div className="max-w-xl">
+              <h1 className="heading-xl mb-6 lg:mb-8 animate-fade-in-up break-words hyphens-auto">
+                Du isst gesund, bist trotzdem müde?{" "}
+                <span className="text-primary">Dann machst du wahrscheinlich einen dieser 5 Fehler.</span>
+              </h1>
+              <p className="text-body max-w-2xl animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+                Finde in 10 Minuten heraus, was dich wirklich blockiert. Der kostenlose Guide für Berufstätige, die keine Lust mehr auf Diäten haben.
+              </p>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Hero Video */}
-      <section className="px-4 sm:px-6 md:px-12 lg:px-24 pb-16 sm:pb-20 md:pb-24">
-        <div className="container mx-auto max-w-full">
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-card animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            <video
-              ref={videoRef}
-              className="w-full aspect-video object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-            >
-              <source src="/daveat-service-video-v5.mp4" type="video/mp4" />
-              Dein Browser unterstützt kein Video.
-            </video>
-            <button
-              onClick={toggleMute}
-              className="absolute bottom-4 right-4 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-colors"
-              aria-label={isMuted ? "Ton einschalten" : "Ton ausschalten"}
-            >
-              {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
-            </button>
-          </div>
-        </div>
-      </section>
+            {/* Right: Opt-in Form */}
+            <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+              <div className="p-6 sm:p-8 rounded-3xl border border-border bg-card">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label htmlFor="firstName" className="block text-sm font-medium mb-2">
+                      Vorname
+                    </label>
+                    <input
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                      placeholder="Dein Vorname"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium mb-2">
+                      E-Mail
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                      placeholder="deine@email.com"
+                    />
+                  </div>
 
-      {/* CTA after Video */}
-      <section className="px-4 sm:px-6 md:px-12 lg:px-24 pb-16 sm:pb-20 md:pb-24">
-        <div className="container mx-auto max-w-full">
-          <div className="text-center max-w-2xl mx-auto">
-            <p className="text-lg sm:text-xl text-muted-foreground mb-6">
-              Bereit für den ersten Schritt?
-            </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center px-8 py-4 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all duration-300"
-            >
-              Kostenloses Erstgespräch buchen
-              <ArrowRight className="ml-2" size={18} />
-            </Link>
+                  {/* Turnstile CAPTCHA */}
+                  <div className="py-2">
+                    <TurnstileWidget
+                      siteKey={TURNSTILE_SITE_KEY}
+                      onVerify={handleTurnstileVerify}
+                      onError={handleTurnstileError}
+                      onExpire={handleTurnstileExpire}
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting || !turnstileToken}
+                    className="w-full px-8 py-4 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 animate-spin" size={18} />
+                        Wird gesendet...
+                      </>
+                    ) : (
+                      <>
+                        Ja, schick mir den Guide
+                        <ArrowRight className="ml-2" size={18} />
+                      </>
+                    )}
+                  </button>
+                </form>
+
+                {/* Trust Elements */}
+                <div className="mt-6 space-y-3">
+                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                    <Check className="text-primary flex-shrink-0" size={16} />
+                    <span>Kostenlos und ohne Verpflichtung</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                    <Shield className="text-primary flex-shrink-0" size={16} />
+                    <span>Kein Spam. Nur wertvolle Inhalte. Jederzeit abmelden.</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                    <Sparkles className="text-primary flex-shrink-0" size={16} />
+                    <span>Über 50kg Gewichtsverlust begleitet – wo Ozempic und andere Coaches scheiterten</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
