@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Mail, Instagram, ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
+import { Mail, Instagram } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { supabase } from "@/integrations/supabase/client";
 import logoWhite from "@/assets/logo-white.png";
 import logoGreen from "@/assets/logo-green.png";
 
@@ -12,38 +11,6 @@ const socialLinks = [
 
 export function Footer() {
   const [isLogoHovered, setIsLogoHovered] = useState(false);
-  const [email, setEmail] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const handleSubscribe = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-    setIsLoading(true);
-
-    try {
-      const { data, error: fnError } = await supabase.functions.invoke('newsletter-subscribe', {
-        body: { email: email.trim() }
-      });
-
-      if (fnError) {
-        throw new Error(fnError.message || 'Anmeldung fehlgeschlagen');
-      }
-
-      if (data?.error) {
-        setError(data.error);
-      } else {
-        setIsSuccess(true);
-        setEmail("");
-      }
-    } catch (err) {
-      console.error('Newsletter subscription error:', err);
-      setError('Ein Fehler ist aufgetreten. Bitte später erneut versuchen.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   return (
     <footer className="bg-card border-t border-border overflow-hidden">
@@ -86,52 +53,8 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Newsletter */}
-          <div className="space-y-3 sm:space-y-4 text-center">
-            <h4 className="text-base sm:text-lg font-semibold">80/20 Newsletter</h4>
-            <p className="text-sm text-muted-foreground">
-              Praktische Tipps für nachhaltige Gesundheit.
-            </p>
-            
-            {isSuccess ? (
-              <div className="flex items-center justify-center gap-2 py-4 text-primary">
-                <CheckCircle2 size={20} />
-                <span className="font-medium">Erfolgreich angemeldet!</span>
-              </div>
-            ) : (
-              <form onSubmit={handleSubscribe} className="flex flex-col gap-3 max-w-xs mx-auto">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="deine@email.ch"
-                  required
-                  disabled={isLoading}
-                  className="w-full px-4 py-3 bg-background border border-border rounded-full text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all disabled:opacity-50"
-                />
-                <button
-                  type="submit"
-                  disabled={isLoading || !email}
-                  className="w-full px-4 py-3 bg-foreground text-background font-medium rounded-full transition-all duration-300 hover:bg-primary hover:text-primary-foreground disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                >
-                  {isLoading ? (
-                    <>
-                      <Loader2 size={18} className="animate-spin" />
-                      <span>Wird angemeldet...</span>
-                    </>
-                  ) : (
-                    <>
-                      <span>Anmelden</span>
-                      <ArrowRight size={18} />
-                    </>
-                  )}
-                </button>
-                {error && (
-                  <p className="text-sm text-destructive text-center">{error}</p>
-                )}
-              </form>
-            )}
-          </div>
+          {/* Middle - Empty spacer */}
+          <div className="hidden md:block" />
 
           {/* Contact & Social */}
           <div className="space-y-3 sm:space-y-4 text-center md:text-right">
