@@ -69,7 +69,7 @@ const testimonials = [{
 const steps = [{
   number: 1,
   title: "Strategie-Gespräch buchen",
-  description: "In 15 Minuten prüfen wir, ob meine Methode zu dir passt. Kostenlos und unverbindlich."
+  description: "In 30 Minuten prüfen wir, ob meine Methode zu dir passt. Kostenlos und unverbindlich."
 }, {
   number: 2,
   title: "Deinen Blueprint erhalten",
@@ -171,21 +171,20 @@ export default function Index() {
       <section className="section-padding min-h-[90vh] flex items-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
         <div className="container mx-auto relative max-w-full overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left: Headline & Subheadline */}
-            <div className="max-w-xl">
-              <h1 className="heading-xl mb-6 lg:mb-8 animate-fade-in-up break-words hyphens-auto">
-                Du isst gesund, bist trotzdem müde?{" "}
-                <span className="text-primary">Dann machst du wahrscheinlich einen dieser 5 Fehler.</span>
-              </h1>
-              <p className="text-body max-w-2xl animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-                Finde in 10 Minuten heraus, was dich wirklich blockiert. Der kostenlose Guide für Berufstätige, die keine Lust mehr auf Diäten haben.
-              </p>
-            </div>
+          {/* Headline & Subheadline - zentriert */}
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <h1 className="heading-xl mb-6 lg:mb-8 animate-fade-in-up break-words hyphens-auto">
+              Du isst gesund, bist trotzdem müde?{" "}
+              <span className="text-primary">Dann machst du wahrscheinlich einen dieser 5 Fehler.</span>
+            </h1>
+            <p className="text-body animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+              Finde in 10 Minuten heraus, was dich wirklich blockiert. Der kostenlose Guide für Berufstätige, die keine Lust mehr auf Diäten haben.
+            </p>
+          </div>
 
-            {/* Right: Opt-in Form */}
-            <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-              <div className="p-6 sm:p-8 rounded-3xl border border-border bg-card">
+          {/* Opt-in Form - unter Headline */}
+          <div className="max-w-md mx-auto animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+            <div className="p-6 sm:p-8 rounded-3xl border border-border bg-card">
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <label htmlFor="firstName" className="block text-sm font-medium mb-2">
@@ -264,7 +263,6 @@ export default function Index() {
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </section>
 
@@ -409,8 +407,8 @@ zusammen</span>
         </div>
       </section>
 
-      {/* Section 7: Pricing */}
-      <section className="section-padding overflow-hidden">
+      {/* Section 7: Pricing - TEMPORARILY HIDDEN */}
+      {/* <section className="section-padding overflow-hidden">
         <div className="container mx-auto max-w-full overflow-hidden">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <p className="text-primary font-medium mb-4 flex items-center justify-center gap-2">
@@ -429,7 +427,7 @@ Diät-Stress<span className="text-primary">Diät-Stress</span>
             {pricingOptions.map((option, i) => <PricingCard key={i} {...option} />)}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Section 8: FAQ */}
       <FAQSection />
@@ -444,7 +442,7 @@ Diät-Stress<span className="text-primary">Diät-Stress</span>
             Lass uns gemeinsam herausfinden, wie du deine Gesundheit zurückgewinnst – ohne deinen Alltag auf den Kopf zu stellen.
           </p>
           <p className="text-primary-foreground/60 mb-10 break-words">
-            15 Minuten · Kostenlos · Unverbindlich
+            30 Minuten · Kostenlos · Unverbindlich
           </p>
           <Link to="/contact" className="inline-flex items-center px-8 py-4 rounded-full bg-background text-foreground font-medium hover:bg-foreground hover:text-background transition-all duration-300">
             Strategie-Gespräch anfragen
