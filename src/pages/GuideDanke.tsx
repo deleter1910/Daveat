@@ -48,10 +48,10 @@ export default function GuideDanke() {
           {/* Hormozi CTA */}
           <div className="bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-4">
-              Willst du nicht warten?
+              Du hast die Fehler erkannt. Was jetzt?
             </h2>
             <p className="text-muted-foreground mb-6">
-              Während dein Guide unterwegs ist: Buche jetzt dein kostenloses Strategiegespräch – und wir starten direkt mit deinem persönlichen Plan.
+              Der Guide zeigt dir, was schiefläuft. Im kostenlosen Gespräch bauen wir deinen persönlichen Plan – einen, der zu deinem Alltag passt.
             </p>
             <p className="text-primary font-medium mb-6">
               Diesen Monat noch 4 Plätze frei.
@@ -60,7 +60,7 @@ export default function GuideDanke() {
               to="/contact"
               className="inline-flex items-center px-8 py-4 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all duration-300"
             >
-              Kostenloses Strategiegespräch buchen
+              Kostenloses Gespräch sichern
               <ArrowRight className="ml-2" size={18} />
             </Link>
           </div>

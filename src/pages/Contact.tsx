@@ -199,7 +199,7 @@ export default function Contact() {
             <div className="mt-8 text-center">
               <div className="inline-flex items-center gap-3 text-muted-foreground">
                 <Mail className="text-primary" size={18} />
-                <span>hello@daveat.com</span>
+                <span>hello@daveat.ch</span>
               </div>
             </div>
           </div>

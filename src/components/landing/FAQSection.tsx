@@ -1,19 +1,19 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 const faqs = [{
   question: "«Ich habe alles versucht. Warum sollte das anders sein?»",
-  answer: "Weil alles, was du versucht hast, externe Regeln aufzwang. Dies schafft innere Eigenverantwortung. Du folgst nicht meinem Plan—du folgst DEINEM Plan, den wir zusammen erstellt haben. Diese psychologische Verschiebung macht den Unterschied."
+  answer: "Weil du bisher immer den Plan von jemand anderem befolgt hast. Hier ist es umgekehrt: Wir bauen gemeinsam DEINEN Plan – einen, der zu deinem Alltag passt. Kein Ernährungsplan aus dem Internet, sondern deine eigenen Regeln. Das ist der Grund, warum es diesmal klappen kann."
 }, {
   question: "«Ich habe keine Zeit dafür.»",
-  answer: "Du verbringst bereits 30-60 Stunden pro Monat mit Schuldgefühlen, Recherchen und mentaler Last. Wir fügen deinem Zeitplan nichts hinzu—wir gewinnen diese Zeit zurück. Ausserdem untergräbst du deine Fähigkeit, für deine Familie da zu sein, indem du dich vernachlässigst. Kannst du es dir leisten, NICHT 90 Minuten zu investieren?"
+  answer: "Versteh ich. Aber mal ehrlich: Wie viel Zeit verbringst du pro Woche damit, dich schlecht zu fühlen, zu googeln oder am Montag wieder von vorne anzufangen? Wir fügen nichts hinzu – wir räumen auf. Ein 90-Minuten-Gespräch kann dir Monate an Hin und Her ersparen."
 }, {
   question: "«Was, wenn ich wieder scheitere?»",
-  answer: "Jede gescheiterte Diät hat dich dich selbst weniger vertrauen lassen. Dieser Ansatz baut dieses Vertrauen wieder auf, indem wir mit kleinen, erreichbaren Veränderungen beginnen, die positive Dynamik schaffen. Wir richten dich nicht auf Perfektion ein—wir richten dich auf nachhaltigen Fortschritt ein."
+  answer: "Das Gefühl kenne ich. Jede gescheiterte Diät kratzt am Selbstvertrauen. Deshalb fangen wir bewusst klein an – so klein, dass du gar nicht scheitern kannst. Und darauf bauen wir auf. Kein Alles-oder-Nichts. Einfach ein nächster Schritt, den du wirklich gehen kannst."
 }, {
   question: "«Wie unterscheidet sich das von einem normalen Gesundheitscoach?»",
-  answer: "Normale Coaches geben dir IHREN Plan. Ich helfe dir, DEINEN Plan zu erstellen. Normale Coaches fordern Perfektion. Ich plane für 80% Erfolg und 20% Freude. Normale Coaches verschwinden nach der Sitzung. Ich bin verfügbar, wenn du tatsächlich Unterstützung brauchst—um 21 Uhr, wenn die Gelüste kommen."
+  answer: "Die meisten Coaches geben dir ihren Plan. Ich helfe dir, deinen eigenen zu bauen. Die meisten fordern Perfektion. Ich plane für 80% Umsetzung und 20% Leben. Und ich bin auch um 21 Uhr da, wenn die Gelüste kommen – nicht nur zur gebuchten Stunde."
 }, {
   question: "«Geht es hier nur um Gewichtsverlust?»",
-  answer: "Gewichtsverlust ist ein Nebenprodukt. Es geht um Energie, Selbstvertrauen, Präsenz und darum, zu werden, wer du sein willst. Klienten gewinnen körperliche Kapazität, mentale Klarheit, Selbstvertrauen und eine bessere Beziehung zum Essen. Die Waage ändert sich, weil sich dein Leben ändert."
+  answer: "Gewicht ist ein Nebeneffekt. Im Kern geht es darum, dass du dich wieder wohl in deinem Körper fühlst. Mehr Energie, besserer Schlaf, weniger Kopfkino ums Essen. Die Waage verändert sich, weil sich dein Alltag verändert – nicht umgekehrt."
 }];
 export function FAQSection() {
   return <section className="section-padding overflow-hidden">

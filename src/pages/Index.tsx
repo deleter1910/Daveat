@@ -52,14 +52,16 @@ const benefits = [{
   title: "Langfristige Ergebnisse",
   description: "Keine Crash-Diät, sondern nachhaltige Gewohnheiten, die nach 90 Tagen zur Routine werden."
 }];
+const featuredTestimonial = {
+  quote: "Mit kleinen aber wichtigen Tipps konnte ich in 16 Monaten 50kg verlieren. Die motivierende Beratung und Begleitung half und hilft mir sehr. Fühle mich so fit wie nie zuvor und werde dafür immer dankbar sein!",
+  name: "Alessandro D.",
+  role: "47, Klient",
+  highlight: "50kg in 16 Monaten",
+};
 const testimonials = [{
   quote: "Nachdem ich den Kampf gegen mein Gewicht aufgegeben hatte, habe ich dank Daveat neue Motivation gefunden, mir selbst etwas Gutes zu tun. Mit seiner Unterstützung habe ich 17 Kilo verloren und fühle mich heute deutlich wohler in meinem Körper.",
   name: "Francesca",
-  role: "35"
-}, {
-  quote: "Mit kleinen aber wichtigen Tipps konnte ich in 16 Monate 50kg verlieren. Die motivierende Beratung und Begleitung half und hilft mir sehr. Fühle mich so fit wie nie zuvor und werde dafür immer dankbar sein!",
-  name: "Alessandro D.",
-  role: "47"
+  role: "35, Klientin"
 }];
 const steps = [{
   number: 1,
@@ -101,11 +103,11 @@ export default function Index() {
         <div className="container mx-auto relative max-w-full overflow-hidden">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="heading-xl mb-6 lg:mb-8 animate-fade-in-up break-words hyphens-auto">
-              Welcher Ernährungs-Typ{" "}
-              <span className="text-primary">bist du?</span>
+              Du isst gesund – und trotzdem{" "}
+              <span className="text-primary">ändert sich nichts?</span>
             </h1>
             <p className="text-body mb-10 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-              Finde in 2 Minuten heraus, was dich wirklich blockiert – und bekomme 3 konkrete Tipps, die sofort umsetzbar sind.
+              In 2 Minuten findest du heraus, welches unsichtbare Muster dich sabotiert. Und was du sofort dagegen tun kannst.
             </p>
 
             <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
@@ -113,7 +115,7 @@ export default function Index() {
                 to="/quiz"
                 className="inline-flex items-center px-10 py-5 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all duration-300 text-lg"
               >
-                Jetzt Quiz starten
+                Meinen Typ herausfinden
                 <ArrowRight className="ml-2" size={20} />
               </Link>
             </div>
@@ -239,7 +241,30 @@ export default function Index() {
               Was meine Klienten <span className="text-primary">sagen</span>
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+
+          {/* Featured Testimonial */}
+          <div className="max-w-3xl mx-auto mb-8">
+            <div className="p-8 sm:p-10 rounded-2xl sm:rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10 text-center">
+              <p className="text-3xl sm:text-4xl font-bold text-primary mb-6">
+                {featuredTestimonial.highlight}
+              </p>
+              <p className="text-base sm:text-lg text-foreground mb-6 leading-relaxed italic">
+                "{featuredTestimonial.quote}"
+              </p>
+              <div className="flex items-center justify-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                  <span className="text-primary font-semibold text-sm">{featuredTestimonial.name.charAt(0)}</span>
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">{featuredTestimonial.name}</p>
+                  <p className="text-sm text-muted-foreground">{featuredTestimonial.role}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Other Testimonials */}
+          <div className="max-w-3xl mx-auto">
             {testimonials.map((testimonial, i) => <TestimonialCard key={i} {...testimonial} />)}
           </div>
         </div>
@@ -296,16 +321,16 @@ Diät-Stress<span className="text-primary">Diät-Stress</span>
       <section className="section-padding bg-primary overflow-hidden">
         <div className="container mx-auto text-center max-w-full overflow-hidden">
           <h2 className="heading-lg text-primary-foreground mb-6 break-words">
-            Bereit für mehr Energie?
+            Du kennst jetzt den Weg.
           </h2>
           <p className="text-lg sm:text-xl text-primary-foreground/80 mb-4 max-w-2xl mx-auto break-words">
-            Lass uns gemeinsam herausfinden, wie du deine Gesundheit zurückgewinnst – ohne deinen Alltag auf den Kopf zu stellen.
+            Lass uns den ersten Schritt zusammen machen. In 30 Minuten prüfen wir, ob meine Methode zu dir passt.
           </p>
           <p className="text-primary-foreground/60 mb-10 break-words">
             30 Minuten · Kostenlos · Unverbindlich
           </p>
           <Link to="/contact" className="inline-flex items-center px-8 py-4 rounded-full bg-background text-foreground font-medium hover:bg-foreground hover:text-background transition-all duration-300">
-            Strategie-Gespräch anfragen
+            Kostenloses Gespräch sichern
             <ArrowRight className="ml-2" size={18} />
           </Link>
         </div>

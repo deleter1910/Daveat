@@ -55,10 +55,10 @@ export function QuizEmailCapture({ onSubmit, isSubmitting }: QuizEmailCapturePro
     <div className="max-w-md mx-auto animate-fade-in-up">
       <div className="text-center mb-8">
         <h2 className="text-2xl sm:text-3xl font-bold mb-3">
-          Fast geschafft!
+          Dein Ergebnis steht fest.
         </h2>
         <p className="text-muted-foreground">
-          Gib deine E-Mail ein, um dein persönliches Ergebnis mit konkreten Tipps zu erhalten.
+          Wir schicken dir deinen persönlichen Typ mit 3 Sofort-Tipps per E-Mail – damit du sie nicht vergisst.
         </p>
       </div>
 
@@ -116,7 +116,7 @@ export function QuizEmailCapture({ onSubmit, isSubmitting }: QuizEmailCapturePro
               </>
             ) : (
               <>
-                Ergebnis anzeigen
+                Mein Ergebnis sichern
                 <ArrowRight className="ml-2" size={18} />
               </>
             )}

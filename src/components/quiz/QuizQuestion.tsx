@@ -43,7 +43,16 @@ export function QuizQuestion({ question, questionIndex, onAnswer }: QuizQuestion
                 : "border-border bg-card hover:border-primary/50 hover:bg-card/80 cursor-pointer"
             }`}
           >
-            <span className="text-sm sm:text-base leading-relaxed">{answer.text}</span>
+            <div className="flex items-start gap-3">
+              <span className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold transition-colors duration-200 ${
+                selectedIndex === i
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-muted text-muted-foreground"
+              }`}>
+                {String.fromCharCode(65 + i)}
+              </span>
+              <span className="text-sm sm:text-base leading-relaxed pt-0.5">{answer.text}</span>
+            </div>
           </button>
         ))}
       </div>

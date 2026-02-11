@@ -113,16 +113,16 @@ export default function Services() {
       <section className="section-padding bg-primary">
         <div className="container mx-auto text-center">
           <h2 className="heading-lg text-primary-foreground mb-6">
-            Bereit für den ersten Schritt?
+            Wann hast du zuletzt etwas für dich getan?
           </h2>
           <p className="text-xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto">
-            Lass uns in einem kurzen Gespräch herausfinden, ob meine Methode zu dir passt.
+            In 15 Minuten finden wir heraus, ob mein Ansatz zu deiner Situation passt. Kein Verkauf, nur Klarheit.
           </p>
           <Link
             to="/contact"
             className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-background text-foreground font-medium transition-all duration-300 hover:bg-foreground hover:text-background"
           >
-            Strategie-Gespräch anfragen
+            Kostenloses Gespräch sichern
             <ArrowRight className="ml-2" size={18} />
           </Link>
         </div>

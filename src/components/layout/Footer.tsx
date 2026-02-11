@@ -6,7 +6,7 @@ import logoWhite from "@/assets/logo-white.png";
 import logoGreen from "@/assets/logo-green.png";
 
 const socialLinks = [
-  { name: "Instagram", icon: Instagram, url: "#" },
+  { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/daveat.ch/" },
 ];
 
 export function Footer() {
@@ -62,7 +62,7 @@ export function Footer() {
             <ul className="space-y-2 sm:space-y-3">
               <li className="flex items-center justify-center md:justify-end gap-2 sm:gap-3 text-sm sm:text-base text-muted-foreground">
                 <Mail size={16} className="text-primary" />
-                <span>hello@daveat.com</span>
+                <span>hello@daveat.ch</span>
               </li>
             </ul>
             <div className="flex gap-3 sm:gap-4 pt-3 sm:pt-4 justify-center md:justify-end">

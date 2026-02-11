@@ -1,7 +1,21 @@
 import { Link, useSearchParams } from "react-router-dom";
-import { ArrowRight, CheckCircle2, Lightbulb, RotateCcw } from "lucide-react";
+import { ArrowRight, Lightbulb, RotateCcw, Flame, Target, Clock, BookOpen } from "lucide-react";
 import { quizTypes, type QuizTypeSlug } from "@/components/quiz/quizData";
 import { QuizHeader } from "@/components/quiz/QuizHeader";
+
+const typeIcons: Record<QuizTypeSlug, typeof Flame> = {
+  "stress-esser": Flame,
+  perfektionist: Target,
+  zeitmangel: Clock,
+  regelbrecher: BookOpen,
+};
+
+const typeCTAs: Record<QuizTypeSlug, string> = {
+  "stress-esser": "Willst du aufhören, Stress runterzuessen?",
+  perfektionist: "Willst du endlich aufhören, bei jedem Fehler alles hinzuwerfen?",
+  zeitmangel: "Willst du einen Plan, der in deinen vollen Alltag passt?",
+  regelbrecher: "Willst du endlich vom Wissen ins Tun kommen?",
+};
 
 export default function QuizErgebnis() {
   const [searchParams] = useSearchParams();
@@ -31,6 +45,9 @@ export default function QuizErgebnis() {
     );
   }
 
+  const TypeIcon = typeIcons[quizType.slug];
+  const ctaHeadline = typeCTAs[quizType.slug];
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <QuizHeader />
@@ -41,7 +58,7 @@ export default function QuizErgebnis() {
           <div className="text-center mb-10 animate-fade-in-up">
             <div className="mb-6 flex justify-center">
               <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center">
-                <CheckCircle2 className="w-10 h-10 text-primary" />
+                <TypeIcon className="w-10 h-10 text-primary" />
               </div>
             </div>
 
@@ -99,10 +116,10 @@ export default function QuizErgebnis() {
             style={{ animationDelay: "0.3s" }}
           >
             <h2 className="text-2xl font-bold mb-4">
-              Bereit, deine Blockade zu lösen?
+              {ctaHeadline}
             </h2>
             <p className="text-muted-foreground mb-6">
-              Tipps sind gut – aber was du als <strong className="text-foreground">{quizType.title}</strong> wirklich brauchst, ist ein persönlicher Plan. Im kostenlosen Strategiegespräch finden wir heraus, welche konkreten Schritte für dich am meisten bewirken.
+              Tipps sind der Anfang – aber was du als <strong className="text-foreground">{quizType.title}</strong> wirklich brauchst, ist ein persönlicher Plan. Im kostenlosen Strategiegespräch finden wir heraus, welche konkreten Schritte für dich am meisten bewirken.
             </p>
             <p className="text-primary font-medium mb-6">
               Diesen Monat noch 4 Plätze frei.
@@ -111,7 +128,7 @@ export default function QuizErgebnis() {
               to="/contact"
               className="inline-flex items-center px-8 py-4 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all duration-300"
             >
-              Kostenloses Strategiegespräch buchen
+              Kostenloses Gespräch sichern
               <ArrowRight className="ml-2" size={18} />
             </Link>
           </div>

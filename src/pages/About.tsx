@@ -59,22 +59,49 @@ export default function About() {
         </div>
       </section>
 
-      {/* Story Section */}
+      {/* Founder Story Section */}
       <section className="section-padding pt-8">
         <div className="container mx-auto">
-          <div className="max-w-4xl">
-            <div className="space-y-8">
-              <div className="p-8 rounded-3xl border border-border bg-card">
-                <p className="text-xl leading-relaxed text-foreground">
-                  "Ich habe Daveat gegründet, weil ich sah, wie viele engagierte Menschen an starren Diät-Vorgaben zerbrechen. Gesundheit ist kein Wettkampf. Es ist die Basis, um im Job und für die Familie da zu sein."
+          <div className="max-w-3xl mx-auto">
+            <div className="space-y-6 text-base sm:text-lg leading-relaxed text-muted-foreground">
+              <p>
+                Ich bin Dave. Und ich sage dir ehrlich: Ich war nie der Typ, der morgens um 5 aufsteht, einen Smoothie trinkt und ins Gym rennt.
+              </p>
+
+              <p>
+                Ich war der Typ, der <span className="text-foreground font-medium">alles über Ernährung wusste</span> — und trotzdem abends auf dem Sofa Chips gegessen hat. Der sich am Montag vorgenommen hat, "ab jetzt alles anders zu machen". Und am Mittwoch wieder bei Pizza gelandet ist.
+              </p>
+
+              <p>
+                <span className="text-foreground font-medium">Das Wissen war nie das Problem.</span> Das Problem war, dass kein einziger Plan zu meinem echten Leben gepasst hat. Nicht zu meinem Stress. Nicht zu meinem Zeitplan. Nicht zu der Art, wie ich tatsächlich funktioniere.
+              </p>
+
+              <div className="p-6 sm:p-8 rounded-2xl border border-primary/20 bg-primary/5 my-8">
+                <p className="text-foreground">
+                  Also habe ich aufgehört, fremde Regeln zu befolgen. Und angefangen, <strong>meine eigenen</strong> zu schreiben. Regeln, die zu meinem Alltag passen. Nicht perfekt — aber machbar. Und plötzlich hat es funktioniert.
                 </p>
               </div>
-              
-              <div className="p-8 rounded-3xl border border-primary/20 bg-primary/5">
-                <p className="text-xl leading-relaxed text-foreground">
-                  "Mein Ansatz ist pragmatisch: Was nicht in deinen Kalender passt, existiert nicht. Ich coache Realität, keine Theorie."
-                </p>
-              </div>
+
+              <p>
+                Heute helfe ich anderen Menschen dabei, genau das Gleiche zu tun. Nicht mit einem weiteren Diätplan. Sondern mit einem System, das <span className="text-foreground font-medium">zu ihrem Leben passt</span> — nicht umgekehrt.
+              </p>
+
+              <p>
+                Mein pragmatischster Grundsatz: <span className="text-primary font-medium">Was nicht in deinen Kalender passt, existiert nicht.</span> Ich coache Realität, keine Theorie.
+              </p>
+            </div>
+
+            {/* Proof Point */}
+            <div className="mt-12 p-6 sm:p-8 rounded-2xl border border-border bg-card">
+              <p className="text-xl sm:text-2xl font-bold text-center mb-4">
+                Das Ergebnis, das mich am meisten bewegt hat:
+              </p>
+              <blockquote className="text-base sm:text-lg text-muted-foreground italic text-center leading-relaxed">
+                "Mit kleinen aber wichtigen Tipps konnte ich in 16 Monaten <span className="text-primary font-bold not-italic">50kg verlieren</span>. Fühle mich so fit wie nie zuvor und werde dafür immer dankbar sein."
+              </blockquote>
+              <p className="text-center mt-4 text-sm text-muted-foreground">
+                — Alessandro D., 47, Klient
+              </p>
             </div>
           </div>
         </div>
@@ -120,7 +147,7 @@ export default function About() {
             to="/contact"
             className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-background text-foreground font-medium transition-all duration-300 hover:bg-foreground hover:text-background"
           >
-            Kontakt aufnehmen
+            Unverbindlich anfragen
             <ArrowRight className="ml-2" size={18} />
           </Link>
         </div>
