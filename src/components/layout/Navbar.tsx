@@ -7,7 +7,7 @@ import logoGreen from "@/assets/logo-green.png";
 
 const navLinks = [
   { label: "Quiz", to: "/quiz" },
-  { label: "Angebot", to: "/services" },
+  { label: "Für Firmen", to: "/services" },
   { label: "Über mich", to: "/about" },
   { label: "Kontakt", to: "/contact" },
 ];
