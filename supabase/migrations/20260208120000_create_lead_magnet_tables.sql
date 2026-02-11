@@ -21,15 +21,21 @@ ALTER TABLE public.lead_magnet_subscribers ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.lead_magnet_rate_limits ENABLE ROW LEVEL SECURITY;
 
 -- Service Role Policies (edge functions use service key)
-CREATE POLICY "Service role can manage lead_magnet_subscribers"
-  ON public.lead_magnet_subscribers
-  FOR ALL
-  USING (auth.role() = 'service_role');
+DO $$ BEGIN
+  CREATE POLICY "Service role can manage lead_magnet_subscribers"
+    ON public.lead_magnet_subscribers
+    FOR ALL
+    USING (auth.role() = 'service_role');
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
 
-CREATE POLICY "Service role can manage lead_magnet_rate_limits"
-  ON public.lead_magnet_rate_limits
-  FOR ALL
-  USING (auth.role() = 'service_role');
+DO $$ BEGIN
+  CREATE POLICY "Service role can manage lead_magnet_rate_limits"
+    ON public.lead_magnet_rate_limits
+    FOR ALL
+    USING (auth.role() = 'service_role');
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
 
 -- Indexes for performance
 CREATE INDEX IF NOT EXISTS idx_lead_magnet_email
@@ -47,6 +53,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE TRIGGER trigger_cleanup_lead_magnet_rate_limits
+DROP TRIGGER IF EXISTS trigger_cleanup_lead_magnet_rate_limits ON public.lead_magnet_rate_limits;
+CREATE TRIGGER trigger_cleanup_lead_magnet_rate_limits
 AFTER INSERT ON public.lead_magnet_rate_limits
 EXECUTE FUNCTION cleanup_lead_magnet_rate_limits();

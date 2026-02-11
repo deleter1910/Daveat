@@ -5,3 +5,9 @@ verify_jwt = false
 
 [functions.send-contact-email]
 verify_jwt = false
+
+[functions.lead-magnet-subscribe]
+verify_jwt = false
+
+[functions.quiz-subscribe]
+verify_jwt = false

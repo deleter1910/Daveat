@@ -1,10 +1,6 @@
-import { useState, useCallback } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
-import { ArrowRight, Battery, Scale, Shield, Clock, Frown, Users, Target, Sparkles, Check, Loader2 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
-import { TurnstileWidget } from "@/components/TurnstileWidget";
+import { ArrowRight, Battery, Scale, Shield, Clock, Frown, Users, Target, Sparkles } from "lucide-react";
 import { PainPointCard } from "@/components/landing/PainPointCard";
 import { ProblemDeepeningSection } from "@/components/landing/ProblemDeepeningSection";
 import { AgitateSection } from "@/components/landing/AgitateSection";
@@ -15,7 +11,6 @@ import { StepCard } from "@/components/landing/StepCard";
 import { PricingCard } from "@/components/landing/PricingCard";
 import { FAQSection } from "@/components/landing/FAQSection";
 
-const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY || "";
 const painPoints = [{
   icon: Scale,
   title: "Über CHF 1'000 pro Jahr",
@@ -99,170 +94,35 @@ const pricingOptions = [{
   ctaLink: "/contact"
 }];
 export default function Index() {
-  const { toast } = useToast();
-  const navigate = useNavigate();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-  const [formData, setFormData] = useState({
-    firstName: "",
-    email: "",
-  });
-
-  const handleTurnstileVerify = useCallback((token: string) => {
-    setTurnstileToken(token);
-  }, []);
-
-  const handleTurnstileError = useCallback(() => {
-    setTurnstileToken(null);
-    toast({
-      title: "CAPTCHA Fehler",
-      description: "Bitte lade die Seite neu und versuche es erneut.",
-      variant: "destructive",
-    });
-  }, [toast]);
-
-  const handleTurnstileExpire = useCallback(() => {
-    setTurnstileToken(null);
-  }, []);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!turnstileToken) {
-      toast({
-        title: "CAPTCHA erforderlich",
-        description: "Bitte bestätige, dass du kein Roboter bist.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      const { error } = await supabase.functions.invoke("lead-magnet-subscribe", {
-        body: { ...formData, turnstileToken },
-      });
-
-      if (error) throw error;
-
-      // Redirect to thank you page
-      navigate("/guide-danke");
-    } catch (error: any) {
-      toast({
-        title: "Fehler",
-        description: error.message || "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return <Layout>
-      {/* Section 1: Hero with Lead Magnet Opt-in */}
+      {/* Section 1: Hero with Quiz CTA */}
       <section className="section-padding min-h-[90vh] flex items-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
         <div className="container mx-auto relative max-w-full overflow-hidden">
-          {/* Headline & Subheadline - zentriert */}
-          <div className="text-center max-w-3xl mx-auto mb-10">
+          <div className="text-center max-w-3xl mx-auto">
             <h1 className="heading-xl mb-6 lg:mb-8 animate-fade-in-up break-words hyphens-auto">
-              Du isst gesund, bist trotzdem müde?{" "}
-              <span className="text-primary">Dann machst du wahrscheinlich einen dieser 5 Fehler.</span>
+              Welcher Ernährungs-Typ{" "}
+              <span className="text-primary">bist du?</span>
             </h1>
-            <p className="text-body animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-              Finde in 10 Minuten heraus, was dich wirklich blockiert. Der kostenlose Guide für Berufstätige, die keine Lust mehr auf Diäten haben.
+            <p className="text-body mb-10 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+              Finde in 2 Minuten heraus, was dich wirklich blockiert – und bekomme 3 konkrete Tipps, die sofort umsetzbar sind.
             </p>
-          </div>
 
-          {/* Opt-in Form - unter Headline */}
-          <div className="max-w-md mx-auto animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            <div className="p-6 sm:p-8 rounded-3xl border border-border bg-card">
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium mb-2">
-                      Vorname
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-                      placeholder="Dein Vorname"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      E-Mail
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-                      placeholder="deine@email.com"
-                    />
-                  </div>
-
-                  {/* Turnstile CAPTCHA */}
-                  <div className="py-2">
-                    <TurnstileWidget
-                      siteKey={TURNSTILE_SITE_KEY}
-                      onVerify={handleTurnstileVerify}
-                      onError={handleTurnstileError}
-                      onExpire={handleTurnstileExpire}
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting || !turnstileToken}
-                    className="w-full px-8 py-4 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="mr-2 animate-spin" size={18} />
-                        Wird gesendet...
-                      </>
-                    ) : (
-                      <>
-                        Ja, schick mir den Guide
-                        <ArrowRight className="ml-2" size={18} />
-                      </>
-                    )}
-                  </button>
-                </form>
-
-                {/* Trust Elements */}
-                <div className="mt-6 space-y-3">
-                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <Check className="text-primary flex-shrink-0" size={16} />
-                    <span>Kostenlos und ohne Verpflichtung</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <Shield className="text-primary flex-shrink-0" size={16} />
-                    <span>Kein Spam. Nur wertvolle Inhalte. Jederzeit abmelden.</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <Sparkles className="text-primary flex-shrink-0" size={16} />
-                    <span>Über 50kg Gewichtsverlust begleitet – wo Ozempic und andere Coaches scheiterten</span>
-                  </div>
-                </div>
-              </div>
+            <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+              <Link
+                to="/quiz"
+                className="inline-flex items-center px-10 py-5 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all duration-300 text-lg"
+              >
+                Jetzt Quiz starten
+                <ArrowRight className="ml-2" size={20} />
+              </Link>
             </div>
+
+            <div className="mt-10 flex items-center justify-center gap-3 text-sm text-muted-foreground animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
+              <Sparkles className="text-primary flex-shrink-0" size={16} />
+              <span>Über 50kg Gewichtsverlust begleitet – wo Ozempic und andere Coaches scheiterten</span>
+            </div>
+          </div>
         </div>
       </section>
 

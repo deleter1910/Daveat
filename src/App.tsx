@@ -13,6 +13,8 @@ import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
 import NotFound from "./pages/NotFound";
 import GuideDanke from "./pages/GuideDanke";
+import Quiz from "./pages/Quiz";
+import QuizErgebnis from "./pages/QuizErgebnis";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +34,8 @@ const App = () => (
               <Route path="/impressum" element={<Impressum />} />
               <Route path="/datenschutz" element={<Datenschutz />} />
               <Route path="/guide-danke" element={<GuideDanke />} />
+              <Route path="/quiz" element={<Quiz />} />
+              <Route path="/quiz-ergebnis" element={<QuizErgebnis />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
