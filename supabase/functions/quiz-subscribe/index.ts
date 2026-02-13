@@ -376,6 +376,33 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Quiz email sent successfully to:", email);
 
+    // Send notification email to owner
+    const notificationRes = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: EMAIL_FROM,
+        to: ["hello@daveat.ch"],
+        subject: `Neuer Quiz-Lead: ${escapeHtml(firstName)} (${typeTitle})`,
+        html: `
+          <h2>Neuer Quiz-Lead</h2>
+          <p><strong>Name:</strong> ${escapeHtml(firstName)}</p>
+          <p><strong>E-Mail:</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
+          <p><strong>Ergebnis:</strong> ${escapeHtml(typeTitle)}</p>
+          <p><strong>Antworten:</strong> ${answers.map(escapeHtml).join(", ")}</p>
+        `,
+      }),
+    });
+
+    if (!notificationRes.ok) {
+      const errorText = await notificationRes.text();
+      console.error("Resend API error (owner notification):", notificationRes.status, errorText);
+      // Don't throw - lead email was already sent successfully
+    }
+
     // Update email_sent_at
     await supabase
       .from("quiz_subscribers")
