@@ -13,17 +13,17 @@ export const aboutHero = {
 
 // === GRÜNDER-STORY ===
 export const founderStory = [
-  "Ich bin Dave. Und ich sage dir ehrlich: Ich war nie der Typ, der morgens um 5 aufsteht, einen Smoothie trinkt und ins Gym rennt.",
-  "Ich war der Typ, der alles über Ernährung wusste — und trotzdem abends auf dem Sofa Chips gegessen hat. Der sich am Montag vorgenommen hat, \"ab jetzt alles anders zu machen\". Und am Mittwoch wieder bei Pizza gelandet ist.",
-  "Das Wissen war nie das Problem. Das Problem war, dass kein einziger Plan zu meinem echten Leben gepasst hat. Nicht zu meinem Stress. Nicht zu meinem Zeitplan. Nicht zu der Art, wie ich tatsächlich funktioniere.",
+  "Mit 17 habe ich meine erste Diät gemacht. 10 Kilo runter in ein paar Monaten. Ich dachte: Problem gelöst.",
+  "War es nicht. Irgendwann hatte ich keine Lust mehr, mich an Regeln zu halten, die nicht zu meinem Leben passten. Die Kilos kamen zurück. Zweiter Versuch, andere Diät — 7 Kilo runter. Gleiches Ergebnis. Alles wieder drauf.",
+  "Zwei Diäten. Zwei Mal Jojo. Und dann die Erkenntnis: Das Problem war nie meine Disziplin. Das Problem war, dass jeder Plan für ein Leben geschrieben war, das nicht meins ist.",
 ];
 
 export const founderBreakthrough =
-  "Also habe ich aufgehört, fremde Regeln zu befolgen. Und angefangen, meine eigenen zu schreiben. Regeln, die zu meinem Alltag passen. Nicht perfekt — aber machbar. Und plötzlich hat es funktioniert.";
+  "Also habe ich aufgehört, fremde Regeln zu befolgen. Und angefangen, meine eigenen zu schreiben. Keinen perfekten Plan — einen, der zu 80% funktioniert und dafür dauerhaft hält. Das Ergebnis: Ich halte mein Gewicht seit über 10 Jahren.";
 
 export const founderConclusion = [
-  "Heute helfe ich anderen Menschen dabei, genau das Gleiche zu tun. Nicht mit einem weiteren Diätplan. Sondern mit einem System, das zu ihrem Leben passt — nicht umgekehrt.",
-  "Mein pragmatischster Grundsatz: Was nicht in deinen Kalender passt, existiert nicht. Ich coache Realität, keine Theorie.",
+  "Heute helfe ich Menschen, die genau dort stecken, wo ich mit 17 war. Die schon alles probiert haben. Die wissen, was sie essen sollten — und trotzdem immer wieder in alte Muster fallen.",
+  "Mein Ansatz ist nicht akademisch. Er ist selbst durchlebt und an Klienten bewiesen. Was nicht in deinen Alltag passt, existiert nicht. Ich coache Realität, keine Theorie.",
 ];
 
 // === BEWEIS ===
