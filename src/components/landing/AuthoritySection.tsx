@@ -1,33 +1,5 @@
 import { Heart, CheckCircle, Target } from "lucide-react";
-
-const methodReasons = [
-  {
-    title: "Du besitzt es",
-    description: "Wenn du deine eigenen Regeln setzt, verpflichtest du dich statt zu befolgen",
-  },
-  {
-    title: "Es passt zu deinem Leben",
-    description: "Keine radikale Umstellung – nur strategische Änderungen, die sich natürlich integrieren",
-  },
-  {
-    title: "Du wirst unterstützt",
-    description: "Anleitung in genau den Momenten, wenn du sie am meisten brauchst",
-  },
-  {
-    title: "Es ist nachhaltig",
-    description: "80% Aufwand, 20% Freude bedeutet, du kannst es tatsächlich beibehalten",
-  },
-  {
-    title: "Die Community verstärkt es",
-    description: "Andere auf derselben Reise schaffen natürliche Verantwortlichkeit",
-  },
-];
-
-const emotionalStatements = [
-  "Ich weiss, wie es sich anfühlt, in den Spiegel zu schauen und zu hassen, was du siehst.",
-  "Ich kenne die Schuldgefühle nach jedem «Cheat Meal».",
-  "Ich kenne die Erschöpfung des Versuchens und wieder Scheiterns.",
-];
+import { authority, emotionalStatements, methodReasons } from "@/content/homepage";
 
 export function AuthoritySection() {
   return (
@@ -37,11 +9,11 @@ export function AuthoritySection() {
         <div className="max-w-2xl mb-10 sm:mb-16">
           <p className="text-primary font-medium mb-4 sm:mb-6 flex items-center gap-2 text-sm sm:text-base">
             <span className="w-6 sm:w-8 h-px bg-primary"></span>
-            Warum es funktioniert
+            {authority.label}
           </p>
           <h2 className="heading-lg break-words">
-            Warum das funktioniert, wenn{" "}
-            <span className="text-primary">alles andere gescheitert</span> ist
+            {authority.headline}{" "}
+            <span className="text-primary">{authority.headlineHighlight}</span> {authority.headlineSuffix}
           </h2>
         </div>
 
@@ -54,15 +26,11 @@ export function AuthoritySection() {
                 <Heart className="text-primary" size={20} />
               </div>
               <h3 className="text-xl sm:text-2xl font-bold">
-                Ich bin diesen Weg gegangen. Ich kenne den Kampf.
+                {authority.empathyTitle}
               </h3>
             </div>
             <p className="text-body mb-6 sm:mb-8">
-              Ich bin zwar ein zertifizierter Ernährungsberater, aber ich gebe
-              keine Lehrbuchratschläge. Ich bin jemand, der durch die
-              Selbstzweifel, die gescheiterten Diäten, den Jojo-Effekt und den
-              eventuellen Durchbruch{" "}
-              <span className="font-semibold text-foreground">gelebt hat</span>.
+              {authority.empathyBody}
             </p>
           </div>
 
@@ -78,8 +46,8 @@ export function AuthoritySection() {
               </div>
             ))}
             <p className="text-base sm:text-lg font-semibold text-foreground pt-3 sm:pt-4">
-              Und ich weiss, was es braucht, um{" "}
-              <span className="text-primary">endlich frei</span> zu kommen.
+              {authority.empathyClosing}{" "}
+              <span className="text-primary">{authority.empathyClosingHighlight}</span> {authority.empathyClosingSuffix}
             </p>
           </div>
         </div>
@@ -87,11 +55,9 @@ export function AuthoritySection() {
         {/* Empathy Highlight Box */}
         <div className="p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl bg-primary/5 border border-primary/30 mb-12 sm:mb-20">
           <p className="text-base sm:text-lg md:text-xl text-center max-w-3xl mx-auto break-words">
-            Diese gelebte Erfahrung schafft Empathie, die nicht gelehrt oder
-            zertifiziert werden kann. Wenn du mit mir sprichst, verstehe ich
-            deinen Kampf nicht nur theoretisch —{" "}
+            {authority.empathyHighlightBox}{" "}
             <span className="text-primary font-semibold">
-              ich habe ihn gefühlt
+              {authority.empathyHighlightBoxHighlight}
             </span>
             .
           </p>
@@ -100,10 +66,10 @@ export function AuthoritySection() {
         {/* Block 2: Methode */}
         <div className="max-w-4xl mx-auto">
           <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-3 sm:mb-4">
-            Die Methode ist erprobt
+            {authority.methodTitle}
           </h3>
           <p className="text-sm sm:text-base text-muted-foreground text-center mb-8 sm:mb-12">
-            Das ist nicht experimentell. Das Framework funktioniert, weil:
+            {authority.methodSubline}
           </p>
 
           {/* Checkmark Grid */}
@@ -146,14 +112,13 @@ export function AuthoritySection() {
             <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
               <Target className="text-primary" size={20} />
               <span className="text-xs sm:text-sm font-medium text-primary uppercase tracking-wider">
-                Am wichtigsten
+                {authority.importantLabel}
               </span>
             </div>
             <p className="text-lg sm:text-xl md:text-2xl text-center font-medium max-w-2xl mx-auto break-words">
-              Wir optimieren nicht für kurzfristigen Gewichtsverlust. Wir
-              optimieren für{" "}
+              {authority.importantText}{" "}
               <span className="text-primary font-semibold">
-                die Person, die du werden willst
+                {authority.importantHighlight}
               </span>
               .
             </p>

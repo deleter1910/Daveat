@@ -10,92 +10,32 @@ import { TestimonialCard } from "@/components/landing/TestimonialCard";
 import { StepCard } from "@/components/landing/StepCard";
 import { PricingCard } from "@/components/landing/PricingCard";
 import { FAQSection } from "@/components/landing/FAQSection";
+import {
+  hero,
+  problem,
+  painPoints as painPointTexts,
+  solution,
+  principles,
+  benefits as benefitTexts,
+  featuredTestimonial,
+  testimonialSection,
+  testimonials as testimonialTexts,
+  processSection,
+  steps as stepTexts,
+  pricingSection,
+  pricingOptions as pricingTexts,
+  finalCta,
+} from "@/content/homepage";
 
-const painPoints = [{
-  icon: Scale,
-  title: "Über CHF 1'000 pro Jahr",
-  description: "Du gibst über CHF 1'000 pro Jahr aus für Fitnessabos, die du nicht nutzt, Diät-Apps, die du abbrichst, Nahrungsergänzungsmittel, die nicht wirken, und «Quick Fixes», die nach wenigen Wochen scheitern.",
-  highlight: "CHF 1'000"
-}, {
-  icon: Clock,
-  title: "30-60 Stunden pro Monat",
-  description: "Du verlierst 30-60 Stunden jeden Monat durch Schuldgefühle nach dem Essen, Recherchen nach der nächsten Diät und mentale Erschöpfung, die alles länger dauern lässt.",
-  highlight: "30-60 Stunden"
-}, {
-  icon: Frown,
-  title: "Nichts hält",
-  description: "Du hast alles versucht. Vielleicht sogar Ozempic. Nichts hält.",
-  highlight: "alles"
-}];
-const benefits = [{
-  icon: Battery,
-  title: "Kein Extra-Aufwand",
-  description: "Wir passen die Ernährung an dein Leben an, nicht umgekehrt. Kein separates Kochen."
-}, {
-  icon: Scale,
-  title: "Budget statt Verbote",
-  description: "Mit dem Energie-Budget entscheidest du selbst, wofür du es nutzt – flexibel und ohne Schuldgefühle."
-}, {
-  icon: Shield,
-  title: "Persönliches Sicherheitsnetz",
-  description: "Ich begleite dich als Ansprechpartner, um Fehlentscheidungen in Stressmomenten zu verhindern."
-}, {
-  icon: Users,
-  title: "Familien-kompatibel",
-  description: "Keine Extrawürste. Das System funktioniert mit dem, was deine Familie sowieso isst."
-}, {
-  icon: Target,
-  title: "Fokus auf 20%",
-  description: "Wir identifizieren die 3 Hebel, die 80% deiner Ergebnisse bringen. Weniger tun, mehr erreichen."
-}, {
-  icon: Sparkles,
-  title: "Langfristige Ergebnisse",
-  description: "Keine Crash-Diät, sondern nachhaltige Gewohnheiten, die nach 90 Tagen zur Routine werden."
-}];
-const featuredTestimonial = {
-  quote: "Mit kleinen aber wichtigen Tipps konnte ich in 16 Monaten 50kg verlieren. Die motivierende Beratung und Begleitung half und hilft mir sehr. Fühle mich so fit wie nie zuvor und werde dafür immer dankbar sein!",
-  name: "Alessandro D.",
-  role: "47, Klient",
-  highlight: "50kg in 16 Monaten",
-};
-const testimonials = [{
-  quote: "Nachdem ich den Kampf gegen mein Gewicht aufgegeben hatte, habe ich dank Daveat neue Motivation gefunden, mir selbst etwas Gutes zu tun. Mit seiner Unterstützung habe ich 17 Kilo verloren und fühle mich heute deutlich wohler in meinem Körper.",
-  name: "Francesca",
-  role: "35, Klientin"
-}];
-const steps = [{
-  number: 1,
-  title: "Strategie-Gespräch buchen",
-  description: "In 30 Minuten prüfen wir, ob meine Methode zu dir passt. Kostenlos und unverbindlich."
-}, {
-  number: 2,
-  title: "Deinen Blueprint erhalten",
-  description: "Im 90-Minuten-Workshop analysieren wir deine Situation und erstellen deinen persönlichen Fahrplan."
-}, {
-  number: 3,
-  title: "Mit Begleitung umsetzen",
-  description: "90 Tage WhatsApp-Support. Ich helfe dir, dranzubleiben – bei jedem Restaurant, jedem Stress-Tag."
-}];
-const pricingOptions = [{
-  title: "Alltags-Blueprint",
-  subtitle: "Der Strategie-Workshop",
-  price: "250 CHF",
-  period: "einmalig",
-  features: ["90 Minuten 1:1 Analyse", "Persönlicher Fahrplan (1 Seite)", "3 konkrete Hebel identifiziert", "Sofort umsetzbare Strategie"],
-  isPopular: false,
-  ctaText: "Workshop buchen",
-  ctaLink: "/contact"
-}, {
-  title: "Mentor in der Hosentasche",
-  subtitle: "3 Monate Begleitung",
-  price: "150 CHF",
-  period: "/ Monat",
-  features: ["Alltags-Blueprint inklusive", "90 Tage WhatsApp-Support", "Schnelle Antworten bei Fragen", "Motivation in schwachen Momenten", "Nachhaltige Gewohnheitsänderung"],
-  isPopular: true,
-  ctaText: "Begleitung starten",
-  ctaLink: "/contact"
-}];
 export default function Index() {
+  const painPointIcons = [Scale, Clock, Frown];
+  const painPoints = painPointTexts.map((pt, i) => ({ ...pt, icon: painPointIcons[i] }));
+  const benefitIcons = [Battery, Scale, Shield, Users, Target, Sparkles];
+  const benefits = benefitTexts.map((b, i) => ({ ...b, icon: benefitIcons[i] }));
+  const testimonials = testimonialTexts;
+  const steps = stepTexts;
+  const pricingOptions = pricingTexts;
+
   return <Layout>
       {/* Section 1: Hero with Quiz CTA */}
       <section className="section-padding min-h-[90vh] flex items-center relative overflow-hidden">
@@ -103,11 +43,11 @@ export default function Index() {
         <div className="container mx-auto relative max-w-full overflow-hidden">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="heading-xl mb-6 lg:mb-8 animate-fade-in-up break-words hyphens-auto">
-              Du isst gesund – und trotzdem{" "}
-              <span className="text-primary">ändert sich nichts?</span>
+              {hero.headline}{" "}
+              <span className="text-primary">{hero.headlineHighlight}</span>
             </h1>
             <p className="text-body mb-10 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-              In 2 Minuten findest du heraus, welches unsichtbare Muster dich sabotiert. Und was du sofort dagegen tun kannst.
+              {hero.subline}
             </p>
 
             <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
@@ -115,14 +55,14 @@ export default function Index() {
                 to="/quiz"
                 className="inline-flex items-center px-10 py-5 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all duration-300 text-lg"
               >
-                Meinen Typ herausfinden
+                {hero.cta}
                 <ArrowRight className="ml-2" size={20} />
               </Link>
             </div>
 
             <div className="mt-10 flex items-center justify-center gap-3 text-sm text-muted-foreground animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
               <Sparkles className="text-primary flex-shrink-0" size={16} />
-              <span>Über 50kg Gewichtsverlust begleitet – wo Ozempic und andere Coaches scheiterten</span>
+              <span>{hero.socialProof}</span>
             </div>
           </div>
         </div>
@@ -134,10 +74,10 @@ export default function Index() {
           <div className="max-w-2xl mb-16">
             <p className="text-primary font-medium mb-6 flex items-center gap-2">
               <span className="w-8 h-px bg-primary"></span>
-              Das Problem
+              {problem.label}
             </p>
             <h2 className="heading-lg break-words">
-              Das weisst du <span className="text-primary">bereits</span>:
+              {problem.headline} <span className="text-primary">{problem.headlineHighlight}</span>:
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -145,7 +85,7 @@ export default function Index() {
           </div>
           <div className="mt-16 text-center">
             <p className="text-xl md:text-2xl text-muted-foreground italic max-w-3xl mx-auto">
-              "Und mit jedem gescheiterten Versuch vertraust du dir selbst ein bisschen weniger."
+              "{problem.closingQuote}"
             </p>
           </div>
         </div>
@@ -163,43 +103,37 @@ export default function Index() {
         <div className="max-w-3xl">
             <p className="text-primary font-medium mb-6 flex items-center gap-2">
               <span className="w-8 h-px bg-primary"></span>
-              Die Lösung
+              {solution.label}
             </p>
             <h2 className="heading-lg mb-8 break-words">
-              Es gibt einen anderen Weg.<br />
-              <span className="text-primary">Und er funktioniert.</span>
+              {solution.headline}<br />
+              <span className="text-primary">{solution.headlineHighlight}</span>
             </h2>
             <div className="mb-8">
               <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                 <Target className="text-primary" size={28} />
-                Der Persönliche Umsetzungsplan
+                {solution.subHeading}
               </h3>
               <p className="text-body">
-                Dies ist <span className="text-muted-foreground line-through">kein weiteres Diätprogramm</span>. Es ist eine{" "}
-                <span className="text-foreground font-semibold">90-minütige Strategiesitzung</span>, in der wir gemeinsam{" "}
-                <span className="text-primary font-semibold">DEINEN</span> Plan entwickeln—
+                {solution.bodyPrefix} <span className="text-muted-foreground line-through">{solution.bodyStrikethrough}</span>{solution.bodySuffix}{" "}
+                <span className="text-foreground font-semibold">{solution.bodyHighlight}</span>{solution.bodyEnd}{" "}
+                <span className="text-primary font-semibold">{solution.bodyEmphasis}</span> {solution.bodyEndSuffix}
               </p>
             </div>
             <div className="space-y-4 mb-8">
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
-                <p className="text-foreground">einen, der zu <span className="text-primary font-semibold">DEINEM</span> Leben passt</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
-                <p className="text-foreground"><span className="text-primary font-semibold">DEINE</span> Worte verwendet</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
-                <p className="text-foreground">und zu <span className="text-primary font-semibold">DEINEN</span> Regeln wird</p>
-              </div>
+              {solution.bullets.map((b, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
+                  <p className="text-foreground">{b.prefix} <span className="text-primary font-semibold">{b.emphasis}</span> {b.suffix}</p>
+                </div>
+              ))}
             </div>
             <div className="flex items-center gap-4 p-6 rounded-2xl border border-primary/30 bg-primary/5">
               <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
                 <Sparkles className="text-primary-foreground" size={24} />
               </div>
               <p className="text-foreground">
-                <strong>Daveat</strong> ist dein persönlicher Lifestyle-Stratege. Keine Diät, sondern ein System für nachhaltige Energie.
+                {solution.highlightBox}
               </p>
             </div>
           </div>
@@ -215,11 +149,11 @@ export default function Index() {
           <div className="text-center max-w-2xl mx-auto mb-16">
             <p className="text-primary font-medium mb-4 flex items-center justify-center gap-2">
               <span className="w-8 h-px bg-primary"></span>
-              Unsere Prinzipien
+              {principles.label}
               <span className="w-8 h-px bg-primary"></span>
             </p>
             <h2 className="heading-lg break-words">
-              So funktioniert <span className="text-primary">Daveat</span>
+              {principles.headline} <span className="text-primary">{principles.headlineHighlight}</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -234,11 +168,11 @@ export default function Index() {
           <div className="text-center max-w-2xl mx-auto mb-16">
             <p className="text-primary font-medium mb-4 flex items-center justify-center gap-2">
               <span className="w-8 h-px bg-primary"></span>
-              Erfahrungen
+              {testimonialSection.label}
               <span className="w-8 h-px bg-primary"></span>
             </p>
             <h2 className="heading-lg break-words">
-              Was meine Klienten <span className="text-primary">sagen</span>
+              {testimonialSection.headline} <span className="text-primary">{testimonialSection.headlineHighlight}</span>
             </h2>
           </div>
 
@@ -276,12 +210,12 @@ export default function Index() {
           <div className="text-center max-w-2xl mx-auto mb-16">
             <p className="text-primary font-medium mb-4 flex items-center justify-center gap-2">
               <span className="w-8 h-px bg-primary"></span>
-              Der Prozess
+              {processSection.label}
               <span className="w-8 h-px bg-primary"></span>
             </p>
             <h2 className="heading-lg break-words">
-              So starten wir <span className="text-primary">
-zusammen</span>
+              {processSection.headline} <span className="text-primary">
+{processSection.headlineHighlight}</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
@@ -298,14 +232,14 @@ zusammen</span>
           <div className="text-center max-w-2xl mx-auto mb-16">
             <p className="text-primary font-medium mb-4 flex items-center justify-center gap-2">
               <span className="w-8 h-px bg-primary"></span>
-              Investition
+              {pricingSection.label}
               <span className="w-8 h-px bg-primary"></span>
             </p>
-            <h2 className="heading-lg mb-6 break-words">Struktur statt 
-Diät-Stress<span className="text-primary">Diät-Stress</span>
+            <h2 className="heading-lg mb-6 break-words">{pricingSection.headline}{" "}
+<span className="text-primary">{pricingSection.headlineHighlight}</span>
             </h2>
             <p className="text-body break-words">
-              Wir beenden das Rätselraten. Wähle den Einstieg, der zu dir passt.
+              {pricingSection.subline}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -321,16 +255,16 @@ Diät-Stress<span className="text-primary">Diät-Stress</span>
       <section className="section-padding bg-primary overflow-hidden">
         <div className="container mx-auto text-center max-w-full overflow-hidden">
           <h2 className="heading-lg text-primary-foreground mb-6 break-words">
-            Du kennst jetzt den Weg.
+            {finalCta.headline}
           </h2>
           <p className="text-lg sm:text-xl text-primary-foreground/80 mb-4 max-w-2xl mx-auto break-words">
-            Lass uns den ersten Schritt zusammen machen. In 30 Minuten prüfen wir, ob meine Methode zu dir passt.
+            {finalCta.subline}
           </p>
           <p className="text-primary-foreground/60 mb-10 break-words">
-            30 Minuten · Kostenlos · Unverbindlich
+            {finalCta.details}
           </p>
           <Link to="/contact" className="inline-flex items-center px-8 py-4 rounded-full bg-background text-foreground font-medium hover:bg-foreground hover:text-background transition-all duration-300">
-            Kostenloses Gespräch sichern
+            {finalCta.cta}
             <ArrowRight className="ml-2" size={18} />
           </Link>
         </div>

@@ -1,12 +1,5 @@
 import { Quote, CheckCircle, Users } from "lucide-react";
-
-const benefits = [
-  "Energie, um für seine Familie da zu sein",
-  "Selbstvertrauen, zu sozialen Events zu gehen",
-  "Disziplin, die sich auf seine Arbeit und Beziehungen übertrug",
-  "Freiheit vom ständigen Denken ans Essen",
-  "Beweis, dass er sich wieder selbst vertrauen kann",
-];
+import { socialProof, socialProofBenefits } from "@/content/homepage";
 
 export function SocialProofSection() {
   return (
@@ -16,12 +9,12 @@ export function SocialProofSection() {
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <p className="text-primary font-medium mb-3 sm:mb-4 flex items-center justify-center gap-2 text-sm sm:text-base">
             <span className="w-6 sm:w-8 h-px bg-primary"></span>
-            Ergebnisse
+            {socialProof.label}
             <span className="w-6 sm:w-8 h-px bg-primary"></span>
           </p>
           <h2 className="heading-lg break-words">
-            Echte Resultate. Echte Menschen.{" "}
-            <span className="text-primary">Echte Transformation.</span>
+            {socialProof.headline}{" "}
+            <span className="text-primary">{socialProof.headlineHighlight}</span>
           </h2>
         </div>
 
@@ -31,25 +24,22 @@ export function SocialProofSection() {
           <div className="relative mb-8 sm:mb-12">
             <Quote className="absolute -top-2 sm:-top-4 -left-2 sm:-left-4 text-primary/20 flex-shrink-0" size={40} />
             <blockquote className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight pl-6 sm:pl-8 break-words">
-              „Ich habe <span className="text-primary">50kg</span> in{" "}
-              <span className="text-primary">16 Monaten</span> verloren—nachdem alles andere gescheitert ist"
+              {socialProof.heroQuote}
             </blockquote>
           </div>
 
           {/* Story Context */}
           <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-12 max-w-3xl break-words">
-            Ein Klient kam zu mir, nachdem er diverse Diäten und Eigenversuche probiert hatte. 
-            Nichts funktionierte. Innerhalb von 16 Monaten nach dem Erstellen seines Persönlichen 
-            Umsetzungsplans und Disziplin verlor er 50kg.
+            {socialProof.storyContext}
           </p>
 
           {/* Benefits Grid */}
           <div className="mb-8 sm:mb-12">
             <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6">
-              Aber das hat er <span className="text-primary">wirklich</span> gewonnen:
+              {socialProof.benefitsTitle} <span className="text-primary">{socialProof.benefitsTitleHighlight}</span> {socialProof.benefitsTitleSuffix}
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-              {benefits.map((benefit, index) => (
+              {socialProofBenefits.map((benefit, index) => (
                 <div key={index} className="flex items-center gap-2 sm:gap-3">
                   <CheckCircle className="text-primary flex-shrink-0" size={18} />
                   <span className="text-sm sm:text-base text-foreground">{benefit}</span>
@@ -66,10 +56,8 @@ export function SocialProofSection() {
               </div>
               <div>
                 <p className="text-base sm:text-lg text-foreground leading-relaxed">
-                  Seine Frau bemerkte es. Sie begann ihre eigene Transformation. 
-                  Dann ein Freund, welcher sogar{" "}
-                  <span className="text-muted-foreground">Ozempic</span> versucht hatte.{" "}
-                  <span className="text-primary font-semibold">Der Welleneffekt ist real.</span>
+                  {socialProof.rippleText}{" "}
+                  <span className="text-primary font-semibold">{socialProof.rippleHighlight}</span>
                 </p>
               </div>
             </div>

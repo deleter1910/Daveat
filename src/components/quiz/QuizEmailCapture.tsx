@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import { ArrowRight, Loader2, Shield } from "lucide-react";
 import { TurnstileWidget } from "@/components/TurnstileWidget";
 import { useToast } from "@/hooks/use-toast";
+import { quizEmailCapture } from "@/content/quiz";
 
 const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY || "";
 
@@ -55,10 +56,10 @@ export function QuizEmailCapture({ onSubmit, isSubmitting }: QuizEmailCapturePro
     <div className="max-w-md mx-auto animate-fade-in-up">
       <div className="text-center mb-8">
         <h2 className="text-2xl sm:text-3xl font-bold mb-3">
-          Dein Ergebnis steht fest.
+          {quizEmailCapture.headline}
         </h2>
         <p className="text-muted-foreground">
-          Wir schicken dir deinen persönlichen Typ mit 3 Sofort-Tipps per E-Mail – damit du sie nicht vergisst.
+          {quizEmailCapture.subline}
         </p>
       </div>
 
@@ -112,11 +113,11 @@ export function QuizEmailCapture({ onSubmit, isSubmitting }: QuizEmailCapturePro
             {isSubmitting ? (
               <>
                 <Loader2 className="mr-2 animate-spin" size={18} />
-                Wird ausgewertet...
+                {quizEmailCapture.submittingButton}
               </>
             ) : (
               <>
-                Mein Ergebnis sichern
+                {quizEmailCapture.submitButton}
                 <ArrowRight className="ml-2" size={18} />
               </>
             )}
@@ -125,7 +126,7 @@ export function QuizEmailCapture({ onSubmit, isSubmitting }: QuizEmailCapturePro
 
         <div className="mt-6 flex items-center gap-3 text-sm text-muted-foreground">
           <Shield className="text-primary flex-shrink-0" size={16} />
-          <span>Kein Spam. Deine Daten bleiben sicher.</span>
+          <span>{quizEmailCapture.privacyNote}</span>
         </div>
       </div>
     </div>

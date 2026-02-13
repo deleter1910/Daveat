@@ -4,6 +4,7 @@ import { Mail, Instagram } from "lucide-react";
 import { cn } from "@/lib/utils";
 import logoWhite from "@/assets/logo-white.png";
 import logoGreen from "@/assets/logo-green.png";
+import { footer as footerContent } from "@/content/footer";
 
 const socialLinks = [
   { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/daveat.ch/" },
@@ -45,10 +46,10 @@ export function Footer() {
             </Link>
             <div className="space-y-1 sm:space-y-2">
               <p className="text-xs sm:text-sm text-primary font-medium tracking-wide break-words">
-                Lifestyle Strategy Partner | Nachhaltige Gesundheitstransformation
+                {footerContent.tagline}
               </p>
               <p className="text-sm sm:text-base text-muted-foreground break-words">
-                Keine Quick Fixes. Keine externen Regeln. Nur <span className="text-foreground font-medium">DEIN</span> Plan, gemeinsam erstellt, für <span className="text-foreground font-medium">DEIN</span> Leben.
+                {footerContent.description}
               </p>
             </div>
           </div>
@@ -58,11 +59,11 @@ export function Footer() {
 
           {/* Contact & Social */}
           <div className="space-y-3 sm:space-y-4 text-center md:text-right">
-            <h4 className="text-base sm:text-lg font-semibold">Kontakt</h4>
+            <h4 className="text-base sm:text-lg font-semibold">{footerContent.contactTitle}</h4>
             <ul className="space-y-2 sm:space-y-3">
               <li className="flex items-center justify-center md:justify-end gap-2 sm:gap-3 text-sm sm:text-base text-muted-foreground">
                 <Mail size={16} className="text-primary" />
-                <span>hello@daveat.ch</span>
+                <span>{footerContent.email}</span>
               </li>
             </ul>
             <div className="flex gap-3 sm:gap-4 pt-3 sm:pt-4 justify-center md:justify-end">

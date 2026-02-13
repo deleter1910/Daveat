@@ -1,27 +1,5 @@
 import { CheckCircle, Clock, MessageCircle, Users, Sparkles } from "lucide-react";
-
-const sessionFeatures = [
-  {
-    title: "Diagnose deines Status Quo",
-    description: "Was blockiert dich wirklich? Welchen emotionalen Preis zahlst du jeden Tag?"
-  },
-  {
-    title: "Definiere deine Ziele",
-    description: "90-Tage-, 180-Tage- und 365-Tage-Ziele—sowohl messbare Ergebnisse als auch das tiefere 'Warum', das dich wirklich motiviert"
-  },
-  {
-    title: "Baue deine neue Identität",
-    description: "Wer willst du werden? Wie sieht die transformierte Version von dir aus?"
-  },
-  {
-    title: "Co-kreiere deine Big Rocks",
-    description: "Persönliche Regeln für Ernährung, Struktur, Schlaf und Gewohnheiten, die zu DEINEM spezifischen Leben passen (nicht zum Ideal von jemand anderem)"
-  },
-  {
-    title: "Designe dein Worst-Case-Protokoll",
-    description: "Vorab geplante Reaktionen für Stress, Reisen, Gelüste und schwierige Situationen—damit du nie mit reiner Willenskraft kämpfen musst"
-  }
-];
+import { offerBreakdown, sessionFeatures } from "@/content/homepage";
 
 export function OfferBreakdownSection() {
   return (
@@ -31,10 +9,10 @@ export function OfferBreakdownSection() {
         <div className="max-w-2xl mb-10 sm:mb-16">
           <p className="text-primary font-medium mb-4 sm:mb-6 flex items-center gap-2 text-sm sm:text-base">
             <span className="w-6 sm:w-8 h-px bg-primary"></span>
-            Das Angebot
+            {offerBreakdown.label}
           </p>
           <h2 className="heading-lg break-words">
-            Was du <span className="text-primary">tatsächlich</span> bekommst
+            {offerBreakdown.headline} <span className="text-primary">{offerBreakdown.headlineHighlight}</span> {offerBreakdown.headlineSuffix}
           </h2>
         </div>
 
@@ -48,13 +26,13 @@ export function OfferBreakdownSection() {
               </div>
               <div>
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold">
-                  Die <span className="text-primary">90-Minuten</span>-Strategiesitzung
+                  {offerBreakdown.coreOfferTitle} <span className="text-primary">{offerBreakdown.coreOfferHighlight}</span>{offerBreakdown.coreOfferSuffix}
                 </h3>
               </div>
             </div>
 
             <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10">
-              Wir erstellen deinen Blueprint zusammen, live, in Echtzeit:
+              {offerBreakdown.coreOfferSubline}
             </p>
 
             {/* Features List */}
@@ -74,7 +52,7 @@ export function OfferBreakdownSection() {
             <div className="bg-primary/5 border border-primary/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 flex items-start gap-3 sm:gap-4">
               <Sparkles className="text-primary flex-shrink-0 mt-0.5 sm:mt-1" size={20} />
               <p className="text-sm sm:text-base text-foreground">
-                <strong>Du gehst mit einem fertigen Plan</strong>, den du selbst erstellt hast. In deinen Worten. Für dein Leben.
+                {offerBreakdown.coreOfferHighlightBox}
               </p>
             </div>
           </div>
@@ -89,23 +67,17 @@ export function OfferBreakdownSection() {
                 <MessageCircle className="text-primary" size={20} />
               </div>
               <div>
-                <span className="text-[10px] sm:text-xs bg-muted text-muted-foreground px-2 py-0.5 sm:py-1 rounded-full">Optional</span>
-                <h3 className="text-lg sm:text-xl font-bold mt-1">WhatsApp-Coaching</h3>
+                <span className="text-[10px] sm:text-xs bg-muted text-muted-foreground px-2 py-0.5 sm:py-1 rounded-full">{offerBreakdown.whatsappLabel}</span>
+                <h3 className="text-lg sm:text-xl font-bold mt-1">{offerBreakdown.whatsappTitle}</h3>
               </div>
             </div>
             <ul className="space-y-2 sm:space-y-3 text-muted-foreground">
-              <li className="flex items-start gap-2 sm:gap-3">
-                <CheckCircle className="text-primary flex-shrink-0 mt-0.5" size={16} />
-                <span className="text-sm sm:text-base">On-Demand-Unterstützung mit <span className="text-primary font-medium">24-Stunden-Reaktionszeit</span></span>
-              </li>
-              <li className="flex items-start gap-2 sm:gap-3">
-                <CheckCircle className="text-primary flex-shrink-0 mt-0.5" size={16} />
-                <span className="text-sm sm:text-base">Echtzeit-Anleitung genau im Moment der Entscheidung: im Restaurant, im Supermarkt oder wenn du Rezeptideen brauchst</span>
-              </li>
-              <li className="flex items-start gap-2 sm:gap-3">
-                <CheckCircle className="text-primary flex-shrink-0 mt-0.5" size={16} />
-                <span className="text-sm sm:text-base">Verantwortlichkeit ohne Starrheit—verfügbar in deiner Tasche, wenn es zählt</span>
-              </li>
+              {offerBreakdown.whatsappFeatures.map((feature, i) => (
+                <li key={i} className="flex items-start gap-2 sm:gap-3">
+                  <CheckCircle className="text-primary flex-shrink-0 mt-0.5" size={16} />
+                  <span className="text-sm sm:text-base">{feature}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -116,26 +88,16 @@ export function OfferBreakdownSection() {
                 <Users className="text-primary" size={20} />
               </div>
               <div>
-                <h3 className="text-lg sm:text-xl font-bold">Der <span className="text-primary">8020 Club</span> Community</h3>
+                <h3 className="text-lg sm:text-xl font-bold">{offerBreakdown.communityTitle} <span className="text-primary">{offerBreakdown.communityTitleHighlight}</span> {offerBreakdown.communityTitleSuffix}</h3>
               </div>
             </div>
             <ul className="space-y-2 sm:space-y-3 text-muted-foreground">
-              <li className="flex items-start gap-2 sm:gap-3">
-                <CheckCircle className="text-primary flex-shrink-0 mt-0.5" size={16} />
-                <span className="text-sm sm:text-base">Schliesse dich anderen auf derselben Reise an</span>
-              </li>
-              <li className="flex items-start gap-2 sm:gap-3">
-                <CheckCircle className="text-primary flex-shrink-0 mt-0.5" size={16} />
-                <span className="text-sm sm:text-base">Teile Motivation, Rezepte und Erfolge</span>
-              </li>
-              <li className="flex items-start gap-2 sm:gap-3">
-                <CheckCircle className="text-primary flex-shrink-0 mt-0.5" size={16} />
-                <span className="text-sm sm:text-base">Sieh den Beweis, dass Transformation möglich ist, indem du andere erfolgreich siehst</span>
-              </li>
-              <li className="flex items-start gap-2 sm:gap-3">
-                <CheckCircle className="text-primary flex-shrink-0 mt-0.5" size={16} />
-                <span className="text-sm sm:text-base">Organische Verantwortlichkeit ohne erzwungene Struktur</span>
-              </li>
+              {offerBreakdown.communityFeatures.map((feature, i) => (
+                <li key={i} className="flex items-start gap-2 sm:gap-3">
+                  <CheckCircle className="text-primary flex-shrink-0 mt-0.5" size={16} />
+                  <span className="text-sm sm:text-base">{feature}</span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

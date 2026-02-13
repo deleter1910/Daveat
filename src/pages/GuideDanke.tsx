@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { CheckCircle2, ArrowRight } from "lucide-react";
+import { guideDanke } from "@/content/guide-danke";
 
 export default function GuideDanke() {
   return (
@@ -25,20 +26,20 @@ export default function GuideDanke() {
 
           {/* Confirmation */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-            Dein Guide ist unterwegs.
+            {guideDanke.headline}
           </h1>
 
           <p className="text-lg text-muted-foreground mb-4">
-            Schau in dein Postfach – der Guide kommt in den nächsten 2 Minuten.
+            {guideDanke.subline}
           </p>
           <p className="text-muted-foreground mb-8">
-            Falls du ihn nicht findest, prüfe deinen Spam-Ordner.
+            {guideDanke.spamNote}
           </p>
 
           {/* Reading Instruction */}
           <div className="bg-card border border-border rounded-2xl p-6 mb-12 text-left">
             <p className="text-foreground">
-              <strong>Eines noch:</strong> Nimm dir beim Lesen wirklich 10 Minuten Zeit. Nicht überfliegen, sondern verstehen. Die 5 Fehler klingen einfach – aber die Erkenntnis dahinter kann verändern, wie du über Ernährung denkst.
+              {guideDanke.readingInstruction}
             </p>
           </div>
 
@@ -48,19 +49,19 @@ export default function GuideDanke() {
           {/* Hormozi CTA */}
           <div className="bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-8">
             <h2 className="text-2xl font-bold mb-4">
-              Du hast die Fehler erkannt. Was jetzt?
+              {guideDanke.ctaHeadline}
             </h2>
             <p className="text-muted-foreground mb-6">
-              Der Guide zeigt dir, was schiefläuft. Im kostenlosen Gespräch bauen wir deinen persönlichen Plan – einen, der zu deinem Alltag passt.
+              {guideDanke.ctaSubline}
             </p>
             <p className="text-primary font-medium mb-6">
-              Diesen Monat noch 4 Plätze frei.
+              {guideDanke.ctaUrgency}
             </p>
             <Link
               to="/contact"
               className="inline-flex items-center px-8 py-4 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all duration-300"
             >
-              Kostenloses Gespräch sichern
+              {guideDanke.ctaButton}
               <ArrowRight className="ml-2" size={18} />
             </Link>
           </div>
@@ -71,7 +72,7 @@ export default function GuideDanke() {
               to="/"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              Zurück zur Startseite
+              {guideDanke.homeLink}
             </Link>
           </div>
         </div>

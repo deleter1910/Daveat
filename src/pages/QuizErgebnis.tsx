@@ -2,19 +2,13 @@ import { Link, useSearchParams } from "react-router-dom";
 import { ArrowRight, Lightbulb, RotateCcw, Flame, Target, Clock, BookOpen } from "lucide-react";
 import { quizTypes, type QuizTypeSlug } from "@/components/quiz/quizData";
 import { QuizHeader } from "@/components/quiz/QuizHeader";
+import { quizResult, typeCTAs } from "@/content/quiz";
 
 const typeIcons: Record<QuizTypeSlug, typeof Flame> = {
   "stress-esser": Flame,
   perfektionist: Target,
   zeitmangel: Clock,
   regelbrecher: BookOpen,
-};
-
-const typeCTAs: Record<QuizTypeSlug, string> = {
-  "stress-esser": "Willst du aufhören, Stress runterzuessen?",
-  perfektionist: "Willst du endlich aufhören, bei jedem Fehler alles hinzuwerfen?",
-  zeitmangel: "Willst du einen Plan, der in deinen vollen Alltag passt?",
-  regelbrecher: "Willst du endlich vom Wissen ins Tun kommen?",
 };
 
 export default function QuizErgebnis() {
@@ -28,16 +22,16 @@ export default function QuizErgebnis() {
         <QuizHeader />
         <main className="flex-1 flex items-center justify-center px-4 py-12">
           <div className="max-w-md mx-auto text-center">
-            <h1 className="text-2xl font-bold mb-4">Ergebnis nicht gefunden</h1>
+            <h1 className="text-2xl font-bold mb-4">{quizResult.notFoundHeadline}</h1>
             <p className="text-muted-foreground mb-8">
-              Dieses Quiz-Ergebnis existiert nicht. Mach das Quiz erneut, um deinen Typ herauszufinden.
+              {quizResult.notFoundText}
             </p>
             <Link
               to="/quiz"
               className="inline-flex items-center px-8 py-4 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all duration-300"
             >
               <RotateCcw className="mr-2" size={18} />
-              Quiz neu starten
+              {quizResult.notFoundButton}
             </Link>
           </div>
         </main>
@@ -62,7 +56,7 @@ export default function QuizErgebnis() {
               </div>
             </div>
 
-            <p className="text-primary font-medium mb-3">Dein Ergebnis</p>
+            <p className="text-primary font-medium mb-3">{quizResult.resultLabel}</p>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
               {quizType.title}
             </h1>
@@ -85,7 +79,7 @@ export default function QuizErgebnis() {
           <div className="mb-12 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
             <h2 className="text-xl sm:text-2xl font-bold mb-6 flex items-center gap-3">
               <Lightbulb className="text-primary" size={24} />
-              Deine 3 persönlichen Tipps
+              {quizResult.tipsHeadline}
             </h2>
 
             <div className="space-y-4">
@@ -119,16 +113,16 @@ export default function QuizErgebnis() {
               {ctaHeadline}
             </h2>
             <p className="text-muted-foreground mb-6">
-              Tipps sind der Anfang – aber was du als <strong className="text-foreground">{quizType.title}</strong> wirklich brauchst, ist ein persönlicher Plan. Im kostenlosen Strategiegespräch finden wir heraus, welche konkreten Schritte für dich am meisten bewirken.
+              {quizResult.ctaSubline.replace("{type}", quizType.title)}
             </p>
             <p className="text-primary font-medium mb-6">
-              Diesen Monat noch 4 Plätze frei.
+              {quizResult.ctaUrgency}
             </p>
             <Link
               to="/contact"
               className="inline-flex items-center px-8 py-4 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all duration-300"
             >
-              Kostenloses Gespräch sichern
+              {quizResult.ctaButton}
               <ArrowRight className="ml-2" size={18} />
             </Link>
           </div>
@@ -140,14 +134,14 @@ export default function QuizErgebnis() {
               className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2"
             >
               <RotateCcw size={14} />
-              Quiz wiederholen
+              {quizResult.retakeLink}
             </Link>
             <span className="hidden sm:inline text-border">|</span>
             <Link
               to="/"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              Zurück zur Startseite
+              {quizResult.homeLink}
             </Link>
           </div>
         </div>
