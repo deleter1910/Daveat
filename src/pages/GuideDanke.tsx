@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
 import { CheckCircle2, ArrowRight } from "lucide-react";
+import { SEO } from "@/components/SEO";
 import { guideDanke } from "@/content/guide-danke";
 
 export default function GuideDanke() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <SEO
+        title="Danke – Dein Guide ist unterwegs"
+        description="Vielen Dank! Dein Ernährungs-Guide ist unterwegs."
+        path="/guide-danke"
+        noindex
+      />
       {/* Logo */}
       <header className="py-6 px-4">
         <div className="container mx-auto">

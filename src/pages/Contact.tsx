@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Mail, Send, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
@@ -88,6 +89,11 @@ export default function Contact() {
 
   return (
     <Layout>
+      <SEO
+        title="Kontakt – Kostenloses Strategie-Gespräch"
+        description="Buche dein kostenloses 30-minütiges Strategie-Gespräch mit Davide. Finde heraus, ob mein Ernährungscoaching zu dir passt."
+        path="/contact"
+      />
       {/* Hero Section */}
       <section className="section-padding pt-32">
         <div className="container mx-auto">

@@ -1,4 +1,5 @@
 import { Link, useSearchParams } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 import { ArrowRight, Lightbulb, RotateCcw, Flame, Target, Clock, BookOpen } from "lucide-react";
 import { quizTypes, type QuizTypeSlug } from "@/components/quiz/quizData";
 import { QuizHeader } from "@/components/quiz/QuizHeader";
@@ -19,6 +20,12 @@ export default function QuizErgebnis() {
   if (!quizType) {
     return (
       <div className="min-h-screen bg-background flex flex-col">
+        <SEO
+          title="Quiz-Ergebnis"
+          description="Dein persönliches Quiz-Ergebnis von Daveat."
+          path="/quiz-ergebnis"
+          noindex
+        />
         <QuizHeader />
         <main className="flex-1 flex items-center justify-center px-4 py-12">
           <div className="max-w-md mx-auto text-center">
@@ -44,6 +51,12 @@ export default function QuizErgebnis() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <SEO
+        title={`Dein Ergebnis: ${quizType.label} – Daveat Quiz`}
+        description={`Du bist der Typ "${quizType.label}". Erfahre, was das für deine Ernährung bedeutet und wie Daveat dir helfen kann.`}
+        path="/quiz-ergebnis"
+        noindex
+      />
       <QuizHeader />
 
       <main className="flex-1 flex items-center justify-center px-4 py-12">

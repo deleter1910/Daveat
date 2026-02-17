@@ -1,9 +1,16 @@
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Mail } from "lucide-react";
 
 export default function Impressum() {
   return (
     <Layout>
+      <SEO
+        title="Impressum"
+        description="Impressum von Daveat – Ernährungscoaching in der Schweiz."
+        path="/impressum"
+        noindex
+      />
       <section className="section-padding pt-32">
         <div className="container mx-auto">
           <div className="max-w-2xl">

@@ -1,4 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Link } from "react-router-dom";
 import { ArrowRight, TrendingDown, Zap, Users, Clock, Check, ChevronRight, Quote } from "lucide-react";
 import {
@@ -22,6 +23,11 @@ const problemIcons = [TrendingDown, Users, Zap];
 export default function Services() {
   return (
     <Layout>
+      <SEO
+        title="Ernährungsworkshops für Unternehmen"
+        description="Massgeschneiderte Ernährungs-Workshops für Firmen in der Schweiz. Steigern Sie die Gesundheit und Produktivität Ihrer Mitarbeitenden."
+        path="/services"
+      />
       {/* Hero Section */}
       <section className="section-padding pt-32">
         <div className="container mx-auto">

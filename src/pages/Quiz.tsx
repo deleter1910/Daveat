@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuiz } from "@/hooks/useQuiz";
@@ -54,6 +55,11 @@ export default function Quiz() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <SEO
+        title="Ernährungs-Quiz – Finde deinen Typ"
+        description="Finde in 2 Minuten heraus, welches unsichtbare Muster dich sabotiert – und was du sofort dagegen tun kannst."
+        path="/quiz"
+      />
       <QuizHeader />
 
       <main className="flex-1 flex items-center justify-center px-4 py-12">

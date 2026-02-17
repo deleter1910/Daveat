@@ -1,4 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Link } from "react-router-dom";
 import { ArrowRight, Heart, Leaf, HandHeart } from "lucide-react";
 import davePhoto from "@/assets/dave-photo.jpeg";
@@ -19,6 +20,11 @@ const values = valueTexts.map((v, i) => ({ ...v, icon: valueIcons[i] }));
 export default function About() {
   return (
     <Layout>
+      <SEO
+        title="Über Davide – Meine Geschichte"
+        description="Ich bin zertifizierter Ernährungsberater und kenne den Kampf mit Diäten aus eigener Erfahrung. Erfahre, warum mein Ansatz anders ist."
+        path="/about"
+      />
       {/* Hero Section */}
       <section className="section-padding pt-32">
         <div className="container mx-auto">

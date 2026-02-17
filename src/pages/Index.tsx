@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
+import { LocalBusinessSchema, WebsiteSchema } from "@/components/StructuredData";
 import { ArrowRight, Battery, Scale, Shield, Clock, Frown, Users, Target, Sparkles } from "lucide-react";
 import { PainPointCard } from "@/components/landing/PainPointCard";
 import { ProblemDeepeningSection } from "@/components/landing/ProblemDeepeningSection";
@@ -37,6 +39,13 @@ export default function Index() {
   const pricingOptions = pricingTexts;
 
   return <Layout>
+      <SEO
+        title="Daveat – Ernährung, die in deinen Alltag passt"
+        description="Nachhaltige Ernährungsbegleitung für Berufstätige in der Schweiz. Keine Diät, sondern ein System, das mit deinem Leben funktioniert. Kostenloses Strategie-Gespräch buchen."
+        path="/"
+      />
+      <LocalBusinessSchema />
+      <WebsiteSchema />
       {/* Section 1: Hero with Quiz CTA */}
       <section className="section-padding min-h-[90vh] flex items-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
